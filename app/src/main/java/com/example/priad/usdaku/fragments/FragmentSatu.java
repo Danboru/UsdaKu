@@ -1,13 +1,18 @@
 package com.example.priad.usdaku.fragments;
 
 import android.content.DialogInterface;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -34,6 +39,7 @@ public class FragmentSatu extends Fragment {
 
         View view = inflater.inflate(R.layout.activity_fragment_satu, container, false);
 
+
         ArrayList list = new ArrayList();
         list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 1000 ));
         list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 2000 ));
@@ -45,14 +51,45 @@ public class FragmentSatu extends Fragment {
         list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 1000 ));
         list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 7000 ));
         list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 15000 ));
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 20000 ));
         list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 1000 ));
+        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 2000 ));
+        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 5000 ));
+        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 7000 ));
+        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 9000 ));
+        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 12000 ));
+        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 10000 ));
+        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 1000 ));
+        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 7000 ));
+        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 15000 ));
+
 
         ListAdapter adapter = new com.example.priad.usdaku.adapter.ListAdapter(getActivity(), list);
 
         //menggunakan findViewBYId di Fragment
         ListView listView = (ListView) view.findViewById(R.id.lv_satu);
+        final SwipeRefreshLayout swLayout = (SwipeRefreshLayout) view.findViewById(R.id.swlayout);
+
+        // Mengeset properti warna yang berputar pada SwipeRefreshLayout
+        swLayout.setColorSchemeResources(R.color.colorPrimaryDark,R.color.colorAccent);
+
         listView.setAdapter(adapter);
+
+
+        swLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                // Handler untuk menjalankan jeda selama 5 detik
+                new Handler().postDelayed(new Runnable() {
+                    @Override public void run() {
+
+                        // Berhenti berputar/refreshing
+                        swLayout.setRefreshing(false);
+
+                    }
+                }, 5000);
+            }
+        });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -87,4 +124,6 @@ public class FragmentSatu extends Fragment {
         return view;
 
     }
+
+
 }
