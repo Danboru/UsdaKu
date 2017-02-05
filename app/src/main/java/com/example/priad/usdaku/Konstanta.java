@@ -5,4 +5,7 @@ package com.example.priad.usdaku;
  */
 
 public class Konstanta {
+
+
+
 }
