@@ -13,13 +13,13 @@ import com.example.priad.usdaku.javafiles.Barang;
 
 import java.util.ArrayList;
 
-public class ListAdapter extends ArrayAdapter {
+public class AdapterBarang extends ArrayAdapter {
 
     private ArrayList list;
     private Activity act;
 
-    public ListAdapter(Activity context, ArrayList objects) {
-        super(context, R.layout.layout, objects);
+    public AdapterBarang(Activity context, ArrayList objects) {
+        super(context, R.layout.layout_barang, objects);
         this.list = objects;
         this.act = context;
     }
@@ -36,7 +36,7 @@ public class ListAdapter extends ArrayAdapter {
         View view = convertView;
         if (view == null) {
             LayoutInflater inflater = act.getLayoutInflater();
-            view = inflater.inflate(R.layout.layout, null);
+            view = inflater.inflate(R.layout.layout_barang, null);
 
             ViewHolder holder = new ViewHolder();
             holder.icon = (ImageView) view.findViewById(R.id.item_icon);

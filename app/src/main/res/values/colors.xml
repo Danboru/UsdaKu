@@ -12,4 +12,7 @@
     <color name="colorWhite">#FFF</color>
     <color name="colorGrey">#D1D1D1</color>
 
+    <color name="atas">#0be23a</color>
+    <color name="bawah">#e70606</color>
+
 </resources>
