@@ -60,16 +60,12 @@ public class FragmentDua extends Fragment {
          * dalam prakteknya bisa bermacam2
          * tidak hanya String seperti di kasus ini
          */
-        dataSet.add("Karin");
-        dataSet.add("Ingrid");
-        dataSet.add("Helga");
-        dataSet.add("Renate");
-        dataSet.add("Elke");
-        dataSet.add("Ursula");
-        dataSet.add("Erika");
-        dataSet.add("Christa");
-        dataSet.add("Gisela");
-        dataSet.add("Monika");
+        dataSet.add("Pesanan Satu");
+        dataSet.add("Pesanan Dua");
+        dataSet.add("Pesanan Tiga");
+        dataSet.add("Pesanan Empat");
+        dataSet.add("Pesanan Lima");
+        dataSet.add("Pesanan Enam");
 
     }
 }
