@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.priad.usdaku.aktifitas.BagianAdmin;
-import com.example.priad.usdaku.aktifitas.BagianUser;
+import com.example.priad.usdaku.aktifitas.AktifitasAdmin;
+import com.example.priad.usdaku.aktifitas.AktifitasUser;
 
 public class MainActivity extends Activity {
 
@@ -34,14 +34,14 @@ public class MainActivity extends Activity {
                     if(satu.getText().toString().equalsIgnoreCase("user") && dua.getText().toString().equalsIgnoreCase("user")){
 
                         Toast.makeText(MainActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, BagianUser.class);
+                        Intent intent = new Intent(MainActivity.this, AktifitasUser.class);
                         startActivity(intent);
                         finish();
                     }
                 else if(satu.getText().toString().equalsIgnoreCase("admin") && dua.getText().toString().equalsIgnoreCase("admin")){
 
                         Toast.makeText(MainActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, BagianAdmin.class);
+                        Intent intent = new Intent(MainActivity.this, AktifitasAdmin.class);
                         startActivity(intent);
                         finish();
                     }

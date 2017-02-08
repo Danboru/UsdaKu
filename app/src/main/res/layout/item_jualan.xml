@@ -12,7 +12,10 @@
         android:layout_margin="4dp"
         card_view:cardBackgroundColor="#fff"
         card_view:cardCornerRadius="5dp"
-        card_view:cardElevation="5dp">
+        card_view:cardElevation="10dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -46,18 +49,6 @@
                 android:layout_alignParentTop="true"
                 android:layout_toEndOf="@+id/icon" />
 
-            <TextView
-                android:id="@+id/tv_titledua"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignWithParentIfMissing="true"
-                android:gravity="center_vertical"
-                android:text="Jumlah Makanan"
-                android:textColor="@color/primary_text_default_material_light"
-                android:textSize="16sp"
-                android:layout_marginTop="11dp"
-                android:layout_below="@+id/tv_titletiga"
-                android:layout_alignStart="@+id/tv_titletiga" />
 
             <TextView
                 android:id="@+id/tv_titletiga"

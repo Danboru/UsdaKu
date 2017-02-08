@@ -22,11 +22,12 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".aktifitas.BagianUser" />
-        <activity android:name=".aktifitas.BagianAdmin" />
-        <activity android:name=".fragments.FragmentSatu" />
-        <activity android:name=".fragments.FragmentDua" />
-        <activity android:name=".fragments.FragmentTiga"></activity>
+        <activity android:name=".aktifitas.AktifitasUser" />
+        <activity android:name=".aktifitas.AktifitasAdmin" />
+        <activity android:name=".fragments.tab1_user" />
+        <activity android:name=".fragments.tab2_user" />
+        <activity android:name=".fragments.tab3_user" />
+        <activity android:name=".fragments.tab4_user"></activity>
     </application>
 
 </manifest>

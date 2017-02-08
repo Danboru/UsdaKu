@@ -1,36 +1,33 @@
 package com.example.priad.usdaku.fragments;
 
-import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.priad.usdaku.R;
-import com.example.priad.usdaku.adapter.RecyclerViewAdapter;
+import com.example.priad.usdaku.adapter.AdapterPesanan;
 
 import java.util.ArrayList;
 
-public class FragmentDua extends Fragment {
+public class tab2_user extends Fragment {
     private RecyclerView rvView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<String> dataSet;
 
-    public FragmentDua() {
+    public tab2_user() {
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.activity_fragment_dua, container, false);
+        View view = inflater.inflate(R.layout.tab2_user, container, false);
 
         dataSet = new ArrayList<>();
         initDataset();
@@ -46,7 +43,7 @@ public class FragmentDua extends Fragment {
         layoutManager = new LinearLayoutManager(getContext());
         rvView.setLayoutManager(layoutManager);
 
-        adapter = new RecyclerViewAdapter(dataSet);
+        adapter = new AdapterPesanan(dataSet);
         rvView.setAdapter(adapter);
 
         return view;

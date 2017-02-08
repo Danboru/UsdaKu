@@ -10,14 +10,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.example.priad.usdaku.R;
-import com.example.priad.usdaku.fragments.FragmentDua;
-import com.example.priad.usdaku.fragments.FragmentSatu;
-import com.example.priad.usdaku.fragments.FragmentTiga;
+import com.example.priad.usdaku.fragments.tab2_user;
+import com.example.priad.usdaku.fragments.tab4_user;
+import com.example.priad.usdaku.fragments.tab1_user;
+import com.example.priad.usdaku.fragments.tab3_user;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BagianUser extends AppCompatActivity {
+public class AktifitasUser extends AppCompatActivity {
 
 
     private Toolbar toolbar;
@@ -27,7 +28,7 @@ public class BagianUser extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bagian_user);
+        setContentView(R.layout.bagian_user);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -41,11 +42,15 @@ public class BagianUser extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
     }
 
+
+    //Untuk menambahkan tab baru
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new FragmentSatu(), "ONE");
-        adapter.addFragment(new FragmentDua(), "TWO");
-        adapter.addFragment(new FragmentTiga(), "THREE");
+        adapter.addFragment(new tab1_user(), "ONE");
+        adapter.addFragment(new tab2_user(), "TWO");
+        adapter.addFragment(new tab3_user(), "THREE");
+        adapter.addFragment(new tab4_user(), "FOUR");
+
         viewPager.setAdapter(adapter);
     }
 

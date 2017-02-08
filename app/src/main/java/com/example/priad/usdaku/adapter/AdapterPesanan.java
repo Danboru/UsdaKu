@@ -14,11 +14,11 @@ import java.util.ArrayList;
  * Created by priad on 2/6/2017.
  */
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class AdapterPesanan extends RecyclerView.Adapter<AdapterPesanan.ViewHolder> {
 
     private ArrayList<String> rvData;
 
-    public RecyclerViewAdapter(ArrayList<String> inputData) {
+    public AdapterPesanan(ArrayList<String> inputData) {
         rvData = inputData;
     }
 
@@ -38,7 +38,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // membuat view baru
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_rv_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pesanan, parent, false);
         // mengeset ukuran view, margin, padding, dan parameter layout lainnya
         ViewHolder vh = new ViewHolder(v);
         return vh;

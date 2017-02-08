@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.priad.usdaku.fragments.FragmentTiga">
+    tools:context="com.example.priad.usdaku.fragments.tab3_user">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cv_main"
@@ -18,6 +18,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         >
 
         <LinearLayout
@@ -77,6 +79,8 @@
         android:layout_width="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         >
 
         <TextView android:text="2200"
@@ -92,7 +96,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="70dp"
         >
 
         <ListView

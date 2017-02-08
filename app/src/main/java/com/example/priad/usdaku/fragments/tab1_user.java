@@ -21,9 +21,9 @@ import com.example.priad.usdaku.javafiles.Barang;
 
 import java.util.ArrayList;
 
-public class FragmentSatu extends Fragment {
+public class tab1_user extends Fragment {
 
-    public FragmentSatu() {
+    public tab1_user() {
     }
 
     @Override
@@ -35,7 +35,7 @@ public class FragmentSatu extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.activity_fragment_satu, container, false);
+        View view = inflater.inflate(R.layout.tab1_user, container, false);
 
         ArrayList list = new ArrayList();
         list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 1000 ));
@@ -121,10 +121,7 @@ public class FragmentSatu extends Fragment {
             }
         });
 
-
         return view;
 
     }
-
-
 }
