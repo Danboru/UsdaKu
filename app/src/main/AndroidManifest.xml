@@ -27,7 +27,8 @@
         <activity android:name=".fragments.tab1_user" />
         <activity android:name=".fragments.tab2_user" />
         <activity android:name=".fragments.tab3_user" />
-        <activity android:name=".fragments.tab4_user"></activity>
+        <activity android:name=".fragments.tab4_user" />
+        <activity android:name=".aktifitas.UserMarketing"></activity>
     </application>
 
 </manifest>

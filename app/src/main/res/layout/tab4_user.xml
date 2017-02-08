@@ -16,8 +16,8 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="10dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp"
         android:layout_marginBottom="10dp"
         >
 
@@ -41,7 +41,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/gambarBarangYangDiJual"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginLeft="15dp"
                 >
@@ -50,7 +50,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nama Barang"
-                    android:textSize="30sp"
+                    android:textSize="20sp"
                     />
             </android.support.design.widget.TextInputLayout>
 
@@ -68,7 +68,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:hint="Keterangan"
-                    android:textSize="30sp"
+                    android:textSize="20sp"
                     />
             </android.support.design.widget.TextInputLayout>
 
@@ -86,7 +86,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:hint="Harga"
-                    android:textSize="30sp"
+                    android:textSize="20sp"
                     android:inputType="number"
                     />
 
@@ -99,7 +99,10 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
                 android:text="JUAL"
-                android:textSize="50dp"
+                android:textSize="30dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 />
 
         </RelativeLayout>
