@@ -4,7 +4,7 @@
     android:id="@+id/activity_fragment_satu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.priad.usdaku.fragments.tab1_user">
+    tools:context="com.example.priad.usdaku.fragments.user.tab1_user">
 
     <LinearLayout
         android:layout_width="wrap_content"

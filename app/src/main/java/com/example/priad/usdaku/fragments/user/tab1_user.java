@@ -1,4 +1,4 @@
-package com.example.priad.usdaku.fragments;
+package com.example.priad.usdaku.fragments.user;
 
 import android.content.DialogInterface;
 import android.os.Handler;
@@ -59,10 +59,7 @@ public class tab1_user extends Fragment {
         list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 7000 ));
         list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 15000 ));
 
-
         ListAdapter adapter = new AdapterBarang(getActivity(), list);
-
-
 
         //menggunakan findViewBYId di Fragment
         ListView listView = (ListView) view.findViewById(R.id.lv_satu);
@@ -81,10 +78,8 @@ public class tab1_user extends Fragment {
                 // Handler untuk menjalankan jeda selama 5 detik
                 new Handler().postDelayed(new Runnable() {
                     @Override public void run() {
-
                         // Berhenti berputar/refreshing
                         swLayout.setRefreshing(false);
-
                         Toast.makeText(getActivity(), "Berhasil Load Data", Toast.LENGTH_SHORT).show();
 
                     }
@@ -117,7 +112,6 @@ public class tab1_user extends Fragment {
                 });
 
                 alertDialog.show();
-
             }
         });
 

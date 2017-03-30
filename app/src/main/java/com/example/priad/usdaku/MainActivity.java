@@ -3,6 +3,7 @@ package com.example.priad.usdaku;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -30,9 +31,7 @@ public class MainActivity extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                    if(satu.getText().toString().equalsIgnoreCase("user") && dua.getText().toString().equalsIgnoreCase("user")){
-
+                if(satu.getText().toString().equalsIgnoreCase("user") && dua.getText().toString().equalsIgnoreCase("user")){
                         Toast.makeText(MainActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(MainActivity.this, AktifitasUser.class);
                         startActivity(intent);
@@ -46,19 +45,16 @@ public class MainActivity extends Activity {
                         finish();
                     }
                 else {
-
                         Toast.makeText(MainActivity.this, "Kamu Ngapain", Toast.LENGTH_SHORT).show();
                     }
             }
         });
-
     }
 
     public void inisialisiView(){
-
         button = (Button) findViewById(R.id.btn_satu);
         satu = (EditText) findViewById(R.id.edt_satu);
         dua = (EditText) findViewById(R.id.edt_dua);
     }
 
-}
+    }

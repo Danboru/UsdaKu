@@ -10,7 +10,7 @@
     android:paddingRight="10dp"
     android:paddingTop="10dp"
     android:orientation="vertical"
-    tools:context="com.example.priad.usdaku.fragments.tab4_user"
+    tools:context="com.example.priad.usdaku.fragments.user.tab4_user"
     android:weightSum="1">
 
     <android.support.v7.widget.CardView

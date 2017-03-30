@@ -24,10 +24,10 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".aktifitas.AktifitasUser" />
         <activity android:name=".aktifitas.AktifitasAdmin" />
-        <activity android:name=".fragments.tab1_user" />
-        <activity android:name=".fragments.tab2_user" />
-        <activity android:name=".fragments.tab3_user" />
-        <activity android:name=".fragments.tab4_user" />
+        <activity android:name=".fragments.user.tab1_user" />
+        <activity android:name=".fragments.user.tab2_user" />
+        <activity android:name=".fragments.user.tab3_user" />
+        <activity android:name=".fragments.user.tab4_user" />
         <activity android:name=".aktifitas.UserMarketing"></activity>
     </application>
 

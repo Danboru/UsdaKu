@@ -1,4 +1,4 @@
-package com.example.priad.usdaku.fragments;
+package com.example.priad.usdaku.fragments.user;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;

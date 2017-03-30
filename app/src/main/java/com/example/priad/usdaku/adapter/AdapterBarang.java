@@ -31,7 +31,6 @@ public class AdapterBarang extends ArrayAdapter {
         protected TextView harga;
     }
 
-
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
         if (view == null) {
@@ -48,8 +47,8 @@ public class AdapterBarang extends ArrayAdapter {
         }
 
         ViewHolder holder = (ViewHolder) view.getTag();
+        
         Barang phone = (Barang) list.get(position);
-
         String harga = String.valueOf(phone.getHarga());
 
         holder.icon.setImageResource(R.mipmap.ic_launcher);

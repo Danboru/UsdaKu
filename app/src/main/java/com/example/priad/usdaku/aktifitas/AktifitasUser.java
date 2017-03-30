@@ -1,5 +1,6 @@
 package com.example.priad.usdaku.aktifitas;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -8,12 +9,16 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.example.priad.usdaku.MainActivity;
 import com.example.priad.usdaku.R;
-import com.example.priad.usdaku.fragments.tab2_user;
-import com.example.priad.usdaku.fragments.tab4_user;
-import com.example.priad.usdaku.fragments.tab1_user;
-import com.example.priad.usdaku.fragments.tab3_user;
+import com.example.priad.usdaku.fragments.user.tab2_user;
+import com.example.priad.usdaku.fragments.user.tab4_user;
+import com.example.priad.usdaku.fragments.user.tab1_user;
+import com.example.priad.usdaku.fragments.user.tab3_user;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,10 +51,10 @@ public class AktifitasUser extends AppCompatActivity {
     //Untuk menambahkan tab baru
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new tab1_user(), "ONE");
-        adapter.addFragment(new tab2_user(), "TWO");
-        adapter.addFragment(new tab3_user(), "THREE");
-        adapter.addFragment(new tab4_user(), "FOUR");
+        adapter.addFragment(new tab1_user(), "PASAR");
+        adapter.addFragment(new tab2_user(), "PEMBELIAN");
+        adapter.addFragment(new tab3_user(), "PROFILE");
+        adapter.addFragment(new tab4_user(), "PENJUALAN");
 
         viewPager.setAdapter(adapter);
     }
@@ -82,4 +87,25 @@ public class AktifitasUser extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.options_menu, menu);//Menu Resource, Menu
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.logout:
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }
