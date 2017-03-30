@@ -25,7 +25,6 @@ import java.util.List;
 
 public class AktifitasUser extends AppCompatActivity {
 
-
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -59,7 +58,7 @@ public class AktifitasUser extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
+    static class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
@@ -107,5 +106,4 @@ public class AktifitasUser extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
 }

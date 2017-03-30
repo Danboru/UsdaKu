@@ -58,5 +58,4 @@ public class AdapterBarang extends ArrayAdapter {
 
         return view;
     }
-
 }

@@ -1,5 +1,6 @@
 package com.example.priad.usdaku.fragments.user;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -7,10 +8,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
+import android.text.Layout;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -91,31 +96,31 @@ public class tab1_user extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
-
-                alertDialog.setCanceledOnTouchOutside(false);//supaya tidak hilang saat di click di luar
-                alertDialog.setMessage("Apakah anda ingin melanjutkan pemesanan ?");
-
-                alertDialog.setTitle("PEMESANAN");
-                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ya", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getContext(), "Pesanan Anda Terkirim", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Tidak", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getContext(), "Pemesanan Di Batalkan", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                alertDialog.show();
+//                AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
+//                alertDialog.setCanceledOnTouchOutside(false);//supaya tidak hilang saat di click di luar
+//                alertDialog.setMessage("Apakah anda ingin melanjutkan pemesanan ?");
+//
+//                alertDialog.setTitle("PEMESANAN");
+//                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ya", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        Toast.makeText(getContext(), "Pesanan Anda Terkirim", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//
+//                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Tidak", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        Toast.makeText(getContext(), "Pemesanan Di Batalkan", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//
+//                alertDialog.show();
             }
         });
 
         return view;
-
     }
+
+
 }

@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/usdaku"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/MyMaterialTheme">
@@ -28,7 +28,11 @@
         <activity android:name=".fragments.user.tab2_user" />
         <activity android:name=".fragments.user.tab3_user" />
         <activity android:name=".fragments.user.tab4_user" />
-        <activity android:name=".aktifitas.UserMarketing"></activity>
+        <activity android:name=".aktifitas.UserMarketing" />
+        <activity android:name=".fragments.admin.tab1_admin" />
+        <activity android:name=".fragments.admin.tab2_admin" />
+        <activity android:name=".fragments.admin.tab3_admin" />
+        <activity android:name=".fragments.admin.tab4_admin"></activity>
     </application>
 
 </manifest>
