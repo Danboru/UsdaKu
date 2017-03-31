@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -54,7 +57,10 @@ public class tab4_user extends Fragment {
         keterantanBarang = (EditText) view.findViewById(R.id.keteranganBarang);
         hargaBarang = (EditText) view.findViewById(R.id.hargaBarang);
         listView = (ListView) view.findViewById(R.id.lv_satu);
+
         registerForContextMenu(listView);
+
+        View root = inflater.inflate(R.layout.tab4_user, container, false);
 
         jualBarang.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,15 +93,9 @@ public class tab4_user extends Fragment {
                 //Clear inputan
                 namaBarang.setText("");keterantanBarang.setText("");hargaBarang.setText("");
 
-                if (namaBarang.getText().toString().equals("") || keterantanBarang.getText().toString().equals("") || hargaBarang.getText().toString().equals("")){
-
-                    Toast.makeText(getContext(), "Isi Semua Fields", Toast.LENGTH_SHORT).show();
-
-                }else {
                     OpenHelper db = new OpenHelper(getContext());
                     Toast.makeText(getContext(), "Berhasil Input data", Toast.LENGTH_SHORT).show();
                     db.addBarang(new Barang(namaBar, harga, keterangan, 0, "Ada", "Alamat Gambar"));
-                }
 
             }
         });
@@ -134,5 +134,25 @@ public class tab4_user extends Fragment {
 //
 //    }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        menu.add(Menu.NONE, R.id.update_barang, Menu.NONE, "Update");
+        menu.add(Menu.NONE, R.id.delete_barang, Menu.NONE, "Delete");
+        menu.add(Menu.NONE, R.id.info_barang, Menu.NONE, "Info");
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.update_barang:
+                return true;
+            case R.id.delete_barang:
+                return true;
+            case R.id.info_barang:
+                return true;
+        }
+        return super.onContextItemSelected(item);
+    }
 
 }
