@@ -151,5 +151,4 @@ public class DaftarUser extends SQLiteOpenHelper {
         // return count
         return cursor.getCount();
     }
-
 }

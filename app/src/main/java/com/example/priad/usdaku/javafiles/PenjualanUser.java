@@ -3,7 +3,6 @@ package com.example.priad.usdaku.javafiles;
 /**
  * Created by priad on 31/03/2017.
  */
-
 public class PenjualanUser {
 
     private int id_penjualan;

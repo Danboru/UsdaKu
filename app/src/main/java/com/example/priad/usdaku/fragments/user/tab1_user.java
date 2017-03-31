@@ -30,6 +30,8 @@ import java.util.ArrayList;
 
 public class tab1_user extends Fragment {
 
+    private ArrayList list = new ArrayList();
+
     public tab1_user() {
     }
 
@@ -44,7 +46,6 @@ public class tab1_user extends Fragment {
 
         View view = inflater.inflate(R.layout.tab1_user, container, false);
 
-        ArrayList list = new ArrayList();
         list.add(new Barang("Kue Serabi", "Serabi manis dan serabi asin", 1000 ));
         list.add(new Barang("Kue Lumpur", "Terbuat dari santan, kentang, tepung, dan telur", 2000 ));
         list.add(new Barang("Klepon", "Makanan ini terbuat dari tepung beras ketan yang di bentuk bola - bola kecil dan diisi dengan gula merah", 5000 ));
@@ -88,14 +89,15 @@ public class tab1_user extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                showCustomDialog();
+                showCustomDialog(position);
             }
         });
         return view;
     }
 
-    private void showCustomDialog() {
+    private void showCustomDialog(int position) {
+
+        Barang barang = (Barang) list.get(position);
 
         final Dialog dialog = new Dialog(getContext());
         //Mengeset judul dialog
@@ -112,10 +114,16 @@ public class tab1_user extends Fragment {
         int width = metrics.widthPixels;
         dialog.getWindow().setLayout((6 * width) / 7, LinearLayout.LayoutParams.WRAP_CONTENT);
 
+        //Inisialisasi View
         Button cancelButton = (Button) dialog.findViewById(R.id.button_cancel);
         Button saveButton = (Button) dialog.findViewById(R.id.button_save);
         SeekBar seekBar = (SeekBar) dialog.findViewById(R.id.seekbar_jumlahpembelian);
+        TextView namaBarang = (TextView) dialog.findViewById(R.id.namaBarangPopup);
+
         final TextView textView = (TextView) dialog.findViewById(R.id.txt_jumlahPembelian);
+
+        //Set nama barang yang ada di popup
+        namaBarang.setText(barang.getName());
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override

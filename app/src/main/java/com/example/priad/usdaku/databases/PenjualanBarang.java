@@ -5,9 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 import com.example.priad.usdaku.javafiles.User;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +18,10 @@ public class PenjualanBarang extends SQLiteOpenHelper {
     // Database Version
     private static final int DATABASE_VERSION = 1;
 
-    // Database Name
+    //Database Name
     private static final String DATABASE_NAME = "usdaku";
 
-    // User table name
+    //Table name
     private static final String TABLE_USER = "penjualanuser";
 
     // Users Table Columns names
@@ -51,11 +49,11 @@ public class PenjualanBarang extends SQLiteOpenHelper {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
 
-        // Create tables again
+        //Create tables again
         onCreate(db);
     }
 
-    // Adding new user
+    //Adding new user
     public void addUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -146,5 +144,4 @@ public class PenjualanBarang extends SQLiteOpenHelper {
         // return count
         return cursor.getCount();
     }
-
 }
