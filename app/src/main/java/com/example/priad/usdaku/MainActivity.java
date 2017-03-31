@@ -9,15 +9,18 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.priad.usdaku.aktifitas.AktifitasAdmin;
 import com.example.priad.usdaku.aktifitas.AktifitasUser;
+import com.example.priad.usdaku.aktifitas.Pendaftaran;
 
 public class MainActivity extends Activity {
 
     Button button;
     EditText satu, dua;
+    TextView pendaftaran;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +52,24 @@ public class MainActivity extends Activity {
                     }
             }
         });
+
+        pendaftaran.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, Pendaftaran.class);
+                startActivity(i);
+            }
+        });
+
     }
 
     public void inisialisiView(){
         button = (Button) findViewById(R.id.btn_satu);
         satu = (EditText) findViewById(R.id.edt_satu);
         dua = (EditText) findViewById(R.id.edt_dua);
+        pendaftaran = (TextView) findViewById(R.id.pendaftaran);
     }
+
+
 
     }

@@ -13,6 +13,7 @@
         android:layout_height="48dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
+        android:src="@drawable/usdaku"
         />
 
 

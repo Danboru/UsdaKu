@@ -1,15 +1,15 @@
-package com.example.priad.usdaku.fragments.admin;
+package com.example.priad.usdaku.aktifitas;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.priad.usdaku.R;
 
-public class tab3_admin extends AppCompatActivity {
+public class ResetPassword extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tab3_admin);
+        setContentView(R.layout.activity_reset_password);
     }
 }

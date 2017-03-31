@@ -5,9 +5,12 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.priad.usdaku.R;
 import com.example.priad.usdaku.adapter.AdapterPesanan;
@@ -22,6 +25,7 @@ public class tab2_user extends Fragment {
 
     public tab2_user() {
     }
+
 
     @Nullable
     @Override
@@ -57,12 +61,35 @@ public class tab2_user extends Fragment {
          * dalam prakteknya bisa bermacam2
          * tidak hanya String seperti di kasus ini
          */
-        dataSet.add("Pesanan Satu");
-        dataSet.add("Pesanan Dua");
-        dataSet.add("Pesanan Tiga");
-        dataSet.add("Pesanan Empat");
-        dataSet.add("Pesanan Lima");
-        dataSet.add("Pesanan Enam");
+        dataSet.add("Lemper");
+        dataSet.add("Kue Serabi");
+        dataSet.add("Kue Lumpur");
+        dataSet.add("Nagasari");
+        dataSet.add("Kue Mangkok");
+        dataSet.add("Onde-onde");
 
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+
+        menu.setHeaderTitle("Pengaturan Pesanan");
+        menu.add(0, v.getId(), 0, "Hapus Pesanan");
+        menu.add(0, v.getId(), 0, "Update Pesanan");
+        menu.add(0, v.getId(), 0, "Tentang Pesanan");
+
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+
+        if(item.getTitle().equals("Hapus Pesanan")){
+
+            Toast.makeText(getContext(), "Pesanan Di hapus", Toast.LENGTH_SHORT).show();
+
+        }
+
+        return true;
     }
 }

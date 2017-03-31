@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/usdaku"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/MyMaterialTheme">
@@ -32,7 +32,10 @@
         <activity android:name=".fragments.admin.tab1_admin" />
         <activity android:name=".fragments.admin.tab2_admin" />
         <activity android:name=".fragments.admin.tab3_admin" />
-        <activity android:name=".fragments.admin.tab4_admin"></activity>
+        <activity android:name=".fragments.admin.tab4_admin" />
+        <activity android:name=".aktifitas.ResetPassword" />
+        <activity android:name=".aktifitas.Pendaftaran" />
+        <activity android:name=".dialog.Pemesanan"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/hapus_pesanan"
+        android:title="Hapus Peanan"/>
+
+    <item
+        android:id="@+id/edit_pesanan"
+        android:title="Edit Pesanan"
+        />
+
+    <item
+        android:id="@+id/tentang_pesanan"
+        android:title="Tentang Pesanan"
+        />
+
+</menu>

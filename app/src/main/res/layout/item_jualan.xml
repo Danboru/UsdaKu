@@ -31,7 +31,7 @@
                 android:layout_marginRight="15dip"
                 android:layout_marginLeft="15dp"
                 android:contentDescription="TODO"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/usdaku" />
 
 
 

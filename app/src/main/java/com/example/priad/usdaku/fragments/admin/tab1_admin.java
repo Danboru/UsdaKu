@@ -10,6 +10,6 @@ public class tab1_admin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tab1_admin);
+        setContentView(R.layout.tab1_admin);
     }
 }

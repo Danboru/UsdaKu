@@ -31,7 +31,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/usdaku"
                 android:paddingTop="20dp"
                 />
 
@@ -83,7 +83,7 @@
         android:foreground="?android:attr/selectableItemBackground"
         >
 
-        <TextView android:text="2200"
+        <TextView android:text="8000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

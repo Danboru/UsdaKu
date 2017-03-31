@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.priad.usdaku.R;
@@ -43,26 +45,19 @@ public class tab1_user extends Fragment {
         View view = inflater.inflate(R.layout.tab1_user, container, false);
 
         ArrayList list = new ArrayList();
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 1000 ));
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 2000 ));
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 5000 ));
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 7000 ));
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 9000 ));
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 12000 ));
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 10000 ));
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 1000 ));
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 7000 ));
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 15000 ));
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 1000 ));
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 2000 ));
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 5000 ));
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 7000 ));
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 9000 ));
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 12000 ));
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 10000 ));
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 1000 ));
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 7000 ));
-        list.add(new Barang("Usda Makanan Ringan", "Ini adalah Keterangan tentang usda yang di posting", 15000 ));
+        list.add(new Barang("Kue Serabi", "Serabi manis dan serabi asin", 1000 ));
+        list.add(new Barang("Kue Lumpur", "Terbuat dari santan, kentang, tepung, dan telur", 2000 ));
+        list.add(new Barang("Klepon", "Makanan ini terbuat dari tepung beras ketan yang di bentuk bola - bola kecil dan diisi dengan gula merah", 5000 ));
+        list.add(new Barang("Onde-onde", "Terdapat bermacam-macam variasi, yang paling dikenal adalah onde-onde yang terbuat dari tepung ketan dan di dalamnya diisi pasta kacang hijau", 7000 ));
+        list.add(new Barang("Kerak Telor", "Bahan-bahan pembuatnya yaitu beras ketan putih, telur bebek, ebi (udang kering yang diasinkan) yang disangrai", 9000 ));
+        list.add(new Barang("Kue Mangkok", "Kue yang di bungkus dengan mangkok yang terbuat dari kertas", 12000 ));
+        list.add(new Barang("Kue Lapis", "Kue ini dibuat dari tepung beras, tepung kanji, santan, gula pasir, garam dan pewarna.", 10000 ));
+        list.add(new Barang("Getuk", "Getuk berbahan utama ketela pohon atau singkong. Getuk merupakan makanan yang mudah ditemukan di Jawa Tengah dan Jawa Timur", 1000 ));
+        list.add(new Barang("Lumpia", "Makanan ini berupa lembaran tipis dari tepung gandum yang dijadikan kulit lalu digunakan sebagai pembungkus isian yang dapat berupa rebung, telur, sayuran segar, daging, atau makanan laut", 7000 ));
+        list.add(new Barang("Kue Putu", "Kue putu merupakan kue yang berisi gula jawa dan parutan kelapa, tepung beras butiran kasar. Kue ini di kukus dengan diletakkan di dalam tabung bambu yang sedikit dipadatkan", 15000 ));
+        list.add(new Barang("Lemper", "Enak dan murah", 1000 ));
+        list.add(new Barang("Nagasari", "Nagasari terbuat dari tepung beras, tepung sagu, santan, dan gula yang diisi pisang. Kue ini biasanya dibalut dengan daun pisang lalu dikukus", 2000 ));
+        list.add(new Barang("Cenil", "Cenil berasal dari Yogyakarta. Jajanan ini merupakan makanan yang terbuat dari pati ketela pohon. Makanan ini bisa dibentuk bulat-bulat kecil atau kotak kemudian diberi warna sesuai selera sebelum direbus.", 5000 ));
 
         ListAdapter adapter = new AdapterBarang(getActivity(), list);
 
@@ -116,10 +111,73 @@ public class tab1_user extends Fragment {
 //                });
 //
 //                alertDialog.show();
+
+                showCustomDialog();
+
             }
         });
 
         return view;
+    }
+
+    private void showCustomDialog() {
+
+        final Dialog dialog = new Dialog(getContext());
+        //Mengeset judul dialog
+        dialog.setTitle("Pembelian");
+
+        //Mengeset layout
+        dialog.setContentView(R.layout.activity_pemesanan);
+
+        //Membuat agar dialog tidak hilang saat di click di area luar dialog
+        dialog.setCanceledOnTouchOutside(false);
+
+        //Membuat dialog agar berukuran responsive
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int width = metrics.widthPixels;
+        dialog.getWindow().setLayout((6 * width) / 7, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        Button cancelButton = (Button) dialog.findViewById(R.id.button_cancel);
+        Button saveButton = (Button) dialog.findViewById(R.id.button_save);
+        SeekBar seekBar = (SeekBar) dialog.findViewById(R.id.seekbar_jumlahpembelian);
+        final TextView textView = (TextView) dialog.findViewById(R.id.txt_jumlahPembelian);
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+                textView.setText(String.valueOf(progress));
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Data saved", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        //Menampilkan custom dialog
+        dialog.show();
     }
 
 

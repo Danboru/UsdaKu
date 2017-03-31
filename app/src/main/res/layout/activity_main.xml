@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:gravity="center">
+    android:gravity="center"
+    android:layout_marginTop="200dp"
+    >
 
     <LinearLayout
         android:id="@+id/inputUser"
@@ -13,6 +15,7 @@
         android:orientation="vertical"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+
         >
 
         <ImageView
@@ -20,7 +23,6 @@
             android:layout_height="200dp"
             android:src="@drawable/usdaku"
             android:layout_gravity="center"
-            android:layout_marginTop="100dp"
             />
 
         <LinearLayout
@@ -73,6 +75,27 @@
             android:layout_height="wrap_content"
             android:text="Masuk"
             android:layout_marginTop="20dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        >
+
+        <TextView
+            android:id="@+id/pendaftaran"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Daftar"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:clickable="true"
             />
 
     </LinearLayout>
