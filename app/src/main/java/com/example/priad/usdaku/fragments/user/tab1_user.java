@@ -45,18 +45,14 @@ public class tab1_user extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.tab1_user, container, false);
-
         OpenHelper db = new OpenHelper(getContext());
 
-        db.addBarang(new Barang("Barang Satu", "1000", "Keterangan", 12, "Ada", "Alamat Gambar"));
-        db.addBarang(new Barang("Barang Dua", "1000", "Keterangan", 12, "Ada", "Alamat Gambar"));
-        db.addBarang(new Barang("Barang Tiga", "1000", "Keterangan", 12, "Ada", "Alamat Gambar"));
+//        db.addBarang(new Barang("Barang Satu", 1000, "Keterangan", 12, "Ada", "Alamat Gambar"));
 
-
-        list.add(new Barang("Kue Serabi", "1000" ,"Serabi manis dan serabi asin", 10, "Ada", "gambar" ));
-        list.add(new Barang("Kue Serabi", "1000" ,"Serabi manis dan serabi asin", 10, "Ada", "gambar" ));
-        list.add(new Barang("Kue Serabi", "1000" ,"Serabi manis dan serabi asin", 10, "Ada", "gambar" ));
-        list.add(new Barang("Kue Serabi", "1000" ,"Serabi manis dan serabi asin", 10, "Ada", "gambar" ));
+//        list.add(new Barang("Kue Serabi", 1000 ,"Serabi manis dan serabi asin", 10, "Ada", "gambar" ));
+//        list.add(new Barang("Kue Serabi", 1000 ,"Serabi manis dan serabi asin", 10, "Ada", "gambar" ));
+//        list.add(new Barang("Kue Serabi", 1000 ,"Serabi manis dan serabi asin", 10, "Ada", "gambar" ));
+//        list.add(new Barang("Kue Serabi", 1000 ,"Serabi manis dan serabi asin", 10, "Ada", "gambar" ));
 //        list.add(new Barang("Kue Lumpur", "Terbuat dari santan, kentang, tepung, dan telur", 2000 ));
 //        list.add(new Barang("Klepon", "Makanan ini terbuat dari tepung beras ketan yang di bentuk bola - bola kecil dan diisi dengan gula merah", 5000 ));
 //        list.add(new Barang("Onde-onde", "Terdapat bermacam-macam variasi, yang paling dikenal adalah onde-onde yang terbuat dari tepung ketan dan di dalamnya diisi pasta kacang hijau", 7000 ));
@@ -70,6 +66,21 @@ public class tab1_user extends Fragment {
 //        list.add(new Barang("Nagasari", "Nagasari terbuat dari tepung beras, tepung sagu, santan, dan gula yang diisi pisang. Kue ini biasanya dibalut dengan daun pisang lalu dikukus", 2000 ));
 //        list.add(new Barang("Cenil", "Cenil berasal dari Yogyakarta. Jajanan ini merupakan makanan yang terbuat dari pati ketela pohon. Makanan ini bisa dibentuk bulat-bulat kecil atau kotak kemudian diberi warna sesuai selera sebelum direbus.", 5000 ));
 
+//        try {
+//
+//            ArrayList ara = db.getAllBarang();
+//            String test = "";
+//            for (Object e : ara) {
+//                test += ((Barang) e).getNama_barang() + ", ";
+//            }
+//            Toast.makeText(getContext(), test, Toast.LENGTH_LONG).show();
+//        }
+//        catch (Exception e){
+//            Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
+//        }
+
+        //Memasukkan data kedalam list
+        list = db.getAllBarang();
         ListAdapter adapter = new AdapterBarang(getActivity(), list);
 
         //menggunakan findViewBYId di Fragment
@@ -159,7 +170,6 @@ public class tab1_user extends Fragment {
                 AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
                 alertDialog.setCanceledOnTouchOutside(false);//supaya tidak hilang saat di click di luar
                 alertDialog.setMessage("Apakah anda ingin melanjutkan pemesanan ?");
-
                 alertDialog.setTitle("VERIFIKASI PEMESANAN");
                 alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ya", new DialogInterface.OnClickListener() {
                     @Override
@@ -191,6 +201,5 @@ public class tab1_user extends Fragment {
         //Menampilkan custom dialog
         dialog.show();
     }
-
 
 }

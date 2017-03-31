@@ -115,16 +115,16 @@ public class OpenHelper extends SQLiteOpenHelper {
     }
 
     // Adding new barang
-    public void addBarang(Barang user) {
+    public void addBarang(Barang barang) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_BARANG_NAMABARANG, user.getNama_barang());
-        values.put(KEY_BARANG_HARGABARANG, user.getNama_barang());
-        values.put(KEY_BARANG_KETERANGANBARANG, user.getNama_barang());
-        values.put(KEY_BARANG_JUMLAHBARANG, user.getNama_barang());
-        values.put(KEY_BARANG_STATUSBARANG, user.getNama_barang());
-        values.put(KEY_BARANG_URLIMAGE, user.getNama_barang());
+        values.put(KEY_BARANG_NAMABARANG, barang.getNama_barang());
+        values.put(KEY_BARANG_HARGABARANG, barang.getHarga_barang());
+        values.put(KEY_BARANG_KETERANGANBARANG, barang.getKeterangan_barang());
+        values.put(KEY_BARANG_JUMLAHBARANG, barang.getJumlah_barang());
+        values.put(KEY_BARANG_STATUSBARANG, barang.getStatus_barang());
+        values.put(KEY_BARANG_URLIMAGE, barang.getUrl_gambarbarang());
 
 
         // Inserting Row
@@ -166,7 +166,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        Barang barang = new Barang(cursor.getString(0), cursor.getString(1), cursor.getString(2),Integer.parseInt(cursor.getString(3)),
+        Barang barang = new Barang(cursor.getString(0), Integer.parseInt(cursor.getString(1)), cursor.getString(2),Integer.parseInt(cursor.getString(3)),
                 cursor.getString(4), cursor.getString(5));
 
         //Return user
@@ -205,8 +205,8 @@ public class OpenHelper extends SQLiteOpenHelper {
 
 
     // Getting All barang
-    public ArrayList<Barang> getAllBarang() {
-        ArrayList<Barang> barangList = new ArrayList<Barang>();
+    public ArrayList getAllBarang() {
+        ArrayList barangList = new ArrayList();
         // Select All Query
         String selectQuery = "SELECT * FROM " + TABLE_BARANG;
 
@@ -217,12 +217,12 @@ public class OpenHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Barang barang = new Barang();
-                barang.setId_barang(Integer.parseInt(cursor.getString(0)));
-                barang.setNama_barang(cursor.getString(1));
-                barang.setHarga_barang(cursor.getString(2));
-                barang.setJumlah_barang(Integer.parseInt(cursor.getString(3)));
-                barang.setStatus_barang(cursor.getString(4));
-                barang.setUrl_gambarbarang(cursor.getString(5));
+                barang.setId_barang(cursor.getInt(0));
+                barang.setNama_barang(cursor.getString(cursor.getColumnIndex(KEY_BARANG_NAMABARANG)));
+                barang.setHarga_barang(cursor.getInt(cursor.getColumnIndex(KEY_BARANG_HARGABARANG)));
+                barang.setJumlah_barang(cursor.getInt(cursor.getColumnIndex(KEY_BARANG_JUMLAHBARANG)));
+                barang.setStatus_barang(cursor.getString(cursor.getColumnIndex(KEY_BARANG_STATUSBARANG)));
+                barang.setUrl_gambarbarang(cursor.getString(cursor.getColumnIndex(KEY_BARANG_URLIMAGE)));
 
                 // Adding user to list
                 barangList.add(barang);

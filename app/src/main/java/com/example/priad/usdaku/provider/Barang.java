@@ -8,7 +8,7 @@ public class Barang {
 
     private int id_barang;
     private String nama_barang;
-    private String harga_barang;
+    private int harga_barang;
     private String keterangan_barang;
     private int jumlah_barang;
     private String status_barang;
@@ -17,7 +17,7 @@ public class Barang {
     public Barang() {
     }
 
-    public Barang(int id_barang, String nama_barang, String harga_barang, String keterangan_barang, int jumlah_barang, String status_barang, String url_gambarbarang) {
+    public Barang(int id_barang, String nama_barang, int harga_barang, String keterangan_barang, int jumlah_barang, String status_barang, String url_gambarbarang) {
         this.id_barang = id_barang;
         this.nama_barang = nama_barang;
         this.harga_barang = harga_barang;
@@ -27,7 +27,7 @@ public class Barang {
         this.url_gambarbarang = url_gambarbarang;
     }
 
-    public Barang(String nama_barang, String harga_barang, String keterangan_barang, int jumlah_barang, String status_barang, String url_gambarbarang) {
+    public Barang(String nama_barang, int harga_barang, String keterangan_barang, int jumlah_barang, String status_barang, String url_gambarbarang) {
         this.nama_barang = nama_barang;
         this.harga_barang = harga_barang;
         this.keterangan_barang = keterangan_barang;
@@ -52,11 +52,11 @@ public class Barang {
         this.nama_barang = nama_barang;
     }
 
-    public String getHarga_barang() {
+    public int getHarga_barang() {
         return harga_barang;
     }
 
-    public void setHarga_barang(String harga_barang) {
+    public void setHarga_barang(int harga_barang) {
         this.harga_barang = harga_barang;
     }
 
