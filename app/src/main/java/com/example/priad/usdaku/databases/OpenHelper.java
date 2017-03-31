@@ -1,0 +1,272 @@
+package com.example.priad.usdaku.databases;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+import com.example.priad.usdaku.provider.Barang;
+import com.example.priad.usdaku.provider.User;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by priad on 25/03/2017.
+ */
+public class OpenHelper extends SQLiteOpenHelper {
+
+    // All Static variables
+    // Database Version
+    private static final int DATABASE_VERSION = 1;
+
+    // Database Name
+    private static final String DATABASE_NAME = "usdaku";
+
+    // User table name
+    private static final String TABLE_USER = "user";
+    private static final String TABLE_BARANG = "barang";
+    private static final String TABLE_TRANSAKSI = "transaksi";
+
+    //Kolom Table user
+    private static final String KEY_USER_ID = "id_user";
+    private static final String KEY_USER_NAMADEPAN = "namadepan_user";
+    private static final String KEY_USER_NAMABELAKANG = "namabelakang_user";
+    private static final String KEY_USER_EMAIL = "email_user";
+    private static final String KEY_USER_NIM = "nim_user";
+    private static final String KEY_USER_PASSWORD = "password_user";
+    private static final String KEY_USER_IMAGE = "image_user";
+
+    //Kolom Table Barang
+    private static final String KEY_BARANG_ID = "id_barang";
+    private static final String KEY_BARANG_NAMABARANG = "nama_barang";
+    private static final String KEY_BARANG_HARGABARANG = "harga_barang";
+    private static final String KEY_BARANG_KETERANGANBARANG = "keteranga_barang";
+    private static final String KEY_BARANG_JUMLAHBARANG = "jumlah_barang";
+    private static final String KEY_BARANG_STATUSBARANG = "status_barang";
+    private static final String KEY_BARANG_URLIMAGE = "url_imagebarang";
+
+    //Kolom Table Transaksi
+    private static final String KEY_TRANSAKSI_ID = "id_user";
+    private static final String KEY_TRANSAKSI_NAMABARANG = "namadepan_user";
+    private static final String KEY_TRANSAKSI_JUMLAHBARANG = "namabelakang_user";
+    private static final String KEY_TRANSAKSI_HARGABARANG = "email_user";
+    private static final String KEY_TRANSAKSI_SELLER = "password_user";
+
+    public OpenHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    // Creating Tables
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+
+        //Table User (FIX)
+        String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_USER + "("
+                + KEY_USER_ID + " INTEGER PRIMARY KEY," + KEY_USER_NAMADEPAN + " TEXT,"
+                + KEY_USER_NAMABELAKANG + " TEXT," + KEY_USER_EMAIL + " TEXT, "
+                + KEY_USER_NIM + " INTEGER, "+ KEY_USER_PASSWORD + " TEXT,"  + KEY_USER_IMAGE + " TEXT" + ")";
+
+        //Table Barang (FIX)
+        String CREATE_BARANG_TABLE = "CREATE TABLE " + TABLE_BARANG + "("
+                + KEY_BARANG_ID + " INTEGER PRIMARY KEY," + KEY_BARANG_NAMABARANG + " TEXT,"
+                + KEY_BARANG_KETERANGANBARANG + " TEXT," + KEY_BARANG_HARGABARANG + " INTEGER, "
+                + KEY_BARANG_JUMLAHBARANG + " INTEGER, " + KEY_BARANG_STATUSBARANG + " TEXT, "
+                + KEY_BARANG_URLIMAGE + " TEXT " + ")";
+
+        //Table Transaki ()
+        String CREATE_TRANSAKSI_TABLE = "CREATE TABLE " + TABLE_TRANSAKSI + "("
+                + KEY_TRANSAKSI_ID + " INTEGER PRIMARY KEY," + KEY_TRANSAKSI_SELLER + " TEXT,"
+                + KEY_TRANSAKSI_NAMABARANG + " TEXT," + KEY_TRANSAKSI_HARGABARANG + " INTEGER, "
+                + KEY_TRANSAKSI_JUMLAHBARANG + " INTEGER" + ")";
+
+        db.execSQL(CREATE_USER_TABLE);
+        db.execSQL(CREATE_BARANG_TABLE);
+        db.execSQL(CREATE_TRANSAKSI_TABLE);
+    }
+
+    // Upgrading database
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // Drop older table if existed
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_BARANG);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRANSAKSI);
+
+        // Create tables again
+        onCreate(db);
+    }
+
+    // Adding new user
+    public void addUser(User user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_USER_NAMADEPAN, user.getNamadepan_user());
+        values.put(KEY_USER_NAMABELAKANG, user.getNamabelakang_user());
+        values.put(KEY_USER_EMAIL, user.getEmail_user());
+        values.put(KEY_USER_NIM, user.getNim());
+        values.put(KEY_USER_PASSWORD, user.getPassword_user());
+        values.put(KEY_USER_IMAGE, user.getPassword_user());
+
+        // Inserting Row
+        db.insert(TABLE_USER, null, values);
+        db.close(); // Closing database connection
+    }
+
+    // Adding new barang
+    public void addBarang(Barang user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_BARANG_NAMABARANG, user.getNama_barang());
+        values.put(KEY_BARANG_HARGABARANG, user.getNama_barang());
+        values.put(KEY_BARANG_KETERANGANBARANG, user.getNama_barang());
+        values.put(KEY_BARANG_JUMLAHBARANG, user.getNama_barang());
+        values.put(KEY_BARANG_STATUSBARANG, user.getNama_barang());
+        values.put(KEY_BARANG_URLIMAGE, user.getNama_barang());
+
+
+        // Inserting Row
+        db.insert(TABLE_BARANG, null, values);
+        db.close(); // Closing database connection
+    }
+
+    // Getting single user
+    User getUser(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //ID - NAMADEPAN - NAMABELAKANG - EMAIL - NIM - PASSWORD - IMAGE
+        Cursor cursor = db.query(TABLE_USER, new String[] { KEY_USER_ID,
+                        KEY_USER_NAMADEPAN, KEY_USER_NAMABELAKANG,
+                        KEY_USER_EMAIL,KEY_USER_NIM, KEY_USER_PASSWORD,
+                        KEY_USER_IMAGE }, KEY_USER_ID + " = ?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        User user = new User(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2),
+                cursor.getString(3), Integer.parseInt(cursor.getString(4)), Integer.parseInt(cursor.getString(5)),
+                cursor.getString(6), cursor.getString(7));
+
+        //Return user
+        return user;
+    }
+
+    // Getting single barang
+    Barang getBarang(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //ID - NAMADEPAN - NAMABELAKANG - EMAIL - NIM - PASSWORD - IMAGE
+        Cursor cursor = db.query(TABLE_USER, new String[] { KEY_BARANG_ID,
+                        KEY_BARANG_NAMABARANG, KEY_BARANG_HARGABARANG,
+                        KEY_BARANG_KETERANGANBARANG,KEY_BARANG_JUMLAHBARANG, KEY_BARANG_STATUSBARANG,
+                        KEY_BARANG_URLIMAGE }, KEY_BARANG_ID + " = ?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        Barang barang = new Barang(cursor.getString(0), cursor.getString(1), cursor.getString(2),Integer.parseInt(cursor.getString(3)),
+                cursor.getString(4), cursor.getString(5));
+
+        //Return user
+        return barang;
+    }
+
+    // Getting All user
+    public List<User> getAllUser() {
+        List<User> usersList = new ArrayList<User>();
+        // Select All Query
+        String selectQuery = "SELECT * FROM " + TABLE_USER;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // Looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                User user = new User();
+                user.setId_user(Integer.parseInt(cursor.getString(0)));
+                user.setNamadepan_user(cursor.getString(1));
+                user.setNamabelakang_user(cursor.getString(2));
+                user.setEmail_user(cursor.getString(3));
+                user.setNim(Integer.parseInt(cursor.getString(4)));
+                user.setPassword_user(cursor.getString(5));
+                user.setImage_user(cursor.getString(6));
+
+                // Adding user to list
+                usersList.add(user);
+
+            } while (cursor.moveToNext());
+        }
+        // return user list
+        return usersList;
+    }
+
+
+    // Getting All barang
+    public ArrayList<Barang> getAllBarang() {
+        ArrayList<Barang> barangList = new ArrayList<Barang>();
+        // Select All Query
+        String selectQuery = "SELECT * FROM " + TABLE_BARANG;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // Looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Barang barang = new Barang();
+                barang.setId_barang(Integer.parseInt(cursor.getString(0)));
+                barang.setNama_barang(cursor.getString(1));
+                barang.setHarga_barang(cursor.getString(2));
+                barang.setJumlah_barang(Integer.parseInt(cursor.getString(3)));
+                barang.setStatus_barang(cursor.getString(4));
+                barang.setUrl_gambarbarang(cursor.getString(5));
+
+                // Adding user to list
+                barangList.add(barang);
+
+            } while (cursor.moveToNext());
+        }
+        // return user list
+        return barangList;
+    }
+
+    // Updating single user
+    public int updateUser(User user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        //ID - NAMADEPAN - NAMABELAKANG - EMAIL - NIM - PASSWORD - IMAGE
+        values.put(KEY_USER_NAMADEPAN, user.getNamadepan_user());
+        values.put(KEY_USER_NAMABELAKANG, user.getNamabelakang_user());
+        values.put(KEY_USER_EMAIL, user.getEmail_user());
+        values.put(KEY_USER_NIM, user.getNim());
+        values.put(KEY_USER_PASSWORD, user.getPassword_user());
+        values.put(KEY_USER_IMAGE, user.getImage_user());
+
+        // updating row
+        return db.update(TABLE_USER, values, KEY_USER_ID + " = ?",
+                new String[] { String.valueOf(user.getId_user()) });
+    }
+
+    // Deleting single user
+    public void deleteUser(User user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_USER, KEY_USER_ID + " = ?",
+                new String[] { String.valueOf(user.getId_user()) });
+        db.close();
+    }
+
+    // Getting users Count
+    public int getUsersCount() {
+        String countQuery = "SELECT  * FROM " + TABLE_USER;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        cursor.close();
+
+        // return count
+        return cursor.getCount();
+    }
+}

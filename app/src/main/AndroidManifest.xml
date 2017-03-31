@@ -33,7 +33,6 @@
         <activity android:name=".fragments.admin.tab2_admin" />
         <activity android:name=".fragments.admin.tab3_admin" />
         <activity android:name=".fragments.admin.tab4_admin" />
-        <activity android:name=".aktifitas.ResetPassword" />
         <activity android:name=".aktifitas.Pendaftaran" />
         <activity android:name=".dialog.Pemesanan"></activity>
     </application>

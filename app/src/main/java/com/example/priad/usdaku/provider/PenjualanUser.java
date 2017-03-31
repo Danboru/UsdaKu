@@ -1,4 +1,4 @@
-package com.example.priad.usdaku.javafiles;
+package com.example.priad.usdaku.provider;
 
 /**
  * Created by priad on 31/03/2017.

@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.priad.usdaku.R;
-import com.example.priad.usdaku.javafiles.Barang;
+import com.example.priad.usdaku.provider.Barang;
 
 import java.util.ArrayList;
 
@@ -19,43 +19,43 @@ public class AdapterBarang extends ArrayAdapter {
     private Activity act;
 
     public AdapterBarang(Activity context, ArrayList objects) {
-        super(context, R.layout.layout_barang, objects);
+        super(context, R.layout.row_barang_yangdijual, objects);
         this.list = objects;
         this.act = context;
     }
 
     static class ViewHolder {
         protected ImageView icon;
-        protected TextView nama;
-        protected TextView keterangan;
-        protected TextView harga;
+        protected TextView nama_barang;
+        protected TextView keterangan_barang;
+        protected TextView harga_barang;
+
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
         if (view == null) {
             LayoutInflater inflater = act.getLayoutInflater();
-            view = inflater.inflate(R.layout.layout_barang, null);
+            view = inflater.inflate(R.layout.row_barang_yangdijual, null);
 
             ViewHolder holder = new ViewHolder();
-            holder.icon = (ImageView) view.findViewById(R.id.item_icon);
-            holder.nama = (TextView) view.findViewById(R.id.item_nama);
-            holder.keterangan = (TextView) view
-                    .findViewById(R.id.item_keterangan);
-            holder.harga = (TextView) view.findViewById(R.id.item_harganya);
+            holder.icon = (ImageView) view.findViewById(R.id.gambar_barang);
+            holder.nama_barang = (TextView) view.findViewById(R.id.nama_barang);
+            holder.keterangan_barang = (TextView) view
+                    .findViewById(R.id.keterangan_barang);
+            holder.harga_barang = (TextView) view.findViewById(R.id.harga_barang);
             view.setTag(holder);
         }
 
         ViewHolder holder = (ViewHolder) view.getTag();
         
-        Barang phone = (Barang) list.get(position);
-        String harga = String.valueOf(phone.getHarga());
+        Barang barang = (Barang) list.get(position);
+        String harga = String.valueOf(barang.getHarga_barang());
 
         holder.icon.setImageResource(R.drawable.usdaku);
-        holder.nama.setText(phone.getName());
-        holder.keterangan.setText(phone.getBrand());
-        holder.harga.setText("Rp." + harga);
-
+        holder.nama_barang.setText(barang.getNama_barang());
+        holder.keterangan_barang.setText(barang.getKeterangan_barang());
+        holder.harga_barang.setText("Rp." + harga);
 
         return view;
     }

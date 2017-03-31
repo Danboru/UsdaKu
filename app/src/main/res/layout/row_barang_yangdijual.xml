@@ -8,45 +8,58 @@
 
 
     <ImageView
-        android:id="@+id/item_icon"
+        android:id="@+id/gambar_barang"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp"
-        android:src="@drawable/usdaku"
+        android:layout_marginRight="35dp"
+        android:layout_marginLeft="30dp"
+        android:src="@drawable/logo"
+        android:layout_alignParentLeft="true"
         />
 
+    <LinearLayout
+        android:id="@+id/itemnya"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toRightOf="@id/gambar_barang"
+        >
 
         <TextView
-            android:id="@+id/item_nama"
+            android:id="@+id/nama_barang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Galaxy S4"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/item_icon"
-            />
+            android:text="Ini Utama"
+            android:textSize="20sp" />
 
+        <TextView
+            android:id="@+id/keterangan_barang"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:text="Percobaan"
+            android:textSize="15sp" />
+
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginLeft="150dp"
-        android:layout_toRightOf="@id/item_nama"
+        android:layout_marginLeft="20dp"
         android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
         >
 
         <TextView
-            android:id="@+id/item_harganya"
+            android:id="@+id/harga_barang"
             android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="000.000"
             android:textSize="20dp"
             android:gravity="center"
             android:layout_alignParentRight="true"
+            android:layout_marginRight="0dp"
             />
 
     </RelativeLayout>

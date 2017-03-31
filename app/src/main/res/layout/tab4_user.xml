@@ -15,7 +15,7 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="350dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="5dp"
         android:layout_marginBottom="10dp"
@@ -43,7 +43,7 @@
                 android:layout_toRightOf="@+id/gambarBarangYangDiJual"
                 android:layout_marginTop="40dp"
                 android:layout_marginRight="50dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="20dp"
                 >
                 <EditText
                     android:id="@+id/namaBarang"
@@ -61,7 +61,7 @@
                 android:layout_toRightOf="@+id/gambarBarangYangDiJual"
                 android:layout_below="@+id/til1"
                 android:layout_marginRight="50dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="20dp"
                 >
                 <EditText
                     android:id="@+id/keteranganBarang"
@@ -79,7 +79,7 @@
                 android:layout_toRightOf="@+id/gambarBarangYangDiJual"
                 android:layout_below="@+id/til2"
                 android:layout_marginRight="50dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="20dp"
                 >
                 <EditText
                     android:id="@+id/hargaBarang"
@@ -95,12 +95,12 @@
             <Button
                 android:id="@+id/jualBarangnya"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="80dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
                 android:text="JUAL"
                 android:textSize="30dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 />

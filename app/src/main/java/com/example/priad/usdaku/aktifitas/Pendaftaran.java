@@ -8,8 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.priad.usdaku.R;
-import com.example.priad.usdaku.databases.DaftarUser;
-import com.example.priad.usdaku.javafiles.User;
+import com.example.priad.usdaku.databases.OpenHelper;
+import com.example.priad.usdaku.provider.User;
 
 public class Pendaftaran extends AppCompatActivity {
 
@@ -40,11 +40,11 @@ public class Pendaftaran extends AppCompatActivity {
                 String passNya = passUser.getText().toString();
 
                 //Database Class
-                DaftarUser db = new DaftarUser(Pendaftaran.this);
+                OpenHelper db = new OpenHelper(Pendaftaran.this);
 
                 //Notifikasi untuk pengisian data berhasil
                 Toast.makeText(Pendaftaran.this, "Data Sudah Di buat", Toast.LENGTH_SHORT).show();
-                db.addUser(new User( namaDepannya, namaBelakangnya, emailNya, nimNya, passNya));
+                db.addUser(new User( namaDepannya, namaBelakangnya, emailNya, nimNya, 0, passNya, null));
                 
             }
         });

@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 import com.example.priad.usdaku.R;
 import com.example.priad.usdaku.adapter.AdapterRiwayat;
-import com.example.priad.usdaku.javafiles.Riwayat;
+import com.example.priad.usdaku.provider.Riwayat;
 
 import java.util.ArrayList;
 

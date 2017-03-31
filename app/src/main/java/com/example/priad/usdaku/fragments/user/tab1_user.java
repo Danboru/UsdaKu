@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +23,8 @@ import android.widget.Toast;
 
 import com.example.priad.usdaku.R;
 import com.example.priad.usdaku.adapter.AdapterBarang;
-import com.example.priad.usdaku.javafiles.Barang;
+import com.example.priad.usdaku.databases.OpenHelper;
+import com.example.priad.usdaku.provider.Barang;
 
 import java.util.ArrayList;
 
@@ -46,19 +46,29 @@ public class tab1_user extends Fragment {
 
         View view = inflater.inflate(R.layout.tab1_user, container, false);
 
-        list.add(new Barang("Kue Serabi", "Serabi manis dan serabi asin", 1000 ));
-        list.add(new Barang("Kue Lumpur", "Terbuat dari santan, kentang, tepung, dan telur", 2000 ));
-        list.add(new Barang("Klepon", "Makanan ini terbuat dari tepung beras ketan yang di bentuk bola - bola kecil dan diisi dengan gula merah", 5000 ));
-        list.add(new Barang("Onde-onde", "Terdapat bermacam-macam variasi, yang paling dikenal adalah onde-onde yang terbuat dari tepung ketan dan di dalamnya diisi pasta kacang hijau", 7000 ));
-        list.add(new Barang("Kerak Telor", "Bahan-bahan pembuatnya yaitu beras ketan putih, telur bebek, ebi (udang kering yang diasinkan) yang disangrai", 9000 ));
-        list.add(new Barang("Kue Mangkok", "Kue yang di bungkus dengan mangkok yang terbuat dari kertas", 12000 ));
-        list.add(new Barang("Kue Lapis", "Kue ini dibuat dari tepung beras, tepung kanji, santan, gula pasir, garam dan pewarna.", 10000 ));
-        list.add(new Barang("Getuk", "Getuk berbahan utama ketela pohon atau singkong. Getuk merupakan makanan yang mudah ditemukan di Jawa Tengah dan Jawa Timur", 1000 ));
-        list.add(new Barang("Lumpia", "Makanan ini berupa lembaran tipis dari tepung gandum yang dijadikan kulit lalu digunakan sebagai pembungkus isian yang dapat berupa rebung, telur, sayuran segar, daging, atau makanan laut", 7000 ));
-        list.add(new Barang("Kue Putu", "Kue putu merupakan kue yang berisi gula jawa dan parutan kelapa, tepung beras butiran kasar. Kue ini di kukus dengan diletakkan di dalam tabung bambu yang sedikit dipadatkan", 15000 ));
-        list.add(new Barang("Lemper", "Enak dan murah", 1000 ));
-        list.add(new Barang("Nagasari", "Nagasari terbuat dari tepung beras, tepung sagu, santan, dan gula yang diisi pisang. Kue ini biasanya dibalut dengan daun pisang lalu dikukus", 2000 ));
-        list.add(new Barang("Cenil", "Cenil berasal dari Yogyakarta. Jajanan ini merupakan makanan yang terbuat dari pati ketela pohon. Makanan ini bisa dibentuk bulat-bulat kecil atau kotak kemudian diberi warna sesuai selera sebelum direbus.", 5000 ));
+        OpenHelper db = new OpenHelper(getContext());
+
+        db.addBarang(new Barang("Barang Satu", "1000", "Keterangan", 12, "Ada", "Alamat Gambar"));
+        db.addBarang(new Barang("Barang Dua", "1000", "Keterangan", 12, "Ada", "Alamat Gambar"));
+        db.addBarang(new Barang("Barang Tiga", "1000", "Keterangan", 12, "Ada", "Alamat Gambar"));
+
+
+        list.add(new Barang("Kue Serabi", "1000" ,"Serabi manis dan serabi asin", 10, "Ada", "gambar" ));
+        list.add(new Barang("Kue Serabi", "1000" ,"Serabi manis dan serabi asin", 10, "Ada", "gambar" ));
+        list.add(new Barang("Kue Serabi", "1000" ,"Serabi manis dan serabi asin", 10, "Ada", "gambar" ));
+        list.add(new Barang("Kue Serabi", "1000" ,"Serabi manis dan serabi asin", 10, "Ada", "gambar" ));
+//        list.add(new Barang("Kue Lumpur", "Terbuat dari santan, kentang, tepung, dan telur", 2000 ));
+//        list.add(new Barang("Klepon", "Makanan ini terbuat dari tepung beras ketan yang di bentuk bola - bola kecil dan diisi dengan gula merah", 5000 ));
+//        list.add(new Barang("Onde-onde", "Terdapat bermacam-macam variasi, yang paling dikenal adalah onde-onde yang terbuat dari tepung ketan dan di dalamnya diisi pasta kacang hijau", 7000 ));
+//        list.add(new Barang("Kerak Telor", "Bahan-bahan pembuatnya yaitu beras ketan putih, telur bebek, ebi (udang kering yang diasinkan) yang disangrai", 9000 ));
+//        list.add(new Barang("Kue Mangkok", "Kue yang di bungkus dengan mangkok yang terbuat dari kertas", 12000 ));
+//        list.add(new Barang("Kue Lapis", "Kue ini dibuat dari tepung beras, tepung kanji, santan, gula pasir, garam dan pewarna.", 10000 ));
+//        list.add(new Barang("Getuk", "Getuk berbahan utama ketela pohon atau singkong. Getuk merupakan makanan yang mudah ditemukan di Jawa Tengah dan Jawa Timur", 1000 ));
+//        list.add(new Barang("Lumpia", "Makanan ini berupa lembaran tipis dari tepung gandum yang dijadikan kulit lalu digunakan sebagai pembungkus isian yang dapat berupa rebung, telur, sayuran segar, daging, atau makanan laut", 7000 ));
+//        list.add(new Barang("Kue Putu", "Kue putu merupakan kue yang berisi gula jawa dan parutan kelapa, tepung beras butiran kasar. Kue ini di kukus dengan diletakkan di dalam tabung bambu yang sedikit dipadatkan", 15000 ));
+//        list.add(new Barang("Lemper", "Enak dan murah", 1000 ));
+//        list.add(new Barang("Nagasari", "Nagasari terbuat dari tepung beras, tepung sagu, santan, dan gula yang diisi pisang. Kue ini biasanya dibalut dengan daun pisang lalu dikukus", 2000 ));
+//        list.add(new Barang("Cenil", "Cenil berasal dari Yogyakarta. Jajanan ini merupakan makanan yang terbuat dari pati ketela pohon. Makanan ini bisa dibentuk bulat-bulat kecil atau kotak kemudian diberi warna sesuai selera sebelum direbus.", 5000 ));
 
         ListAdapter adapter = new AdapterBarang(getActivity(), list);
 
@@ -104,7 +114,7 @@ public class tab1_user extends Fragment {
         dialog.setTitle("Pembelian");
 
         //Mengeset layout
-        dialog.setContentView(R.layout.activity_pemesanan);
+        dialog.setContentView(R.layout.popup_pemesanan);
 
         //Membuat agar dialog tidak hilang saat di click di area luar dialog
         dialog.setCanceledOnTouchOutside(false);
@@ -123,7 +133,7 @@ public class tab1_user extends Fragment {
         final TextView textView = (TextView) dialog.findViewById(R.id.txt_jumlahPembelian);
 
         //Set nama barang yang ada di popup
-        namaBarang.setText(barang.getName());
+        namaBarang.setText(barang.getNama_barang());
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override

@@ -38,7 +38,7 @@ public class AdapterJualan extends RecyclerView.Adapter<AdapterJualan.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // membuat view baru
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_jualan, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_penjualan_barang_local, parent, false);
         // mengeset ukuran view, margin, padding, dan parameter layout lainnya
         ViewHolder vh = new ViewHolder(v);
         return vh;

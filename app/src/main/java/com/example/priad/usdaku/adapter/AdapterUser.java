@@ -9,7 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.priad.usdaku.R;
-import com.example.priad.usdaku.javafiles.Barang;
+import com.example.priad.usdaku.provider.User;
+
 import java.util.ArrayList;
 
 /**
@@ -21,45 +22,46 @@ public class AdapterUser extends ArrayAdapter {
     private Activity act;
 
     public AdapterUser(Activity context, ArrayList object) {
-        super(context, R.layout.layout_user ,object);
+        super(context, R.layout.row_daftar_user,object);
         this.list = object;
         this.act = context;
     }
 
     //Sesuaikan dengan data yang akan di tampilkan
     static class ViewHolder {
-        protected ImageView icon;
+        protected ImageView foto_profile;
         protected TextView nama_user;
-        protected TextView email;
-        protected TextView nim;
-        protected TextView point;
+        protected TextView email_user;
+        protected TextView nim_user;
+        protected TextView poin_user;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
         if (view == null) {
             LayoutInflater inflater = act.getLayoutInflater();
-            view = inflater.inflate(R.layout.layout_user, null);
+            view = inflater.inflate(R.layout.row_daftar_user, null);
 
-            AdapterBarang.ViewHolder holder = new AdapterBarang.ViewHolder();
+            AdapterUser.ViewHolder holder = new ViewHolder();
 
             //Sesuaikan dengan view yang ada di dalam xml yang di gunakan
-            holder.icon = (ImageView) view.findViewById(R.id.item_icon);
-            holder.nama = (TextView) view.findViewById(R.id.item_nama);
-            holder.keterangan = (TextView) view.findViewById(R.id.item_keterangan);
-            holder.harga = (TextView) view.findViewById(R.id.item_harganya);
+            holder.foto_profile = (ImageView) view.findViewById(R.id.foto_user);
+            holder.nama_user = (TextView) view.findViewById(R.id.nama_user);
+            holder.email_user = (TextView) view.findViewById(R.id.email_user);
+            holder.nim_user = (TextView) view.findViewById(R.id.nim_user);
+            holder.poin_user = (TextView) view.findViewById(R.id.point_user);
             view.setTag(holder);
         }
 
-        AdapterBarang.ViewHolder holder = (AdapterBarang.ViewHolder) view.getTag();
+        AdapterUser.ViewHolder holder = (ViewHolder) view.getTag();
 
-        Barang phone = (Barang) list.get(position);
-        String harga = String.valueOf(phone.getHarga());
+        User user = (User) list.get(position);
 
-        holder.icon.setImageResource(R.mipmap.ic_launcher);
-        holder.nama.setText(phone.getName());
-        holder.keterangan.setText(phone.getBrand());
-        holder.harga.setText("Rp." + harga);
+        holder.foto_profile.setImageResource(R.mipmap.ic_launcher);
+        holder.nama_user.setText(user.getNamadepan_user() + user.getNamabelakang_user());
+        holder.email_user.setText(user.getEmail_user());
+        holder.nim_user.setText(user.getNim());
+        holder.poin_user.setText(user.getPoin());
 
         return view;
     }
