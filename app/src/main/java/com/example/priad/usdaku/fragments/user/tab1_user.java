@@ -70,7 +70,6 @@ public class tab1_user extends Fragment {
         // Mengeset properti warna yang berputar pada SwipeRefreshLayout
         swLayout.setColorSchemeResources(R.color.atas,R.color.atas);
 
-
         swLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -81,7 +80,6 @@ public class tab1_user extends Fragment {
                         // Berhenti berputar/refreshing
                         swLayout.setRefreshing(false);
                         Toast.makeText(getActivity(), "Berhasil Load Data", Toast.LENGTH_SHORT).show();
-
                     }
                 }, 5000);
             }
@@ -91,32 +89,9 @@ public class tab1_user extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-//                AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
-//                alertDialog.setCanceledOnTouchOutside(false);//supaya tidak hilang saat di click di luar
-//                alertDialog.setMessage("Apakah anda ingin melanjutkan pemesanan ?");
-//
-//                alertDialog.setTitle("PEMESANAN");
-//                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ya", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        Toast.makeText(getContext(), "Pesanan Anda Terkirim", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//
-//                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Tidak", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        Toast.makeText(getContext(), "Pemesanan Di Batalkan", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//
-//                alertDialog.show();
-
                 showCustomDialog();
-
             }
         });
-
         return view;
     }
 
@@ -145,9 +120,7 @@ public class tab1_user extends Fragment {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
                 textView.setText(String.valueOf(progress));
-
             }
 
             @Override
@@ -164,7 +137,28 @@ public class tab1_user extends Fragment {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Data saved", Toast.LENGTH_SHORT).show();
+
+                AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
+                alertDialog.setCanceledOnTouchOutside(false);//supaya tidak hilang saat di click di luar
+                alertDialog.setMessage("Apakah anda ingin melanjutkan pemesanan ?");
+
+                alertDialog.setTitle("VERIFIKASI PEMESANAN");
+                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getContext(), "Pesanan Anda Terkirim", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getContext(), "Pemesanan Di Batalkan", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                alertDialog.show();
+
                 dialog.dismiss();
             }
         });

@@ -3,7 +3,6 @@ package com.example.priad.usdaku.javafiles;
 /**
  * Created by priad on 2/4/2017.
  */
-
 public class Barang {
 
     private String name;

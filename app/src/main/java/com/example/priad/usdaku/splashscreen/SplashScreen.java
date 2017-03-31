@@ -12,33 +12,38 @@ import com.example.priad.usdaku.R;
 
 public class SplashScreen extends Activity {
 
+    private static final String TAG = "SplashScreen";
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        //Merubah kedalam keadaan fullscreen tanpa menubar
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //Get window screensize dan merubahnya kedalam keadaan fullscreen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
 
+        //Membuat thead untuk menjalankan activity beberap second
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-
                 try{
-                    Log.i("SplashScreen", "Berhasil Set Timer Sleep");
+                    Log.d(TAG, "run: Berhasil Set Timer Sleep");
                     Thread.sleep(3000); //ini bagian set duration lamanya splashScreen
                 }catch (Exception e){
-                    Log.i("SplashScreen", "Terjasi kesalahan saat Set Duration Sleep");
+                    Log.d(TAG, "run: Terjasi kesalahan saat Set Duration Sleep");
                     e.printStackTrace();
                 }
                 Intent i = new Intent(getBaseContext(), MainActivity.class);
+                //Menjalankan activity
                 startActivity(i);
-                finish();
+                finish();//Harus di fnish untuk mengilangkan activity di dalam process background
             }
         });
 
-        Log.d("SplashScreen", "Mulai menjalankan Thread");
+        Log.d(TAG, "onCreate: Mulai menjalankan Thread");
         thread.start();
 
     }

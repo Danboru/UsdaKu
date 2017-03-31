@@ -24,7 +24,6 @@
             android:layout_height="wrap_content"
             android:hint="Nama Depan"
             android:textSize="20sp"
-            android:inputType="textPassword"
             />
     </android.support.design.widget.TextInputLayout>
 
@@ -41,7 +40,6 @@
             android:layout_height="wrap_content"
             android:hint="Nama Belakang"
             android:textSize="20sp"
-            android:inputType="textPassword"
             />
     </android.support.design.widget.TextInputLayout>
 
@@ -58,7 +56,6 @@
             android:layout_height="wrap_content"
             android:hint="Email"
             android:textSize="20sp"
-            android:inputType="textPassword"
             />
     </android.support.design.widget.TextInputLayout>
 
@@ -75,7 +72,6 @@
             android:layout_height="wrap_content"
             android:hint="Nim"
             android:textSize="20sp"
-            android:inputType="textPassword"
             />
     </android.support.design.widget.TextInputLayout>
 
@@ -92,11 +88,11 @@
             android:layout_height="wrap_content"
             android:hint="Password"
             android:textSize="20sp"
-            android:inputType="textPassword"
             />
     </android.support.design.widget.TextInputLayout>
 
     <Button
+        android:id="@+id/kirimPendaftaran"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit"

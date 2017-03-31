@@ -26,7 +26,6 @@ public class tab2_user extends Fragment {
     public tab2_user() {
     }
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,11 +50,9 @@ public class tab2_user extends Fragment {
         rvView.setAdapter(adapter);
 
         return view;
-
     }
 
     private void initDataset() {
-
         /**
          * Tambahkan item ke dataset
          * dalam prakteknya bisa bermacam2
@@ -67,7 +64,6 @@ public class tab2_user extends Fragment {
         dataSet.add("Nagasari");
         dataSet.add("Kue Mangkok");
         dataSet.add("Onde-onde");
-
     }
 
     @Override
@@ -85,11 +81,8 @@ public class tab2_user extends Fragment {
     public boolean onContextItemSelected(MenuItem item) {
 
         if(item.getTitle().equals("Hapus Pesanan")){
-
             Toast.makeText(getContext(), "Pesanan Di hapus", Toast.LENGTH_SHORT).show();
-
         }
-
         return true;
     }
 }

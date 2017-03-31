@@ -51,10 +51,11 @@ public class AdapterBarang extends ArrayAdapter {
         Barang phone = (Barang) list.get(position);
         String harga = String.valueOf(phone.getHarga());
 
-        holder.icon.setImageResource(R.mipmap.ic_launcher);
+        holder.icon.setImageResource(R.drawable.usdaku);
         holder.nama.setText(phone.getName());
         holder.keterangan.setText(phone.getBrand());
         holder.harga.setText("Rp." + harga);
+
 
         return view;
     }
