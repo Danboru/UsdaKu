@@ -47,25 +47,6 @@ public class tab1_user extends Fragment {
         View view = inflater.inflate(R.layout.tab1_user, container, false);
         OpenHelper db = new OpenHelper(getContext());
 
-//        db.addBarang(new Barang("Barang Satu", 1000, "Keterangan", 12, "Ada", "Alamat Gambar"));
-
-//        list.add(new Barang("Kue Serabi", 1000 ,"Serabi manis dan serabi asin", 10, "Ada", "gambar" ));
-//        list.add(new Barang("Kue Serabi", 1000 ,"Serabi manis dan serabi asin", 10, "Ada", "gambar" ));
-//        list.add(new Barang("Kue Serabi", 1000 ,"Serabi manis dan serabi asin", 10, "Ada", "gambar" ));
-//        list.add(new Barang("Kue Serabi", 1000 ,"Serabi manis dan serabi asin", 10, "Ada", "gambar" ));
-//        list.add(new Barang("Kue Lumpur", "Terbuat dari santan, kentang, tepung, dan telur", 2000 ));
-//        list.add(new Barang("Klepon", "Makanan ini terbuat dari tepung beras ketan yang di bentuk bola - bola kecil dan diisi dengan gula merah", 5000 ));
-//        list.add(new Barang("Onde-onde", "Terdapat bermacam-macam variasi, yang paling dikenal adalah onde-onde yang terbuat dari tepung ketan dan di dalamnya diisi pasta kacang hijau", 7000 ));
-//        list.add(new Barang("Kerak Telor", "Bahan-bahan pembuatnya yaitu beras ketan putih, telur bebek, ebi (udang kering yang diasinkan) yang disangrai", 9000 ));
-//        list.add(new Barang("Kue Mangkok", "Kue yang di bungkus dengan mangkok yang terbuat dari kertas", 12000 ));
-//        list.add(new Barang("Kue Lapis", "Kue ini dibuat dari tepung beras, tepung kanji, santan, gula pasir, garam dan pewarna.", 10000 ));
-//        list.add(new Barang("Getuk", "Getuk berbahan utama ketela pohon atau singkong. Getuk merupakan makanan yang mudah ditemukan di Jawa Tengah dan Jawa Timur", 1000 ));
-//        list.add(new Barang("Lumpia", "Makanan ini berupa lembaran tipis dari tepung gandum yang dijadikan kulit lalu digunakan sebagai pembungkus isian yang dapat berupa rebung, telur, sayuran segar, daging, atau makanan laut", 7000 ));
-//        list.add(new Barang("Kue Putu", "Kue putu merupakan kue yang berisi gula jawa dan parutan kelapa, tepung beras butiran kasar. Kue ini di kukus dengan diletakkan di dalam tabung bambu yang sedikit dipadatkan", 15000 ));
-//        list.add(new Barang("Lemper", "Enak dan murah", 1000 ));
-//        list.add(new Barang("Nagasari", "Nagasari terbuat dari tepung beras, tepung sagu, santan, dan gula yang diisi pisang. Kue ini biasanya dibalut dengan daun pisang lalu dikukus", 2000 ));
-//        list.add(new Barang("Cenil", "Cenil berasal dari Yogyakarta. Jajanan ini merupakan makanan yang terbuat dari pati ketela pohon. Makanan ini bisa dibentuk bulat-bulat kecil atau kotak kemudian diberi warna sesuai selera sebelum direbus.", 5000 ));
-
 //        try {
 //
 //            ArrayList ara = db.getAllBarang();
@@ -90,7 +71,7 @@ public class tab1_user extends Fragment {
         final SwipeRefreshLayout swLayout = (SwipeRefreshLayout) view.findViewById(R.id.swlayout);
 
         // Mengeset properti warna yang berputar pada SwipeRefreshLayout
-        swLayout.setColorSchemeResources(R.color.atas,R.color.atas);
+        swLayout.setColorSchemeResources(R.color.atas,R.color.bawah);
 
         swLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -101,7 +82,7 @@ public class tab1_user extends Fragment {
                     @Override public void run() {
                         // Berhenti berputar/refreshing
                         swLayout.setRefreshing(false);
-                        Toast.makeText(getActivity(), "Berhasil Load Data", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Uptodate", Toast.LENGTH_SHORT).show();
                     }
                 }, 5000);
             }
@@ -167,6 +148,7 @@ public class tab1_user extends Fragment {
             @Override
             public void onClick(View v) {
 
+                //Menampilkan alert dialog untuk verifikasi pembelian barang
                 AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
                 alertDialog.setCanceledOnTouchOutside(false);//supaya tidak hilang saat di click di luar
                 alertDialog.setMessage("Apakah anda ingin melanjutkan pemesanan ?");

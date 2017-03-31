@@ -23,7 +23,7 @@ public class OpenHelper extends SQLiteOpenHelper {
     // Database Name
     private static final String DATABASE_NAME = "usdaku";
 
-    // User table name
+    // User Taable Name
     private static final String TABLE_USER = "user";
     private static final String TABLE_BARANG = "barang";
     private static final String TABLE_TRANSAKSI = "transaksi";
@@ -57,7 +57,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    // Creating Tables
+    // Creating Tables (FIX)
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -74,7 +74,7 @@ public class OpenHelper extends SQLiteOpenHelper {
                 + KEY_BARANG_JUMLAHBARANG + " INTEGER, " + KEY_BARANG_STATUSBARANG + " TEXT, "
                 + KEY_BARANG_URLIMAGE + " TEXT " + ")";
 
-        //Table Transaki ()
+        //Table Transaki (FIX)
         String CREATE_TRANSAKSI_TABLE = "CREATE TABLE " + TABLE_TRANSAKSI + "("
                 + KEY_TRANSAKSI_ID + " INTEGER PRIMARY KEY," + KEY_TRANSAKSI_SELLER + " TEXT,"
                 + KEY_TRANSAKSI_NAMABARANG + " TEXT," + KEY_TRANSAKSI_HARGABARANG + " INTEGER, "
@@ -85,7 +85,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TRANSAKSI_TABLE);
     }
 
-    // Upgrading database
+    // Upgrading database (FIX)
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
@@ -97,7 +97,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // Adding new user
+    // Adding new user (BUG)
     public void addUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -114,7 +114,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
-    // Adding new barang
+    // Adding new barang (FIX)
     public void addBarang(Barang barang) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -126,13 +126,12 @@ public class OpenHelper extends SQLiteOpenHelper {
         values.put(KEY_BARANG_STATUSBARANG, barang.getStatus_barang());
         values.put(KEY_BARANG_URLIMAGE, barang.getUrl_gambarbarang());
 
-
         // Inserting Row
         db.insert(TABLE_BARANG, null, values);
         db.close(); // Closing database connection
     }
 
-    // Getting single user
+    // Getting single user (BUG)
     User getUser(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -153,7 +152,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         return user;
     }
 
-    // Getting single barang
+    // Getting single barang (BUG)
     Barang getBarang(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -173,7 +172,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         return barang;
     }
 
-    // Getting All user
+    // Getting All user (BUG)
     public List<User> getAllUser() {
         List<User> usersList = new ArrayList<User>();
         // Select All Query
@@ -204,7 +203,7 @@ public class OpenHelper extends SQLiteOpenHelper {
     }
 
 
-    // Getting All barang
+    // Getting All barang (BUG)
     public ArrayList getAllBarang() {
         ArrayList barangList = new ArrayList();
         // Select All Query
@@ -220,6 +219,7 @@ public class OpenHelper extends SQLiteOpenHelper {
                 barang.setId_barang(cursor.getInt(0));
                 barang.setNama_barang(cursor.getString(cursor.getColumnIndex(KEY_BARANG_NAMABARANG)));
                 barang.setHarga_barang(cursor.getInt(cursor.getColumnIndex(KEY_BARANG_HARGABARANG)));
+                barang.setKeterangan_barang(cursor.getString(cursor.getColumnIndex(KEY_BARANG_KETERANGANBARANG)));
                 barang.setJumlah_barang(cursor.getInt(cursor.getColumnIndex(KEY_BARANG_JUMLAHBARANG)));
                 barang.setStatus_barang(cursor.getString(cursor.getColumnIndex(KEY_BARANG_STATUSBARANG)));
                 barang.setUrl_gambarbarang(cursor.getString(cursor.getColumnIndex(KEY_BARANG_URLIMAGE)));
@@ -233,7 +233,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         return barangList;
     }
 
-    // Updating single user
+    // Updating single user (BUG)
     public int updateUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -251,7 +251,7 @@ public class OpenHelper extends SQLiteOpenHelper {
                 new String[] { String.valueOf(user.getId_user()) });
     }
 
-    // Deleting single user
+    // Deleting single user (BUG)
     public void deleteUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_USER, KEY_USER_ID + " = ?",
@@ -259,7 +259,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    // Getting users Count
+    // Getting users Count (BUG)
     public int getUsersCount() {
         String countQuery = "SELECT  * FROM " + TABLE_USER;
         SQLiteDatabase db = this.getReadableDatabase();

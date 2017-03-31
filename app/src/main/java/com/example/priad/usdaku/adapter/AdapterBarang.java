@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class AdapterBarang extends ArrayAdapter {
 
+    //Komponen untuk menampilkan data
     private ArrayList list;
     private Activity act;
 
@@ -24,6 +25,7 @@ public class AdapterBarang extends ArrayAdapter {
         this.act = context;
     }
 
+    //Sesuaikan dengan view yang ada di layout yang di gunakan
     static class ViewHolder {
         protected ImageView icon;
         protected TextView nama_barang;
@@ -41,8 +43,7 @@ public class AdapterBarang extends ArrayAdapter {
             ViewHolder holder = new ViewHolder();
             holder.icon = (ImageView) view.findViewById(R.id.gambar_barang);
             holder.nama_barang = (TextView) view.findViewById(R.id.nama_barang);
-            holder.keterangan_barang = (TextView) view
-                    .findViewById(R.id.keterangan_barang);
+            holder.keterangan_barang = (TextView) view.findViewById(R.id.keterangan_barang);
             holder.harga_barang = (TextView) view.findViewById(R.id.harga_barang);
             view.setTag(holder);
         }
