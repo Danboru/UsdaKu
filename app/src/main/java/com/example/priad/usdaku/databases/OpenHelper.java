@@ -15,7 +15,7 @@ import java.util.List;
  * Created by priad on 25/03/2017.
  */
 public class OpenHelper extends SQLiteOpenHelper {
-
+    
     // All Static variables
     // Database Version
     private static final int DATABASE_VERSION = 1;
@@ -152,7 +152,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         return user;
     }
 
-    // Getting single barang (BUG)
+    // Getting Single Barang (BUG)
     Barang getBarang(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -165,7 +165,8 @@ public class OpenHelper extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        Barang barang = new Barang(cursor.getString(0), Integer.parseInt(cursor.getString(1)), cursor.getString(2),Integer.parseInt(cursor.getString(3)),
+        Barang barang = new Barang(cursor.getString(0), Integer.parseInt(cursor.getString(1)),
+                cursor.getString(2),Integer.parseInt(cursor.getString(3)),
                 cursor.getString(4), cursor.getString(5));
 
         //Return user
@@ -203,7 +204,7 @@ public class OpenHelper extends SQLiteOpenHelper {
     }
 
 
-    // Getting All barang (BUG)
+    // Getting All Barang (FIX)
     public ArrayList getAllBarang() {
         ArrayList barangList = new ArrayList();
         // Select All Query
@@ -233,7 +234,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         return barangList;
     }
 
-    // Updating single user (BUG)
+    // Updating Single User (BUG)
     public int updateUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -251,6 +252,31 @@ public class OpenHelper extends SQLiteOpenHelper {
                 new String[] { String.valueOf(user.getId_user()) });
     }
 
+    // Updating Single Barang (BUG)
+    public int updateBarang(Barang barang) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_BARANG_NAMABARANG, barang.getNama_barang());
+        values.put(KEY_BARANG_KETERANGANBARANG, barang.getKeterangan_barang());
+        values.put(KEY_BARANG_JUMLAHBARANG, barang.getJumlah_barang());
+        values.put(KEY_BARANG_STATUSBARANG, barang.getStatus_barang());
+        values.put(KEY_TRANSAKSI_HARGABARANG, barang.getHarga_barang());
+        values.put(KEY_BARANG_URLIMAGE, barang.getUrl_gambarbarang());
+
+        // updating row
+        return db.update(TABLE_BARANG, values, KEY_BARANG_ID + " = ?",
+                new String[] { String.valueOf(barang.getId_barang()) });
+    }
+
+    // Deleting single barang (BUG)
+    public void deleteBarang(Barang barang) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_BARANG, KEY_BARANG_ID + " = ?",
+                new String[] { String.valueOf(barang.getId_barang()) });
+        db.close();
+    }
+
     // Deleting single user (BUG)
     public void deleteUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -258,6 +284,7 @@ public class OpenHelper extends SQLiteOpenHelper {
                 new String[] { String.valueOf(user.getId_user()) });
         db.close();
     }
+
 
     // Getting users Count (BUG)
     public int getUsersCount() {
@@ -269,4 +296,16 @@ public class OpenHelper extends SQLiteOpenHelper {
         // return count
         return cursor.getCount();
     }
+
+    // Getting barang Count (BUG)
+    public int getBarangCount() {
+        String countQuery = "SELECT  * FROM " + TABLE_BARANG;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        cursor.close();
+
+        // return count
+        return cursor.getCount();
+    }
+
 }
