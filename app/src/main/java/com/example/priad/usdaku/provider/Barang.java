@@ -36,6 +36,13 @@ public class Barang {
         this.url_gambarbarang = url_gambarbarang;
     }
 
+    public Barang(int id_barang, String nama_barang, int harga_barang, String keterangan_barang) {
+        this.id_barang = id_barang;
+        this.nama_barang = nama_barang;
+        this.harga_barang = harga_barang;
+        this.keterangan_barang = keterangan_barang;
+    }
+
     public int getId_barang() {
         return id_barang;
     }

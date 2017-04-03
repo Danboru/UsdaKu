@@ -8,16 +8,18 @@
     android:layout_marginTop="30dp"
     android:layout_marginBottom="30dp"
     tools:layout_editor_absoluteY="8dp"
-    tools:layout_editor_absoluteX="8dp">
+    tools:layout_editor_absoluteX="8dp"
+    android:gravity="center"
+    >
 
-    <TextView
+    <EditText
         android:id="@+id/infoNamaBarangPopup"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:hint="Nama Barang"
         android:textAlignment="center"
-        android:text="Nama Makanan"
         android:textSize="30sp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="10dp"
         />
 
     <ImageView
@@ -28,22 +30,22 @@
         android:layout_marginBottom="20dp"
         />
 
-    <TextView
+    <EditText
         android:id="@+id/infoKeteranganBarangPopup"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:text="Keterangan Barang"
+        android:hint="Keterangan Barang"
         android:textSize="20sp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="10dp"
         />
 
-    <TextView
+    <EditText
         android:id="@+id/infoHargaBarangPopup"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:text="Harga Barang"
+        android:hint="Harga Barang"
         android:textSize="40sp"
         android:layout_marginBottom="15dp"
         />

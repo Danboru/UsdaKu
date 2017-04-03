@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.priad.usdaku.R;
 import com.example.priad.usdaku.databases.OpenHelper;
+import com.example.priad.usdaku.provider.Barang;
 import com.example.priad.usdaku.provider.User;
 
 public class Pendaftaran extends AppCompatActivity {
@@ -45,7 +46,6 @@ public class Pendaftaran extends AppCompatActivity {
                 //Notifikasi untuk pengisian data berhasil
                 Toast.makeText(Pendaftaran.this, "Data Sudah Di buat", Toast.LENGTH_SHORT).show();
                 db.addUser(new User( namaDepannya, namaBelakangnya, emailNya, nimNya, 0, passNya, null));
-                
             }
         });
         

@@ -259,17 +259,17 @@ public class OpenHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_BARANG_NAMABARANG, barang.getNama_barang());
         values.put(KEY_BARANG_KETERANGANBARANG, barang.getKeterangan_barang());
-        values.put(KEY_BARANG_JUMLAHBARANG, barang.getJumlah_barang());
-        values.put(KEY_BARANG_STATUSBARANG, barang.getStatus_barang());
-        values.put(KEY_TRANSAKSI_HARGABARANG, barang.getHarga_barang());
-        values.put(KEY_BARANG_URLIMAGE, barang.getUrl_gambarbarang());
+        values.put(KEY_BARANG_HARGABARANG, barang.getHarga_barang());
+        //values.put(KEY_BARANG_JUMLAHBARANG, barang.getJumlah_barang());
+        //values.put(KEY_BARANG_STATUSBARANG, barang.getStatus_barang());
+        //values.put(KEY_BARANG_URLIMAGE, barang.getUrl_gambarbarang());
 
         // updating row
         return db.update(TABLE_BARANG, values, KEY_BARANG_ID + " = ?",
                 new String[] { String.valueOf(barang.getId_barang()) });
     }
 
-    // Deleting single barang (BUG)
+    // Deleting single barang (FIX)
     public void deleteBarang(Barang barang) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_BARANG, KEY_BARANG_ID + " = ?",

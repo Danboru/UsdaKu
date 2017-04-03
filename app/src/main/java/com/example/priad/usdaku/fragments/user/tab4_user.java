@@ -36,8 +36,6 @@ import java.util.ArrayList;
 
 public class tab4_user extends Fragment {
 
-    private RecyclerView rvView;
-    private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<String> dataSet;
     ListView listView;
@@ -50,6 +48,7 @@ public class tab4_user extends Fragment {
     Button jualBarang;
 
     public tab4_user() {
+        //Kostruktor kosong di perlukan
     }
 
     @Nullable
@@ -59,9 +58,6 @@ public class tab4_user extends Fragment {
         View view = inflater.inflate(R.layout.tab4_user, container, false);
 
         dataSet = new ArrayList<>();
-//        initDataset();
-//        rvView = (RecyclerView) view.findViewById(R.id.barangYangDiJual);
-//        rvView.setHasFixedSize(false);
         jualBarang = (Button) view.findViewById(R.id.jualBarangnya);
 
         //Inisialisasi view
@@ -77,11 +73,6 @@ public class tab4_user extends Fragment {
             public void onClick(View v) {
 
 //        db.addBarang(new Barang("Barang Satu", 1000, "Keterangan", 12, "Ada", "Alamat Gambar"));
-
-//        list.add(new Barang("Kue Serabi", 1000 ,"Serabi manis dan serabi asin", 10, "Ada", "gambar" ));
-//        list.add(new Barang("Kue Serabi", 1000 ,"Serabi manis dan serabi asin", 10, "Ada", "gambar" ));
-//        list.add(new Barang("Kue Serabi", 1000 ,"Serabi manis dan serabi asin", 10, "Ada", "gambar" ));
-//        list.add(new Barang("Kue Serabi", 1000 ,"Serabi manis dan serabi asin", 10, "Ada", "gambar" ));
 //        list.add(new Barang("Kue Lumpur", "Terbuat dari santan, kentang, tepung, dan telur", 2000 ));
 //        list.add(new Barang("Klepon", "Makanan ini terbuat dari tepung beras ketan yang di bentuk bola - bola kecil dan diisi dengan gula merah", 5000 ));
 //        list.add(new Barang("Onde-onde", "Terdapat bermacam-macam variasi, yang paling dikenal adalah onde-onde yang terbuat dari tepung ketan dan di dalamnya diisi pasta kacang hijau", 7000 ));
@@ -106,20 +97,8 @@ public class tab4_user extends Fragment {
                     OpenHelper db = new OpenHelper(getContext());
                     Toast.makeText(getContext(), "Berhasil Input data", Toast.LENGTH_SHORT).show();
                     db.addBarang(new Barang(namaBar, harga, keterangan, 0, "Ada", "Alamat Gambar"));
-
             }
         });
-
-//        /**
-//         * Kita menggunakan LinearLayoutManager untuk list standar
-//         * yang hanya berisi daftar item
-//         * disusun dari atas ke bawah
-//         */
-//        layoutManager = new LinearLayoutManager(getContext());
-//        rvView.setLayoutManager(layoutManager);
-//
-//        adapter = new AdapterJualan(dataSet);
-//        rvView.setAdapter(adapter);
 
         OpenHelper db = new OpenHelper(getContext());
         ArrayList list = new ArrayList();
@@ -152,13 +131,17 @@ public class tab4_user extends Fragment {
 //
 //    }
 
+    //Menampilkan info barang dalam bentuk popup dialog
     private void showInfoDialog(int position) {
 
         //Pembuatan object database
         OpenHelper db = new OpenHelper(getContext());
         list = db.getAllBarang();
+
+        //Data row
         final Barang barang = (Barang) list.get(position);
 
+        //View Dialog berdasarkan context
         final Dialog dialog = new Dialog(getContext());
 
         //Mengeset judul dialog
@@ -176,41 +159,57 @@ public class tab4_user extends Fragment {
         dialog.getWindow().setLayout((6 * width) / 7, LinearLayout.LayoutParams.WRAP_CONTENT);
 
         //Inisialisasi View
-        TextView info_namaBarang = (TextView) dialog.findViewById(R.id.infoNamaBarangPopup);
-        TextView info_keteranganBarang = (TextView) dialog.findViewById(R.id.infoKeteranganBarangPopup);
-        TextView info_hargaBarang = (TextView) dialog.findViewById(R.id.infoHargaBarangPopup);
-
+        final EditText info_namaBarang = (EditText) dialog.findViewById(R.id.infoNamaBarangPopup);
+        final EditText info_keteranganBarang = (EditText) dialog.findViewById(R.id.infoKeteranganBarangPopup);
+        final EditText info_hargaBarang = (EditText) dialog.findViewById(R.id.infoHargaBarangPopup);
         Button updateBarangInfo = (Button) dialog.findViewById(R.id.btn_updateBarangButtonInfo);
         Button deleteBarangInfo = (Button) dialog.findViewById(R.id.btn_deleteBarangButtonInfo);
 
         //Mutator view
         info_namaBarang.setText(barang.getNama_barang().toString().trim());
         info_keteranganBarang.setText(barang.getKeterangan_barang().toString().trim());
-        info_hargaBarang.setText( "Rp. " + String.valueOf(barang.getHarga_barang()));
+        info_hargaBarang.setText(String.valueOf(barang.getHarga_barang()));
 
         //Listener Button
         updateBarangInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getContext(), "Barang di Update", Toast.LENGTH_SHORT).show();
+                String nama = info_namaBarang.getText().toString();
+                String keterangan = info_keteranganBarang.getText().toString();
+                Integer harga = Integer.parseInt(info_hargaBarang.getText().toString());
+
+                Toast.makeText(getContext(), "Id Barang = " + barang.getId_barang(), Toast.LENGTH_SHORT).show();
+
+                try {
+                    //Menjalankan fungsi update
+                    OpenHelper db = new OpenHelper(getContext());
+                    db.updateBarang(new Barang(barang.getId_barang(), nama  , harga, keterangan) );
+                    Toast.makeText(getContext(), "Barang di Update", Toast.LENGTH_SHORT).show();
+
+                }catch (Exception e){
+                    Toast.makeText(getContext(), "Kesalahan saat Memanggil fungsi update" , Toast.LENGTH_SHORT).show();
+                }
+
+                dialog.dismiss();
             }
         });
 
+        //Fungsi delete barang
         deleteBarangInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                //Menampilkan alert dialog untuk verifikasi pembelian barang
+                //Menampilkan alert dialog untuk verifikasi penghapusan barang
                 AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
-                alertDialog.setCanceledOnTouchOutside(false);//supaya tidak hilang saat di click di luar
+                alertDialog.setCanceledOnTouchOutside(false);//Supaya tidak hilang saat di click di luar
                 alertDialog.setMessage("Apakah anda yakin ingin menghapus " + barang.getNama_barang() + " ?");
-                alertDialog.setTitle("VERIFIKASI DELETE BARANG");
+                alertDialog.setTitle("VERIFIKASI DELETE");
                 alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ya", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getContext(), barang.getNama_barang() + " Sudah di Hapus", Toast.LENGTH_SHORT).show();
 
+                        Toast.makeText(getContext(), barang.getNama_barang() + " Sudah di Hapus", Toast.LENGTH_SHORT).show();
                         //Menjalankan fungsi hapus barang
                         OpenHelper db = new OpenHelper(getContext());
                         db.deleteBarang(new Barang(barang.getId_barang(), null, 0, null, 0, null, null));
@@ -223,7 +222,10 @@ public class tab4_user extends Fragment {
                         Toast.makeText(getContext(), "Penghapusan Di Batalkan", Toast.LENGTH_SHORT).show();
                     }
                 });
+
+                //Menampilkan popup
                 alertDialog.show();
+                //Menutup popup
                 dialog.dismiss();
             }
         });
