@@ -210,6 +210,10 @@ public class tab4_user extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(getContext(), barang.getNama_barang() + " Sudah di Hapus", Toast.LENGTH_SHORT).show();
+
+                        //Menjalankan fungsi hapus barang
+                        OpenHelper db = new OpenHelper(getContext());
+                        db.deleteBarang(new Barang(barang.getId_barang(), null, 0, null, 0, null, null));
                     }
                 });
 
@@ -219,11 +223,8 @@ public class tab4_user extends Fragment {
                         Toast.makeText(getContext(), "Penghapusan Di Batalkan", Toast.LENGTH_SHORT).show();
                     }
                 });
-
                 alertDialog.show();
-
                 dialog.dismiss();
-                
             }
         });
 
