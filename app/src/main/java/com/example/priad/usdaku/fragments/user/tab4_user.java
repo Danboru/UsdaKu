@@ -6,14 +6,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -22,13 +17,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SeekBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.priad.usdaku.R;
 import com.example.priad.usdaku.adapter.AdapterBarang;
-import com.example.priad.usdaku.adapter.AdapterJualan;
 import com.example.priad.usdaku.databases.OpenHelper;
 import com.example.priad.usdaku.provider.Barang;
 
@@ -64,7 +56,7 @@ public class tab4_user extends Fragment {
         namaBarang = (EditText) view.findViewById(R.id.namaBarang);
         keterantanBarang = (EditText) view.findViewById(R.id.keteranganBarang);
         hargaBarang = (EditText) view.findViewById(R.id.hargaBarang);
-        listView = (ListView) view.findViewById(R.id.lv_satu);
+        listView = (ListView) view.findViewById(R.id.lv_barangjual);
 
         View root = inflater.inflate(R.layout.tab4_user, container, false);
 
@@ -106,7 +98,7 @@ public class tab4_user extends Fragment {
         list = db.getAllBarang();
         ListAdapter adapter = new AdapterBarang(getActivity(), list);
 
-        ListView listView = (ListView) view.findViewById(R.id.lv_satu);
+        ListView listView = (ListView) view.findViewById(R.id.lv_barangjual);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

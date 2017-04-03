@@ -4,24 +4,13 @@
     android:layout_height="wrap_content"
     android:padding="4dp">
 
-    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/cv_main"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_margin="4dp"
-        card_view:cardBackgroundColor="#fff"
-        card_view:cardCornerRadius="5dp"
-        card_view:cardElevation="5dp"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground">
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="3dp">
 
             <ImageView
-                android:id="@+id/icon"
+                android:id="@+id/icon_pesanan"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_alignParentBottom="true"
@@ -32,7 +21,7 @@
                 android:src="@drawable/usdaku" />
 
             <TextView
-                android:id="@+id/tv_title"
+                android:id="@+id/tv_title_pesanan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignWithParentIfMissing="true"
@@ -43,10 +32,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="18dp"
                 android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/icon" />
+                android:layout_toEndOf="@+id/icon_pesanan" />
 
             <TextView
-                android:id="@+id/tv_titletiga"
+                android:id="@+id/tv_harga_pesanan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignWithParentIfMissing="true"
@@ -55,11 +44,11 @@
                 android:textColor="@color/primary_text_default_material_light"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:layout_below="@+id/tv_title"
-                android:layout_alignStart="@+id/tv_title" />
+                android:layout_below="@+id/tv_title_pesanan"
+                android:layout_alignStart="@+id/tv_title_pesanan" />
 
             <TextView
-                android:id="@+id/tv_titledua"
+                android:id="@+id/tv_jumlah_pesanan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignWithParentIfMissing="true"
@@ -68,11 +57,10 @@
                 android:textColor="@color/primary_text_default_material_light"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:layout_below="@+id/tv_titletiga"
-                android:layout_alignStart="@+id/tv_titletiga" />
+                android:layout_below="@+id/tv_harga_pesanan"
+                android:layout_alignStart="@+id/tv_harga_pesanan" />
 
 
         </RelativeLayout>
 
-    </android.support.v7.widget.CardView>
 </RelativeLayout>

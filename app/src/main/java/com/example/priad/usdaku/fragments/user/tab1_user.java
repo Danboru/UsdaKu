@@ -25,12 +25,14 @@ import com.example.priad.usdaku.R;
 import com.example.priad.usdaku.adapter.AdapterBarang;
 import com.example.priad.usdaku.databases.OpenHelper;
 import com.example.priad.usdaku.provider.Barang;
+import com.example.priad.usdaku.provider.Transaksi;
 
 import java.util.ArrayList;
 
 public class tab1_user extends Fragment {
 
     private ArrayList list = new ArrayList();
+    private int jumlahPembelian;
 
     public tab1_user() {
     }
@@ -47,25 +49,12 @@ public class tab1_user extends Fragment {
         View view = inflater.inflate(R.layout.tab1_user, container, false);
         OpenHelper db = new OpenHelper(getContext());
 
-//        try {
-//
-//            ArrayList ara = db.getAllBarang();
-//            String test = "";
-//            for (Object e : ara) {
-//                test += ((Barang) e).getNama_barang() + ", ";
-//            }
-//            Toast.makeText(getContext(), test, Toast.LENGTH_LONG).show();
-//        }
-//        catch (Exception e){
-//            Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
-//        }
-
         //Memasukkan data kedalam list
         list = db.getAllBarang();
         ListAdapter adapter = new AdapterBarang(getActivity(), list);
 
         //menggunakan findViewBYId di Fragment
-        ListView listView = (ListView) view.findViewById(R.id.lv_satu);
+        ListView listView = (ListView) view.findViewById(R.id.lv_barangjual);
         listView.setAdapter(adapter);
 
 
@@ -101,6 +90,7 @@ public class tab1_user extends Fragment {
     private void showCustomDialog(int position) {
 
         final Barang barang = (Barang) list.get(position);
+        //final Transaksi transaksi = (Transaksi) list.get(position);
 
         final Dialog dialog = new Dialog(getContext());
         //Mengeset judul dialog
@@ -122,6 +112,8 @@ public class tab1_user extends Fragment {
         Button saveButton = (Button) dialog.findViewById(R.id.button_save);
         SeekBar seekBar = (SeekBar) dialog.findViewById(R.id.seekbar_jumlahpembelian);
         TextView namaBarang = (TextView) dialog.findViewById(R.id.namaBarangPopup);
+        final View pembatas = dialog.findViewById(R.id.pembatas);
+        final TextView totalpembayaran = (TextView) dialog.findViewById(R.id.tv_totalpembayaran);
 
         final TextView textView = (TextView) dialog.findViewById(R.id.txt_jumlahPembelian);
 
@@ -132,6 +124,16 @@ public class tab1_user extends Fragment {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 textView.setText(String.valueOf(progress));
+
+                if(progress > 0){
+                    pembatas.setVisibility(View.VISIBLE);
+                    totalpembayaran.setVisibility(View.VISIBLE);
+                    totalpembayaran.setText(String.valueOf(barang.getHarga_barang() * progress));
+                }else {
+                    pembatas.setVisibility(View.GONE);
+                    totalpembayaran.setVisibility(View.GONE);
+                }
+
             }
 
             @Override
@@ -141,7 +143,8 @@ public class tab1_user extends Fragment {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                //Jumlah pembelian barang
+                jumlahPembelian = seekBar.getProgress();
             }
         });
 
@@ -157,11 +160,10 @@ public class tab1_user extends Fragment {
                 alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ya", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getContext(), "Pesanan Terkirim", Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(getContext(), "Pesanan di Kirim", Toast.LENGTH_SHORT).show();
                         try {
                             OpenHelper db = new OpenHelper(getContext());
-                            db.addTransaksi(new Barang(barang.getId_barang(), "Nama", 1000, null, 2, null, null));
+//                            db.addTransaksi(new Transaksi(transaksi.getId_transaksi(), "Nama", 1000, 12));
                         }catch (Exception e) {
                             Toast.makeText(getContext(), "Kesalahan saat mengirim pesanan", Toast.LENGTH_SHORT).show();
                         }

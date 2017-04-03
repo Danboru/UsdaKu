@@ -131,14 +131,14 @@ public class OpenHelper extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
-    // Adding new barang (FIX)
-    public void addTransaksi(Barang barang) {
+    // Adding new transaksi (FIX)
+    public void addTransaksi(Transaksi transaksi) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_TRANSAKSI_NAMABARANG, barang.getNama_barang());
-        values.put(KEY_TRANSAKSI_HARGABARANG, barang.getHarga_barang());
-        values.put(KEY_TRANSAKSI_JUMLAHBARANG, barang.getJumlah_barang());
+        values.put(KEY_TRANSAKSI_NAMABARANG, transaksi.getNamabarang_transaksi());
+        values.put(KEY_TRANSAKSI_HARGABARANG, transaksi.getHargabarang_transaksi());
+        values.put(KEY_TRANSAKSI_JUMLAHBARANG, transaksi.getJumlahbarang_transaksi());
 
         // Inserting Row
         db.insert(TABLE_TRANSAKSI, null, values);
@@ -248,9 +248,11 @@ public class OpenHelper extends SQLiteOpenHelper {
         return barangList;
     }
 
-    // Getting All Barang (FIX)
-    public ArrayList getAllTransaksi() {
+    // Getting All Transaksi (FIX)
+    public ArrayList<Transaksi> getAllTransaksi() {
+
         ArrayList transaksiList = new ArrayList();
+
         // Select All Query
         String selectQuery = "SELECT * FROM " + TABLE_TRANSAKSI;
 
@@ -261,10 +263,10 @@ public class OpenHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Transaksi transaksi = new Transaksi();
-                transaksi.setId_transaksi(cursor.getInt(0));
+                transaksi.setId_transaksi(cursor.getInt(cursor.getColumnIndex(KEY_TRANSAKSI_ID)));
                 transaksi.setNamabarang_transaksi(cursor.getString(cursor.getColumnIndex(KEY_TRANSAKSI_NAMABARANG)));
-                transaksi.setHargabarang_transaksi(cursor.getInt(2));
-                transaksi.setJumlahbarang_transaksi(cursor.getInt(3));
+                transaksi.setHargabarang_transaksi(cursor.getInt(cursor.getColumnIndex(KEY_TRANSAKSI_HARGABARANG)));
+                transaksi.setJumlahbarang_transaksi(cursor.getInt(cursor.getColumnIndex(KEY_TRANSAKSI_JUMLAHBARANG)));
 
                 // Adding user to list
                 transaksiList.add(transaksi);
