@@ -179,8 +179,6 @@ public class tab4_user extends Fragment {
                 String keterangan = info_keteranganBarang.getText().toString();
                 Integer harga = Integer.parseInt(info_hargaBarang.getText().toString());
 
-                Toast.makeText(getContext(), "Id Barang = " + barang.getId_barang(), Toast.LENGTH_SHORT).show();
-
                 try {
                     //Menjalankan fungsi update
                     OpenHelper db = new OpenHelper(getContext());

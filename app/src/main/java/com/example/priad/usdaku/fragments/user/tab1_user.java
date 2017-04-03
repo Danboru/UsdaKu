@@ -100,7 +100,7 @@ public class tab1_user extends Fragment {
 
     private void showCustomDialog(int position) {
 
-        Barang barang = (Barang) list.get(position);
+        final Barang barang = (Barang) list.get(position);
 
         final Dialog dialog = new Dialog(getContext());
         //Mengeset judul dialog
@@ -157,9 +157,14 @@ public class tab1_user extends Fragment {
                 alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ya", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getContext(), "Pesanan Anda Terkirim", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Pesanan Terkirim", Toast.LENGTH_SHORT).show();
 
-
+                        try {
+                            OpenHelper db = new OpenHelper(getContext());
+                            db.addTransaksi(new Barang(barang.getId_barang(), "Nama", 1000, null, 2, null, null));
+                        }catch (Exception e) {
+                            Toast.makeText(getContext(), "Kesalahan saat mengirim pesanan", Toast.LENGTH_SHORT).show();
+                        }
 
                     }
                 });
@@ -167,7 +172,7 @@ public class tab1_user extends Fragment {
                 alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Tidak", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getContext(), "Pemesanan Di Batalkan", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Pesanan Di Batalkan", Toast.LENGTH_SHORT).show();
                     }
                 });
 
