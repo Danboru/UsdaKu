@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.priad.usdaku.provider.Barang;
+import com.example.priad.usdaku.provider.Transaksi;
 import com.example.priad.usdaku.provider.User;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,11 +48,10 @@ public class OpenHelper extends SQLiteOpenHelper {
     private static final String KEY_BARANG_URLIMAGE = "url_imagebarang";
 
     //Kolom Table Transaksi
-    private static final String KEY_TRANSAKSI_ID = "id_user";
-    private static final String KEY_TRANSAKSI_NAMABARANG = "namadepan_user";
-    private static final String KEY_TRANSAKSI_JUMLAHBARANG = "namabelakang_user";
-    private static final String KEY_TRANSAKSI_HARGABARANG = "email_user";
-    private static final String KEY_TRANSAKSI_SELLER = "password_user";
+    private static final String KEY_TRANSAKSI_ID = "id_transaksi";
+    private static final String KEY_TRANSAKSI_NAMABARANG = "namabarang_transaksi";
+    private static final String KEY_TRANSAKSI_HARGABARANG = "hargabarang_transaksi";
+    private static final String KEY_TRANSAKSI_JUMLAHBARANG = "jumlahbarang_transaksi";
 
     public OpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -76,8 +76,8 @@ public class OpenHelper extends SQLiteOpenHelper {
 
         //Table Transaki (FIX)
         String CREATE_TRANSAKSI_TABLE = "CREATE TABLE " + TABLE_TRANSAKSI + "("
-                + KEY_TRANSAKSI_ID + " INTEGER PRIMARY KEY," + KEY_TRANSAKSI_SELLER + " TEXT,"
-                + KEY_TRANSAKSI_NAMABARANG + " TEXT," + KEY_TRANSAKSI_HARGABARANG + " INTEGER, "
+                + KEY_TRANSAKSI_ID + " INTEGER PRIMARY KEY,"+ KEY_TRANSAKSI_NAMABARANG + " TEXT,"
+                + KEY_TRANSAKSI_HARGABARANG + " INTEGER, "
                 + KEY_TRANSAKSI_JUMLAHBARANG + " INTEGER" + ")";
 
         db.execSQL(CREATE_USER_TABLE);
@@ -128,6 +128,20 @@ public class OpenHelper extends SQLiteOpenHelper {
 
         // Inserting Row
         db.insert(TABLE_BARANG, null, values);
+        db.close(); // Closing database connection
+    }
+
+    // Adding new barang (FIX)
+    public void addTransaksi(Barang barang) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_TRANSAKSI_NAMABARANG, barang.getNama_barang());
+        values.put(KEY_TRANSAKSI_HARGABARANG, barang.getHarga_barang());
+        values.put(KEY_TRANSAKSI_JUMLAHBARANG, barang.getJumlah_barang());
+
+        // Inserting Row
+        db.insert(TABLE_TRANSAKSI, null, values);
         db.close(); // Closing database connection
     }
 
@@ -232,6 +246,33 @@ public class OpenHelper extends SQLiteOpenHelper {
         }
         // return barang list
         return barangList;
+    }
+
+    // Getting All Barang (FIX)
+    public ArrayList getAllTransaksi() {
+        ArrayList transaksiList = new ArrayList();
+        // Select All Query
+        String selectQuery = "SELECT * FROM " + TABLE_TRANSAKSI;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // Looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Transaksi transaksi = new Transaksi();
+                transaksi.setId_transaksi(cursor.getInt(0));
+                transaksi.setNamabarang_transaksi(cursor.getString(cursor.getColumnIndex(KEY_TRANSAKSI_NAMABARANG)));
+                transaksi.setHargabarang_transaksi(cursor.getInt(2));
+                transaksi.setJumlahbarang_transaksi(cursor.getInt(3));
+
+                // Adding user to list
+                transaksiList.add(transaksi);
+
+            } while (cursor.moveToNext());
+        }
+        // return transaksi list
+        return transaksiList;
     }
 
     // Updating Single User (BUG)

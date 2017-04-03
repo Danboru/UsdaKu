@@ -158,6 +158,9 @@ public class tab1_user extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(getContext(), "Pesanan Anda Terkirim", Toast.LENGTH_SHORT).show();
+
+
+
                     }
                 });
 
