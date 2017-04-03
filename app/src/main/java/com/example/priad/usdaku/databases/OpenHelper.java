@@ -230,7 +230,7 @@ public class OpenHelper extends SQLiteOpenHelper {
 
             } while (cursor.moveToNext());
         }
-        // return user list
+        // return barang list
         return barangList;
     }
 

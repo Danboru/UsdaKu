@@ -1,21 +1,29 @@
 package com.example.priad.usdaku.fragments.user;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.priad.usdaku.R;
@@ -33,6 +41,10 @@ public class tab4_user extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<String> dataSet;
     ListView listView;
+
+    //Keperluan popupInfoBarang
+    private ArrayList list = new ArrayList();
+    int posisiDataSekarang;
 
     EditText namaBarang, keterantanBarang, hargaBarang;
     Button jualBarang;
@@ -57,8 +69,6 @@ public class tab4_user extends Fragment {
         keterantanBarang = (EditText) view.findViewById(R.id.keteranganBarang);
         hargaBarang = (EditText) view.findViewById(R.id.hargaBarang);
         listView = (ListView) view.findViewById(R.id.lv_satu);
-
-        registerForContextMenu(listView);
 
         View root = inflater.inflate(R.layout.tab4_user, container, false);
 
@@ -119,6 +129,14 @@ public class tab4_user extends Fragment {
 
         ListView listView = (ListView) view.findViewById(R.id.lv_satu);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                //Memanggil info dialog popup
+                showInfoDialog(position);
+            }
+        });
 
         return view;
     }
@@ -134,25 +152,83 @@ public class tab4_user extends Fragment {
 //
 //    }
 
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        menu.add(Menu.NONE, R.id.update_barang, Menu.NONE, "Update");
-        menu.add(Menu.NONE, R.id.delete_barang, Menu.NONE, "Delete");
-        menu.add(Menu.NONE, R.id.info_barang, Menu.NONE, "Info");
-    }
+    private void showInfoDialog(int position) {
 
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.update_barang:
-                return true;
-            case R.id.delete_barang:
-                return true;
-            case R.id.info_barang:
-                return true;
-        }
-        return super.onContextItemSelected(item);
+        //Pembuatan object database
+        OpenHelper db = new OpenHelper(getContext());
+        list = db.getAllBarang();
+        final Barang barang = (Barang) list.get(position);
+
+        final Dialog dialog = new Dialog(getContext());
+
+        //Mengeset judul dialog
+        dialog.setTitle("Info Barang");
+
+        //Mengeset layout
+        dialog.setContentView(R.layout.popup_infobarang);
+
+        //Membuat agar dialog tidak hilang saat di click di area luar dialog
+        dialog.setCanceledOnTouchOutside(false);
+
+        //Membuat dialog agar berukuran responsive
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int width = metrics.widthPixels;
+        dialog.getWindow().setLayout((6 * width) / 7, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        //Inisialisasi View
+        TextView info_namaBarang = (TextView) dialog.findViewById(R.id.infoNamaBarangPopup);
+        TextView info_keteranganBarang = (TextView) dialog.findViewById(R.id.infoKeteranganBarangPopup);
+        TextView info_hargaBarang = (TextView) dialog.findViewById(R.id.infoHargaBarangPopup);
+
+        Button updateBarangInfo = (Button) dialog.findViewById(R.id.btn_updateBarangButtonInfo);
+        Button deleteBarangInfo = (Button) dialog.findViewById(R.id.btn_deleteBarangButtonInfo);
+
+        //Mutator view
+        info_namaBarang.setText(barang.getNama_barang().toString().trim());
+        info_keteranganBarang.setText(barang.getKeterangan_barang().toString().trim());
+        info_hargaBarang.setText( "Rp. " + String.valueOf(barang.getHarga_barang()));
+
+        //Listener Button
+        updateBarangInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(getContext(), "Barang di Update", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        deleteBarangInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Menampilkan alert dialog untuk verifikasi pembelian barang
+                AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
+                alertDialog.setCanceledOnTouchOutside(false);//supaya tidak hilang saat di click di luar
+                alertDialog.setMessage("Apakah anda yakin ingin menghapus " + barang.getNama_barang() + " ?");
+                alertDialog.setTitle("VERIFIKASI DELETE BARANG");
+                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getContext(), barang.getNama_barang() + " Sudah di Hapus", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getContext(), "Penghapusan Di Batalkan", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                alertDialog.show();
+
+                dialog.dismiss();
+                
+            }
+        });
+
+        //Menampilkan custom dialog
+        dialog.show();
     }
 
 }
