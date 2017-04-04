@@ -56,12 +56,13 @@ public class AdapterUser extends ArrayAdapter {
         AdapterUser.ViewHolder holder = (ViewHolder) view.getTag();
 
         User user = (User) list.get(position);
+        String namaLengkap = String.valueOf(user.getNamadepan_user() + " " + user.getNamabelakang_user());
 
         holder.foto_profile.setImageResource(R.mipmap.ic_launcher);
-        holder.nama_user.setText(user.getNamadepan_user() + user.getNamabelakang_user());
-        holder.email_user.setText(user.getEmail_user());
-        holder.nim_user.setText(user.getNim());
-        holder.poin_user.setText(user.getPoin());
+        holder.nama_user.setText(namaLengkap);
+        holder.email_user.setText(String.valueOf(user.getEmail_user()));
+        holder.nim_user.setText(String.valueOf(user.getNim()));
+        holder.poin_user.setText(String.valueOf(user.getPoin()));
 
         return view;
     }

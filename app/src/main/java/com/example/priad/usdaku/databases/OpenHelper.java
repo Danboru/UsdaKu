@@ -188,8 +188,8 @@ public class OpenHelper extends SQLiteOpenHelper {
     }
 
     // Getting All user (BUG)
-    public List<User> getAllUser() {
-        List<User> usersList = new ArrayList<User>();
+    public ArrayList<User> getAllUser() {
+        ArrayList<User> usersList = new ArrayList<User>();
         // Select All Query
         String selectQuery = "SELECT * FROM " + TABLE_USER;
 

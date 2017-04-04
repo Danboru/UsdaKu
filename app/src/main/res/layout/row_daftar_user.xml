@@ -28,7 +28,7 @@
             android:id="@+id/nama_user"
             android:layout_width="400dp"
             android:layout_height="wrap_content"
-            android:text="Percobaan"
+            android:text="Nama"
             android:textSize="15sp" />
 
         <TextView
@@ -42,7 +42,7 @@
             android:id="@+id/nim_user"
             android:layout_width="400dp"
             android:layout_height="wrap_content"
-            android:text="Percobaan"
+            android:text="Nim"
             android:textSize="15sp" />
 
     </LinearLayout>
@@ -61,7 +61,7 @@
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0000"
+            android:text="Point"
             android:textSize="20dp"
             android:gravity="center"
             android:layout_alignParentRight="true"

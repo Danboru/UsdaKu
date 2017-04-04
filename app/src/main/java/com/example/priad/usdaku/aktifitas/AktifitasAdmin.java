@@ -18,6 +18,10 @@ import android.widget.TextView;
 
 import com.example.priad.usdaku.MainActivity;
 import com.example.priad.usdaku.R;
+import com.example.priad.usdaku.fragments.admin.tab1_admin;
+import com.example.priad.usdaku.fragments.admin.tab2_admin;
+import com.example.priad.usdaku.fragments.admin.tab3_admin;
+import com.example.priad.usdaku.fragments.admin.tab4_admin;
 import com.example.priad.usdaku.fragments.user.tab1_user;
 import com.example.priad.usdaku.fragments.user.tab2_user;
 import com.example.priad.usdaku.fragments.user.tab3_user;
@@ -53,11 +57,11 @@ public class AktifitasAdmin extends AppCompatActivity {
 
     //Untuk menambahkan tab baru
     private void setupViewPager(ViewPager viewPager) {
-        AktifitasUser.ViewPagerAdapter adapter = new AktifitasUser.ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new tab1_user(), "PASAR");
-        adapter.addFragment(new tab2_user(), "USER");
-        adapter.addFragment(new tab3_user(), "STATUS");
-        adapter.addFragment(new tab4_user(), "LAPORAN");
+        AktifitasAdmin.ViewPagerAdapter adapter = new AktifitasAdmin.ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new tab1_admin(), "PASAR");
+        adapter.addFragment(new tab2_admin(), "USER");
+        adapter.addFragment(new tab3_admin(), "STATUS");
+        adapter.addFragment(new tab4_admin(), "LAPORAN");
 
         viewPager.setAdapter(adapter);
     }
