@@ -15,7 +15,6 @@
         android:id="@+id/ti1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/gambarBarangYangDiJual"
         android:layout_marginTop="10dp"
         >
         <EditText
@@ -31,7 +30,6 @@
         android:id="@+id/ti2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/gambarBarangYangDiJual"
         android:layout_marginTop="10dp"
         >
         <EditText
@@ -47,7 +45,6 @@
         android:id="@+id/ti3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/gambarBarangYangDiJual"
         android:layout_marginTop="10dp"
         >
         <EditText
@@ -63,7 +60,6 @@
         android:id="@+id/ti4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/gambarBarangYangDiJual"
         android:layout_marginTop="10dp"
         >
         <EditText
@@ -79,7 +75,6 @@
         android:id="@+id/ti5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/gambarBarangYangDiJual"
         android:layout_marginTop="10dp"
         >
         <EditText
@@ -98,6 +93,8 @@
         android:text="Submit"
         android:layout_marginTop="20dp"
         android:background="@color/colorPrimary"
+        android:textColor="#fff"
+        android:textStyle="bold"
         />
 
 </LinearLayout>

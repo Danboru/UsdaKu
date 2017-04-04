@@ -32,23 +32,14 @@ public class tab3_user extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab3_user, container, false);
 
-        ArrayList listKu = new ArrayList();
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
+        //Cara sederhana menampilkan data
+//        ArrayList listKu = new ArrayList();
+//        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
+//        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
+//        ListAdapter adapter = new AdapterRiwayat(getActivity(), listKu);
+//        ListView listView = (ListView) view.findViewById(R.id.lv_riwayatPembelian);
+//        listView.setAdapter(adapter);
 
-        ListAdapter adapter = new AdapterRiwayat(getActivity(), listKu);
-
-        ListView listView = (ListView) view.findViewById(R.id.lv_riwayatPembelian);
-        listView.setAdapter(adapter);
 
         return view;
     }

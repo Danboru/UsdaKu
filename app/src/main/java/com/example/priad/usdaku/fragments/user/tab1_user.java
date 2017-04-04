@@ -72,6 +72,8 @@ public class tab1_user extends Fragment {
                     @Override public void run() {
                         // Berhenti berputar/refreshing
                         swLayout.setRefreshing(false);
+                        OpenHelper db = new OpenHelper(getContext());
+
                         Toast.makeText(getActivity(), "Uptodate", Toast.LENGTH_SHORT).show();
                     }
                 }, 5000);
@@ -87,6 +89,7 @@ public class tab1_user extends Fragment {
         return view;
     }
 
+    //memunculkan dialog saat membeli barang
     private void showCustomDialog(int position) {
 
         final Barang barang = (Barang) list.get(position);
@@ -151,36 +154,45 @@ public class tab1_user extends Fragment {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //Menampilkan alert dialog untuk verifikasi pembelian barang
-                AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
-                alertDialog.setCanceledOnTouchOutside(false);//supaya tidak hilang saat di click di luar
-                alertDialog.setMessage("Apakah anda ingin melanjutkan pemesanan ?");
-                alertDialog.setTitle("VERIFIKASI PEMESANAN");
-                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ya", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getContext(), "Pesanan di Kirim", Toast.LENGTH_SHORT).show();
-                        try {
-                            OpenHelper db = new OpenHelper(getContext());
-//                            db.addTransaksi(new Transaksi(transaksi.getId_transaksi(), "Nama", 1000, 12));
-                        }catch (Exception e) {
-                            Toast.makeText(getContext(), "Kesalahan saat mengirim pesanan", Toast.LENGTH_SHORT).show();
+                if (jumlahPembelian > 0){
+                    //Menampilkan alert dialog untuk verifikasi pembelian barang
+                    AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
+                    alertDialog.setCanceledOnTouchOutside(false);//supaya tidak hilang saat di click di luar
+                    alertDialog.setMessage("Apakah anda ingin melanjutkan pemesanan ?");
+                    alertDialog.setTitle("VERIFIKASI PEMESANAN");
+                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ya", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(getContext(), "Pesanan di Kirim", Toast.LENGTH_SHORT).show();
+                            try {
+                                OpenHelper db = new OpenHelper(getContext());
+                                //Menangani apabila pembelian kurang dari 1
+                                if(jumlahPembelian > 0){
+                                    db.addTransaksi(new Barang(barang.getId_barang(), barang.getNama_barang(), barang.getHarga_barang(),
+                                            null, jumlahPembelian, null, null));
+                                }else {
+                                    Toast.makeText(getContext(), "Minimal Beli 1 Barang", Toast.LENGTH_SHORT).show();
+                                }
+                            }catch (Exception e) {
+                                Toast.makeText(getContext(), "Kesalahan saat mengirim pesanan", Toast.LENGTH_SHORT).show();
+                            }
                         }
+                    });
 
-                    }
-                });
+                    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Tidak", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(getContext(), "Pesanan Di Batalkan", Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
-                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Tidak", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getContext(), "Pesanan Di Batalkan", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                    alertDialog.show();
 
-                alertDialog.show();
-
-                dialog.dismiss();
+                    dialog.dismiss();
+                //Desicion pembelinan apabila < 1    
+                }else {
+                    Toast.makeText(getContext(), "Minimal Beli 1 Barang", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

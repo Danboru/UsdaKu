@@ -52,29 +52,8 @@ public class SplashScreen extends Activity {
         Log.d(TAG, "onCreate: Mulai menjalankan Thread");
         thread.start();
 
+        //Database Helper (Hanya untuk tester)
         OpenHelper db = new OpenHelper(SplashScreen.this);
-
-        //Delete Tester (WORKING)
-//        db.deleteTransaksi(new Transaksi(1, null, 0,0));
-
-        //Update Tester (WORKING)
-//        db.updateTransaksi(new Transaksi(1, "nama baru", 9999, 999));
-
-        //Select All Data (WORKING)
-//        ArrayList arrayData = db.getAllTransaksi();
-//        int dataTotal = 0;
-//        for (Object data : arrayData
-//             ) {
-//
-//            Toast.makeText(this, "Data = " + dataTotal  , Toast.LENGTH_SHORT).show();
-//            dataTotal++;
-//        }
-
-        //Insert Tester (WORKING)
-//        db.addTransaksi(new Transaksi("Nama", 1000,  12));
-//        db.addTransaksi(new Transaksi("Nama Satu", 2000,  2));
-//        db.addTransaksi(new Transaksi("Nama Tiga", 6000,  20));
-//        db.addTransaksi(new Transaksi("Nama Empat", 8000,  62));
 
     }
 }
