@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.priad.usdaku.R;
+import com.example.priad.usdaku.adapter.AdapterBarang;
 import com.example.priad.usdaku.adapter.AdapterRiwayat;
 import com.example.priad.usdaku.adapter.AdapterTransaksi;
 import com.example.priad.usdaku.databases.OpenHelper;
@@ -38,11 +39,13 @@ public class tab2_user extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab2_user, container, false);
 
-        ArrayList listKu = new ArrayList();
-        listKu.add(new Transaksi("nama", 1000, 20 ));
+        OpenHelper db = new OpenHelper(getContext());
 
-        ListAdapter adapter = new AdapterTransaksi(getActivity(), listKu);
+        //Memasukkan data kedalam list
+        list = db.getAllTransaksi();
+        ListAdapter adapter = new AdapterTransaksi(getActivity(), list);
 
+        //menggunakan findViewBYId di Fragment
         ListView listView = (ListView) view.findViewById(R.id.lv_transaksi);
         listView.setAdapter(adapter);
 

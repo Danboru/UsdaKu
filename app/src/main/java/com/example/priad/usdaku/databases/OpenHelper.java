@@ -248,34 +248,34 @@ public class OpenHelper extends SQLiteOpenHelper {
         return barangList;
     }
 
-//    // Getting All Transaksi (FIX)
-//    public ArrayList<Transaksi> getAllTransaksi() {
-//
-//        ArrayList transaksiList = new ArrayList();
-//
-//        // Select All Query
-//        String selectQuery = "SELECT * FROM " + TABLE_TRANSAKSI;
-//
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        Cursor cursor = db.rawQuery(selectQuery, null);
-//
-//        // Looping through all rows and adding to list
-//        if (cursor.moveToFirst()) {
-//            do {
-//                Transaksi transaksi = new Transaksi();
-//                transaksi.setId_transaksi(cursor.getInt(cursor.getColumnIndex(KEY_TRANSAKSI_ID)));
-//                transaksi.setNamabarang_transaksi(cursor.getString(cursor.getColumnIndex(KEY_TRANSAKSI_NAMABARANG)));
-//                transaksi.setHargabarang_transaksi(cursor.getInt(cursor.getColumnIndex(KEY_TRANSAKSI_HARGABARANG)));
-//                transaksi.setJumlahbarang_transaksi(cursor.getInt(cursor.getColumnIndex(KEY_TRANSAKSI_JUMLAHBARANG)));
-//
-//                // Adding user to list
-//                transaksiList.add(transaksi);
-//
-//            } while (cursor.moveToNext());
-//        }
-//        // return transaksi list
-//        return transaksiList;
-//    }
+    // Getting All Transaksi (FIX)
+    public ArrayList<Transaksi> getAllTransaksi() {
+
+        ArrayList transaksiList = new ArrayList();
+
+        // Select All Query
+        String selectQuery = "SELECT * FROM " + TABLE_TRANSAKSI;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // Looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Transaksi transaksi = new Transaksi();
+                transaksi.setId_transaksi(cursor.getInt(cursor.getColumnIndex(KEY_TRANSAKSI_ID)));
+                transaksi.setNamabarang_transaksi(cursor.getString(cursor.getColumnIndex(KEY_TRANSAKSI_NAMABARANG)));
+                transaksi.setHargabarang_transaksi(cursor.getInt(cursor.getColumnIndex(KEY_TRANSAKSI_HARGABARANG)));
+                transaksi.setJumlahbarang_transaksi(cursor.getInt(cursor.getColumnIndex(KEY_TRANSAKSI_JUMLAHBARANG)));
+
+                // Adding user to list
+                transaksiList.add(transaksi);
+
+            } while (cursor.moveToNext());
+        }
+        // return transaksi list
+        return transaksiList;
+    }
 
     // Updating Single User (BUG)
     public int updateUser(User user) {
