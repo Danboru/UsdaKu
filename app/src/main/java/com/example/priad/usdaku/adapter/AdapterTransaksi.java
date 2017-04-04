@@ -46,7 +46,7 @@ public class AdapterTransaksi extends ArrayAdapter {
             view.setTag(holder);
         }
 
-        .//Perhatikan bener-bener tipe data yan gada di dalam data provider
+        //Perhatikan bener-bener tipe data yan gada di dalam data provider
         ViewHolder holder = (ViewHolder) view.getTag();
         Transaksi transaksi = (Transaksi) list.get(position);
         String harga = String.valueOf(transaksi.getHargabarang_transaksi());
