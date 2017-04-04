@@ -45,7 +45,7 @@ public class tab2_user extends Fragment {
         list = db.getAllTransaksi();
         ListAdapter adapter = new AdapterTransaksi(getActivity(), list);
 
-        //menggunakan findViewBYId di Fragment
+        //M enggunakan findViewBYId di Fragment
         ListView listView = (ListView) view.findViewById(R.id.lv_transaksi);
         listView.setAdapter(adapter);
 

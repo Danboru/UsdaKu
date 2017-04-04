@@ -71,10 +71,10 @@ public class SplashScreen extends Activity {
 //        }
 
         //Insert Tester (WORKING)
-        db.addTransaksi(new Transaksi("Nama", 1000,  12));
-        db.addTransaksi(new Transaksi("Nama Satu", 2000,  2));
-        db.addTransaksi(new Transaksi("Nama Tiga", 6000,  20));
-        db.addTransaksi(new Transaksi("Nama Empat", 8000,  62));
+//        db.addTransaksi(new Transaksi("Nama", 1000,  12));
+//        db.addTransaksi(new Transaksi("Nama Satu", 2000,  2));
+//        db.addTransaksi(new Transaksi("Nama Tiga", 6000,  20));
+//        db.addTransaksi(new Transaksi("Nama Empat", 8000,  62));
 
     }
 }

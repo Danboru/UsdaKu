@@ -54,8 +54,21 @@
                 android:textColor="@color/primary_text_default_material_light"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
                 android:layout_below="@+id/tv_harga_pesanan"
                 android:layout_alignStart="@+id/tv_harga_pesanan" />
+
+    <TextView
+        android:id="@+id/tv_totalHarga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:text="1000"
+        android:layout_marginRight="30dp"
+        android:layout_centerVertical="true"
+        android:textSize="40sp"
+        />
 
 
 </RelativeLayout>

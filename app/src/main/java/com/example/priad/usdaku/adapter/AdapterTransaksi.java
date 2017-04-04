@@ -30,6 +30,7 @@ public class AdapterTransaksi extends ArrayAdapter {
         protected TextView tv_title_pesanan;
         protected TextView tv_harga_pesanan;
         protected TextView tv_jumlah_pesanan;
+        protected TextView tv_totalHarga;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -43,6 +44,7 @@ public class AdapterTransaksi extends ArrayAdapter {
             holder.tv_title_pesanan = (TextView) view.findViewById(R.id.tv_title_pesanan);
             holder.tv_harga_pesanan = (TextView) view.findViewById(R.id.tv_harga_pesanan);
             holder.tv_jumlah_pesanan = (TextView) view.findViewById(R.id.tv_jumlah_pesanan);
+            holder.tv_totalHarga = (TextView) view.findViewById(R.id.tv_totalHarga);
             view.setTag(holder);
         }
 
@@ -52,10 +54,18 @@ public class AdapterTransaksi extends ArrayAdapter {
         String harga = String.valueOf(transaksi.getHargabarang_transaksi());
         String jumlah = String.valueOf(transaksi.getJumlahbarang_transaksi());
 
+        int hargaBarang, jumlahPembelian, totalPembayaran;
+        hargaBarang = Integer.parseInt(harga);
+        jumlahPembelian = Integer.parseInt(jumlah);
+        totalPembayaran = hargaBarang * jumlahPembelian;
+
+        String total = String.valueOf(totalPembayaran);
+
         holder.icon_pesanan.setImageResource(R.drawable.usdaku);
         holder.tv_title_pesanan.setText(transaksi.getNamabarang_transaksi());
         holder.tv_harga_pesanan.setText(harga);
         holder.tv_jumlah_pesanan.setText(jumlah);
+        holder.tv_totalHarga.setText(total);
 
         return view;
     }
