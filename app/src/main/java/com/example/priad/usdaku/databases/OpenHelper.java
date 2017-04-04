@@ -248,34 +248,34 @@ public class OpenHelper extends SQLiteOpenHelper {
         return barangList;
     }
 
-    // Getting All Transaksi (FIX)
-    public ArrayList<Transaksi> getAllTransaksi() {
-
-        ArrayList transaksiList = new ArrayList();
-
-        // Select All Query
-        String selectQuery = "SELECT * FROM " + TABLE_TRANSAKSI;
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        // Looping through all rows and adding to list
-        if (cursor.moveToFirst()) {
-            do {
-                Transaksi transaksi = new Transaksi();
-                transaksi.setId_transaksi(cursor.getInt(cursor.getColumnIndex(KEY_TRANSAKSI_ID)));
-                transaksi.setNamabarang_transaksi(cursor.getString(cursor.getColumnIndex(KEY_TRANSAKSI_NAMABARANG)));
-                transaksi.setHargabarang_transaksi(cursor.getInt(cursor.getColumnIndex(KEY_TRANSAKSI_HARGABARANG)));
-                transaksi.setJumlahbarang_transaksi(cursor.getInt(cursor.getColumnIndex(KEY_TRANSAKSI_JUMLAHBARANG)));
-
-                // Adding user to list
-                transaksiList.add(transaksi);
-
-            } while (cursor.moveToNext());
-        }
-        // return transaksi list
-        return transaksiList;
-    }
+//    // Getting All Transaksi (FIX)
+//    public ArrayList<Transaksi> getAllTransaksi() {
+//
+//        ArrayList transaksiList = new ArrayList();
+//
+//        // Select All Query
+//        String selectQuery = "SELECT * FROM " + TABLE_TRANSAKSI;
+//
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        Cursor cursor = db.rawQuery(selectQuery, null);
+//
+//        // Looping through all rows and adding to list
+//        if (cursor.moveToFirst()) {
+//            do {
+//                Transaksi transaksi = new Transaksi();
+//                transaksi.setId_transaksi(cursor.getInt(cursor.getColumnIndex(KEY_TRANSAKSI_ID)));
+//                transaksi.setNamabarang_transaksi(cursor.getString(cursor.getColumnIndex(KEY_TRANSAKSI_NAMABARANG)));
+//                transaksi.setHargabarang_transaksi(cursor.getInt(cursor.getColumnIndex(KEY_TRANSAKSI_HARGABARANG)));
+//                transaksi.setJumlahbarang_transaksi(cursor.getInt(cursor.getColumnIndex(KEY_TRANSAKSI_JUMLAHBARANG)));
+//
+//                // Adding user to list
+//                transaksiList.add(transaksi);
+//
+//            } while (cursor.moveToNext());
+//        }
+//        // return transaksi list
+//        return transaksiList;
+//    }
 
     // Updating Single User (BUG)
     public int updateUser(User user) {
@@ -312,19 +312,19 @@ public class OpenHelper extends SQLiteOpenHelper {
                 new String[] { String.valueOf(barang.getId_barang()) });
     }
 
-    // Updating Single Transaksi (BUG)
-    public int updateTransaksi(Transaksi transaksi) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(KEY_TRANSAKSI_NAMABARANG, transaksi.getNamabarang_transaksi());
-        values.put(KEY_TRANSAKSI_HARGABARANG, transaksi.getHargabarang_transaksi());
-        values.put(KEY_TRANSAKSI_JUMLAHBARANG, transaksi.getJumlahbarang_transaksi());
-
-        // updating row
-        return db.update(TABLE_TRANSAKSI, values, KEY_TRANSAKSI_ID + " = ?",
-                new String[] { String.valueOf(transaksi.getId_transaksi()) });
-    }
+//    // Updating Single Transaksi (BUG)
+//    public int updateTransaksi(Transaksi transaksi) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//
+//        ContentValues values = new ContentValues();
+//        values.put(KEY_TRANSAKSI_NAMABARANG, transaksi.getNamabarang_transaksi());
+//        values.put(KEY_TRANSAKSI_HARGABARANG, transaksi.getHargabarang_transaksi());
+//        values.put(KEY_TRANSAKSI_JUMLAHBARANG, transaksi.getJumlahbarang_transaksi());
+//
+//        // updating row
+//        return db.update(TABLE_TRANSAKSI, values, KEY_TRANSAKSI_ID + " = ?",
+//                new String[] { String.valueOf(transaksi.getId_transaksi()) });
+//    }
 
     // Deleting single barang (FIX)
     public void deleteBarang(Barang barang) {
@@ -342,13 +342,13 @@ public class OpenHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    // Deleting single transaksi (BUG)
-    public void deleteTransaksi(Transaksi transaksi) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_TRANSAKSI, KEY_TRANSAKSI_ID + " = ?",
-                new String[] { String.valueOf(transaksi.getId_transaksi()) });
-        db.close();
-    }
+//    // Deleting single transaksi (BUG)
+//    public void deleteTransaksi(Transaksi transaksi) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        db.delete(TABLE_TRANSAKSI, KEY_TRANSAKSI_ID + " = ?",
+//                new String[] { String.valueOf(transaksi.getId_transaksi()) });
+//        db.close();
+//    }
 
     // Getting users Count (BUG)
     public int getUsersCount() {

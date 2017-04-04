@@ -7,13 +7,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.priad.usdaku.R;
+import com.example.priad.usdaku.adapter.AdapterRiwayat;
 import com.example.priad.usdaku.adapter.AdapterTransaksi;
 import com.example.priad.usdaku.databases.OpenHelper;
+import com.example.priad.usdaku.provider.Riwayat;
+import com.example.priad.usdaku.provider.Transaksi;
 
 import java.util.ArrayList;
 
@@ -32,24 +36,16 @@ public class tab2_user extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.tab2_user, container, false);
-        OpenHelper db = new OpenHelper(getContext());
 
-        //Memasukkan data kedalam list
-        list = db.getAllTransaksi();
-        ListAdapter adapter = new AdapterTransaksi(getActivity(), list);
+        ArrayList listKu = new ArrayList();
+        listKu.add(new Transaksi("nama", 1000, 20 ));
 
-        //menggunakan findViewBYId di Fragment
+        ListAdapter adapter = new AdapterTransaksi(getActivity(), listKu);
+
         ListView listView = (ListView) view.findViewById(R.id.lv_transaksi);
         listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(), "Item " + position, Toast.LENGTH_SHORT).show();
-            }
-        });
         return view;
     }
 

@@ -44,25 +44,11 @@ public class tab3_user extends Fragment {
         listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
         listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
         listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
-
-
 
         ListAdapter adapter = new AdapterRiwayat(getActivity(), listKu);
 
         ListView listView = (ListView) view.findViewById(R.id.lv_riwayatPembelian);
         listView.setAdapter(adapter);
-
 
         return view;
     }

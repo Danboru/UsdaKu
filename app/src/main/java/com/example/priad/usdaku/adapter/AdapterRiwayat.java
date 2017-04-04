@@ -22,7 +22,7 @@ public class AdapterRiwayat extends ArrayAdapter {
     private Activity act;
 
     public AdapterRiwayat(Activity context, ArrayList objects) {
-        super(context, R.layout.row_barang_yangdijual, objects);
+        super(context, R.layout.row_riwayat_pembelian_local, objects);
         this.list = objects;
         this.act = context;
     }
@@ -47,8 +47,9 @@ public class AdapterRiwayat extends ArrayAdapter {
         }
 
         ViewHolder holder = (ViewHolder) view.getTag();
-        Riwayat riwayat = (Riwayat) list.get(position);
 
+
+        Riwayat riwayat = (Riwayat) list.get(position);
         String harga = String.valueOf(riwayat.getHarga_barang_riwayat());
 
         holder.gambar_barang.setImageResource(R.drawable.usdaku);

@@ -15,13 +15,12 @@ import java.util.ArrayList;
 
 public class AdapterTransaksi extends ArrayAdapter {
 
-    //Komponen untuk menampilkan data
     private ArrayList list;
     private Activity act;
 
-    public AdapterTransaksi(Activity context, ArrayList objects) {
-        super(context, R.layout.row_transaksi_barang, objects);
-        this.list = objects;
+    public AdapterTransaksi(Activity context, ArrayList list) {
+        super(context, R.layout.row_transaksi_barang, list);
+        this.list = list;
         this.act = context;
     }
 
@@ -47,15 +46,16 @@ public class AdapterTransaksi extends ArrayAdapter {
             view.setTag(holder);
         }
 
+        .//Perhatikan bener-bener tipe data yan gada di dalam data provider
         ViewHolder holder = (ViewHolder) view.getTag();
-
         Transaksi transaksi = (Transaksi) list.get(position);
         String harga = String.valueOf(transaksi.getHargabarang_transaksi());
+        String jumlah = String.valueOf(transaksi.getJumlahbarang_transaksi());
 
         holder.icon_pesanan.setImageResource(R.drawable.usdaku);
         holder.tv_title_pesanan.setText(transaksi.getNamabarang_transaksi());
         holder.tv_harga_pesanan.setText(harga);
-        holder.tv_jumlah_pesanan.setText(transaksi.getJumlahbarang_transaksi());
+        holder.tv_jumlah_pesanan.setText(jumlah);
 
         return view;
     }

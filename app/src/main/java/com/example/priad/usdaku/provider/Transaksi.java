@@ -6,7 +6,6 @@ package com.example.priad.usdaku.provider;
 
 public class Transaksi {
 
-    private int id_transaksi;
     private String namabarang_transaksi;
     private int hargabarang_transaksi;
     private int jumlahbarang_transaksi;
@@ -18,21 +17,6 @@ public class Transaksi {
         this.namabarang_transaksi = namabarang_transaksi;
         this.hargabarang_transaksi = hargabarang_transaksi;
         this.jumlahbarang_transaksi = jumlahbarang_transaksi;
-    }
-
-    public Transaksi(int id_transaksi, String namabarang_transaksi, int hargabarang_transaksi, int jumlahbarang_transaksi) {
-        this.id_transaksi = id_transaksi;
-        this.namabarang_transaksi = namabarang_transaksi;
-        this.hargabarang_transaksi = hargabarang_transaksi;
-        this.jumlahbarang_transaksi = jumlahbarang_transaksi;
-    }
-
-    public int getId_transaksi() {
-        return id_transaksi;
-    }
-
-    public void setId_transaksi(int id_transaksi) {
-        this.id_transaksi = id_transaksi;
     }
 
     public String getNamabarang_transaksi() {
