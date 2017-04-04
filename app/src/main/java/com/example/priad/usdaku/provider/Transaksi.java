@@ -27,6 +27,11 @@ public class Transaksi {
         this.jumlahbarang_transaksi = jumlahbarang_transaksi;
     }
 
+    public Transaksi(int id_transaksi, int jumlahbarang_transaksi) {
+        this.id_transaksi = id_transaksi;
+        this.jumlahbarang_transaksi = jumlahbarang_transaksi;
+    }
+
     public int getId_transaksi() {
         return id_transaksi;
     }

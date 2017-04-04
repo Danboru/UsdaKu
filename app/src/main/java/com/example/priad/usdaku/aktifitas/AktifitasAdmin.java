@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.example.priad.usdaku.MainActivity;
 import com.example.priad.usdaku.R;
@@ -39,7 +40,8 @@ public class AktifitasAdmin extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //Set title bar
+        ((TextView) findViewById(R.id.main_toolbar_title)).setText("Usdaku");
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);

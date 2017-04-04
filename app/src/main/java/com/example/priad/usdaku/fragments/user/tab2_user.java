@@ -109,7 +109,7 @@ public class tab2_user extends Fragment {
             case R.id.update_barang:
 
                 //Memnggil fungsi popup
-                showInfoPesananDialog();
+                showInfoPesananDialog(index);
 
                 return true;
             case R.id.delete_barang: //BUG
@@ -123,9 +123,9 @@ public class tab2_user extends Fragment {
 
 
         //Memunculkan dialog saat update transaksi
-        private void showInfoPesananDialog() {
+        private void showInfoPesananDialog(final int posisi) {
 
-            Dialog dialog = new Dialog(getContext());
+            final Dialog dialog = new Dialog(getContext());
             //Mengeset judul dialog
             dialog.setTitle("Update Pembelian");
 
@@ -141,7 +141,46 @@ public class tab2_user extends Fragment {
             dialog.getWindow().setLayout((6 * width) / 7, LinearLayout.LayoutParams.WRAP_CONTENT);
 
             //Inisialisasi View
-            //Button cancelButton = (Button) dialog.findViewById(R.id.button_cancel_pesanan);
+            Button cancelButton = (Button) dialog.findViewById(R.id.button_cancel_pesanan);
+            Button saveButton = (Button) dialog.findViewById(R.id.button_save_pesanan);
+            SeekBar seekBar = (SeekBar) dialog.findViewById(R.id.seekbar_jumlahpembelian_pesanan);
+            final TextView jumlahBeliUpdate = (TextView) dialog.findViewById(R.id.txt_jumlahPembelian_pesanan);
+            TextView namabarangPembelian = (TextView) dialog.findViewById(R.id.namaBarangPopup_pesanan);
+
+            seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    jumlahBeliUpdate.setText(String.valueOf(progress));
+                    jumlahPembelian = progress;
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                }
+            });
+
+            //membatalkan update
+            cancelButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+            //Menyimpan update
+            saveButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    OpenHelper db = new OpenHelper(getContext());
+                    db.updateTransaksi(new Transaksi(posisi, jumlahPembelian));
+
+                }
+            });
 
             //Menampilkan custom dialog
             dialog.show();
