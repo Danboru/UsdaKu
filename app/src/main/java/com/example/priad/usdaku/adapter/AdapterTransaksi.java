@@ -13,9 +13,6 @@ import com.example.priad.usdaku.provider.Transaksi;
 
 import java.util.ArrayList;
 
-/**
- * Created by priad on 2/6/2017.
- */
 public class AdapterTransaksi extends ArrayAdapter {
 
     //Komponen untuk menampilkan data
@@ -53,8 +50,8 @@ public class AdapterTransaksi extends ArrayAdapter {
         ViewHolder holder = (ViewHolder) view.getTag();
 
         Transaksi transaksi = (Transaksi) list.get(position);
-
         String harga = String.valueOf(transaksi.getHargabarang_transaksi());
+
         holder.icon_pesanan.setImageResource(R.drawable.usdaku);
         holder.tv_title_pesanan.setText(transaksi.getNamabarang_transaksi());
         holder.tv_harga_pesanan.setText(harga);

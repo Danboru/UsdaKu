@@ -312,6 +312,20 @@ public class OpenHelper extends SQLiteOpenHelper {
                 new String[] { String.valueOf(barang.getId_barang()) });
     }
 
+    // Updating Single Transaksi (BUG)
+    public int updateTransaksi(Transaksi transaksi) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_TRANSAKSI_NAMABARANG, transaksi.getNamabarang_transaksi());
+        values.put(KEY_TRANSAKSI_HARGABARANG, transaksi.getHargabarang_transaksi());
+        values.put(KEY_TRANSAKSI_JUMLAHBARANG, transaksi.getJumlahbarang_transaksi());
+
+        // updating row
+        return db.update(TABLE_TRANSAKSI, values, KEY_TRANSAKSI_ID + " = ?",
+                new String[] { String.valueOf(transaksi.getId_transaksi()) });
+    }
+
     // Deleting single barang (FIX)
     public void deleteBarang(Barang barang) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -328,6 +342,13 @@ public class OpenHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    // Deleting single transaksi (BUG)
+    public void deleteTransaksi(Transaksi transaksi) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_TRANSAKSI, KEY_TRANSAKSI_ID + " = ?",
+                new String[] { String.valueOf(transaksi.getId_transaksi()) });
+        db.close();
+    }
 
     // Getting users Count (BUG)
     public int getUsersCount() {
