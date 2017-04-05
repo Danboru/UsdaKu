@@ -351,25 +351,33 @@ public class OpenHelper extends SQLiteOpenHelper {
     }
 
     // Getting users Count (BUG)
-    public int getUsersCount() {
-        String countQuery = "SELECT  * FROM " + TABLE_USER;
+    public int getUserCount() {
+        String countQuery = "SELECT * FROM " + TABLE_USER;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
+        int cnt = cursor.getCount();
         cursor.close();
-
-        // return count
-        return cursor.getCount();
+        return cnt;
     }
 
-    // Getting barang Count (BUG)
+    // Getting barang Count (FIX)
     public int getBarangCount() {
-        String countQuery = "SELECT  * FROM " + TABLE_BARANG;
+        String countQuery = "SELECT * FROM " + TABLE_BARANG;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
+        int cnt = cursor.getCount();
         cursor.close();
+        return cnt;
+    }
 
-        // return count
-        return cursor.getCount();
+    // Getting transaksi Count (FIX)
+    public int getTransaksiCount() {
+        String countQuery = "SELECT * FROM " + TABLE_TRANSAKSI;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int cnt = cursor.getCount();
+        cursor.close();
+        return cnt;
     }
 
 }
