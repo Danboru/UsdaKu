@@ -58,8 +58,6 @@ public class AktifitasUser extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
     }
 
-
-
     //Untuk menambahkan tab baru
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());

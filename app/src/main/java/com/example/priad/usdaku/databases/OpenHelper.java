@@ -20,10 +20,8 @@ public class OpenHelper extends SQLiteOpenHelper {
     // All Static variables
     // Database Version
     private static final int DATABASE_VERSION = 1;
-
     // Database Name
     private static final String DATABASE_NAME = "usdaku";
-
     // User Taable Name
     private static final String TABLE_USER = "user";
     private static final String TABLE_BARANG = "barang";
@@ -216,7 +214,6 @@ public class OpenHelper extends SQLiteOpenHelper {
         // return user list
         return usersList;
     }
-
 
     // Getting All Barang (FIX)
     public ArrayList getAllBarang() {

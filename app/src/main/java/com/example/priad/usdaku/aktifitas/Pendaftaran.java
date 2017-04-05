@@ -51,7 +51,7 @@ public class Pendaftaran extends AppCompatActivity {
                     //Database Class
                     OpenHelper db = new OpenHelper(Pendaftaran.this);
                     //Notifikasi untuk pengisian data berhasil
-                    Toast.makeText(Pendaftaran.this, "Anda SUdah Terdaftar", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Pendaftaran.this, "Registered", Toast.LENGTH_SHORT).show();
                     db.addUser(new User( namaDepannya, namaBelakangnya, emailNya, nimNya, 0, passNya, null));
                     //Reset Data field All view
                     resetView();
@@ -61,6 +61,7 @@ public class Pendaftaran extends AppCompatActivity {
     }
 
     public void resetView(){
+
         //Description view
         namaDepan.setText("");
         namaBelakag.setText("");

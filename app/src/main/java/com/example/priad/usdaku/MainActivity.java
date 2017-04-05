@@ -66,7 +66,6 @@ public class MainActivity extends Activity {
                 }
             }
         });
-
     }
 
     public void inisialisiView(){
