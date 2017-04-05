@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -52,7 +53,6 @@ public class AktifitasAdmin extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-
     }
 
     //Untuk menambahkan tab baru
@@ -66,6 +66,7 @@ public class AktifitasAdmin extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+    //Adapter untuk setiap tab yang akan di tampilkan
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
@@ -101,6 +102,7 @@ public class AktifitasAdmin extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.options_menu, menu);//Menu Resource, Menu
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -114,5 +116,4 @@ public class AktifitasAdmin extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
 }

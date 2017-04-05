@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.priad.usdaku.R;
+import com.example.priad.usdaku.aktifitas.AktifitasAdmin;
+import com.example.priad.usdaku.databases.OpenHelper;
 
 public class tab3_admin extends Fragment {
 
@@ -23,8 +26,8 @@ public class tab3_admin extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.tab3_admin, container, false);
+
         return view;
     }
 }

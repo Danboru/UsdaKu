@@ -2,6 +2,7 @@ package com.example.priad.usdaku.aktifitas;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,14 +41,31 @@ public class Pendaftaran extends AppCompatActivity {
                 Integer nimNya = Integer.parseInt(nimUser.getText().toString());
                 String passNya = passUser.getText().toString();
 
-                //Database Class
-                OpenHelper db = new OpenHelper(Pendaftaran.this);
+                if(TextUtils.isEmpty(namaDepannya) || TextUtils.isEmpty(namaBelakangnya) || TextUtils.isEmpty(emailNya)
+                        || TextUtils.isEmpty(String.valueOf(nimNya)) || TextUtils.isEmpty(passNya)){
 
-                //Notifikasi untuk pengisian data berhasil
-                Toast.makeText(Pendaftaran.this, "Data Sudah Di buat", Toast.LENGTH_SHORT).show();
-                db.addUser(new User( namaDepannya, namaBelakangnya, emailNya, nimNya, 0, passNya, null));
+                    //Show messages when some field is empty
+                    Toast.makeText(Pendaftaran.this, "Isi Semua Field", Toast.LENGTH_SHORT).show();
+                }else {
+
+                    //Database Class
+                    OpenHelper db = new OpenHelper(Pendaftaran.this);
+                    //Notifikasi untuk pengisian data berhasil
+                    Toast.makeText(Pendaftaran.this, "Anda SUdah Terdaftar", Toast.LENGTH_SHORT).show();
+                    db.addUser(new User( namaDepannya, namaBelakangnya, emailNya, nimNya, 0, passNya, null));
+                    //Reset Data field All view
+                    resetView();
+                }
             }
         });
-        
+    }
+
+    public void resetView(){
+        //Description view
+        namaDepan.setText("");
+        namaBelakag.setText("");
+        emailUser.setText("");
+        nimUser.setText("");
+        passUser.setText("");
     }
 }

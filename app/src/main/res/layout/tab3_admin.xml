@@ -17,7 +17,7 @@
 
         <android.support.v7.widget.CardView
             android:layout_width="200dp"
-            android:layout_height="300dp"
+            android:layout_height="200dp"
             app:cardCornerRadius="5dp"
             app:cardElevation="5dp"
             android:layout_marginBottom="10dp"
@@ -32,7 +32,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/txt_jumlahUser"
+                    android:id="@+id/lbl_jumlahUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Jumlah User"
@@ -42,26 +42,14 @@
                     />
 
                 <TextView
+                    android:id="@+id/txt_jumlahUser"
+                    android:layout_below="@+id/lbl_jumlahUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt_jumlahUser"
                     android:text="0"
                     android:gravity="center"
                     android:textSize="80sp"
                     android:layout_marginTop="20dp"
-                    />
-
-                <Button
-                    android:id="@+id/btn_showjumlahuser"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentStart="true"
-                    android:text="SHOW"
-                    android:textSize="30dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
                     />
 
             </RelativeLayout>
@@ -70,7 +58,7 @@
 
         <android.support.v7.widget.CardView
             android:layout_width="200dp"
-            android:layout_height="300dp"
+            android:layout_height="200dp"
             app:cardCornerRadius="5dp"
             app:cardElevation="5dp"
             tools:layout_editor_absoluteY="0dp"
@@ -85,7 +73,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/txt_jumlahBarang"
+                    android:id="@+id/lbl_jumlahBarang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Jumlah Barang"
@@ -95,26 +83,14 @@
                     />
 
                 <TextView
+                    android:id="@+id/txt_jumlahBarang"
+                    android:layout_below="@+id/lbl_jumlahBarang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt_jumlahBarang"
                     android:text="0"
                     android:gravity="center"
                     android:textSize="80sp"
                     android:layout_marginTop="20dp"
-                    />
-
-                <Button
-                    android:id="@+id/btn_showjumlahbarang"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentStart="true"
-                    android:text="SHOW"
-                    android:textSize="30dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
                     />
 
             </RelativeLayout>
@@ -133,7 +109,7 @@
 
         <android.support.v7.widget.CardView
             android:layout_width="200dp"
-            android:layout_height="300dp"
+            android:layout_height="200dp"
             app:cardCornerRadius="5dp"
             app:cardElevation="5dp"
             android:layout_marginBottom="10dp"
@@ -148,7 +124,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/txt_jumlahTransaksi"
+                    android:id="@+id/lbl_jumlahTransaksi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Jumlah Transaksi"
@@ -158,26 +134,14 @@
                     />
 
                 <TextView
+                    android:id="@+id/txt_jumlahTransaksi"
+                    android:layout_below="@+id/lbl_jumlahTransaksi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt_jumlahTransaksi"
                     android:text="0"
                     android:gravity="center"
                     android:textSize="80sp"
                     android:layout_marginTop="20dp"
-                    />
-
-                <Button
-                    android:id="@+id/btn_shojumlahtransaksi"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentStart="true"
-                    android:text="SHOW"
-                    android:textSize="30dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
                     />
 
             </RelativeLayout>
@@ -186,7 +150,7 @@
 
         <android.support.v7.widget.CardView
             android:layout_width="200dp"
-            android:layout_height="300dp"
+            android:layout_height="200dp"
             app:cardCornerRadius="5dp"
             app:cardElevation="5dp"
             tools:layout_editor_absoluteY="0dp"
@@ -201,7 +165,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/txt_jumlahKomplain"
+                    android:id="@+id/lbl_jumlahKomplain"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Jumlah Komplain"
@@ -211,26 +175,14 @@
                     />
 
                 <TextView
+                    android:id="@+id/txt_jumlahKomplain"
+                    android:layout_below="@+id/lbl_jumlahKomplain"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt_jumlahKomplain"
                     android:text="0"
                     android:gravity="center"
                     android:textSize="80sp"
                     android:layout_marginTop="20dp"
-                    />
-
-                <Button
-                    android:id="@+id/btn_showjumlahkomplain"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentStart="true"
-                    android:text="SHOW"
-                    android:textSize="30dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
                     />
 
             </RelativeLayout>
@@ -239,13 +191,4 @@
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/lv_useronline"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-
-    </ListView>
-
-    </LinearLayout>
+</LinearLayout>

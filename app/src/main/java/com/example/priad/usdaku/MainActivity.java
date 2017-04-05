@@ -58,8 +58,12 @@ public class MainActivity extends Activity {
         pendaftaran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, Pendaftaran.class);
-                startActivity(i);
+                try {
+                    Intent i = new Intent(MainActivity.this, Pendaftaran.class);
+                    startActivity(i);
+                }catch (Exception e){
+                    Toast.makeText(MainActivity.this, "Kesalahan Saat Memanggil Activity Pendaftaran", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -71,7 +75,4 @@ public class MainActivity extends Activity {
         dua = (EditText) findViewById(R.id.edt_dua);
         pendaftaran = (TextView) findViewById(R.id.pendaftaran);
     }
-
-
-
     }
