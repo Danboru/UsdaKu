@@ -22,19 +22,39 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".aktifitas.AktifitasUser" />
-        <activity android:name=".aktifitas.AktifitasAdmin" />
-        <activity android:name=".fragments.user.tab1_user" />
-        <activity android:name=".fragments.user.tab2_user" />
-        <activity android:name=".fragments.user.tab3_user" />
-        <activity android:name=".fragments.user.tab4_user" />
-        <activity android:name=".aktifitas.UserMarketing" />
-        <activity android:name=".fragments.admin.tab1_admin" />
-        <activity android:name=".fragments.admin.tab2_admin" />
-        <activity android:name=".fragments.admin.tab3_admin" />
-        <activity android:name=".fragments.admin.tab4_admin" />
-        <activity android:name=".aktifitas.Pendaftaran" />
-        <activity android:name=".dialog.Pemesanan"></activity>
+        <activity android:name=".aktifitas.AktifitasUser"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".aktifitas.AktifitasAdmin"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".fragments.user.tab1_user"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".fragments.user.tab2_user"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".fragments.user.tab3_user"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".fragments.user.tab4_user"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".fragments.admin.tab1_admin"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".fragments.admin.tab2_admin"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".fragments.admin.tab3_admin"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".fragments.admin.tab4_admin"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".aktifitas.Pendaftaran"
+            android:screenOrientation="portrait"
+            />
     </application>
 
 </manifest>

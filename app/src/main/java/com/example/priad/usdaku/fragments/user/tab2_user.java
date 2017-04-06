@@ -83,7 +83,6 @@ public class tab2_user extends Fragment {
                 }, 5000);
             }
         });
-
         return view;
     }
 
@@ -120,7 +119,6 @@ public class tab2_user extends Fragment {
         }
         return super.onContextItemSelected(item);
     }
-
 
         //Memunculkan dialog saat update transaksi
         private void showInfoPesananDialog(final int posisi) {
@@ -178,12 +176,10 @@ public class tab2_user extends Fragment {
 
                     OpenHelper db = new OpenHelper(getContext());
                     db.updateTransaksi(new Transaksi(posisi, jumlahPembelian));
-
                 }
             });
 
             //Menampilkan custom dialog
             dialog.show();
         }
-
 }

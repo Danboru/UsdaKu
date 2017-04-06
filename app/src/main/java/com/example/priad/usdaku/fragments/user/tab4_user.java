@@ -180,7 +180,6 @@ public class tab4_user extends Fragment {
                 }catch (Exception e){
                     Toast.makeText(getContext(), "Kesalahan saat Memanggil fungsi update" , Toast.LENGTH_SHORT).show();
                 }
-
                 dialog.dismiss();
             }
         });
@@ -223,5 +222,4 @@ public class tab4_user extends Fragment {
         //Menampilkan custom dialog
         dialog.show();
     }
-
 }

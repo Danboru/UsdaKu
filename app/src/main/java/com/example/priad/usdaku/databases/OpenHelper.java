@@ -11,7 +11,6 @@ import com.example.priad.usdaku.provider.Transaksi;
 import com.example.priad.usdaku.provider.User;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * Created by priad on 25/03/2017.
  */
@@ -126,7 +125,6 @@ public class OpenHelper extends SQLiteOpenHelper {
         String password= cursor.getString(cursor.getColumnIndex(KEY_USER_PASSWORD));
         cursor.close();
         return password ;
-
     }
 
     //Get Username (BUG)

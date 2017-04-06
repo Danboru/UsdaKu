@@ -3,7 +3,7 @@ package com.example.priad.usdaku;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -16,12 +16,11 @@ import com.example.priad.usdaku.aktifitas.AktifitasAdmin;
 import com.example.priad.usdaku.aktifitas.AktifitasUser;
 import com.example.priad.usdaku.aktifitas.Pendaftaran;
 import com.example.priad.usdaku.databases.OpenHelper;
-import com.example.priad.usdaku.provider.Barang;
 
 public class MainActivity extends Activity {
 
     Button button;
-    EditText satu, dua;
+    EditText inputUsername, inputPass;
     TextView pendaftaran;
 
     @Override
@@ -39,34 +38,37 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
 
                 //Inisial variable
-                String userName = satu.getText().toString();
-                String passwordUser = dua.getText().toString();
+                String userName = inputUsername.getText().toString();
+                String passwordUser = inputPass.getText().toString();
                 String passTersimpan = db.getSinlgeEntry(userName);
 
-                //Penanganan inputan dari user
-                if(passwordUser.equals(passTersimpan)){
+                if (TextUtils.isEmpty(inputUsername.getText()) || TextUtils.isEmpty(inputPass.getText())){
+                    Toast.makeText(MainActivity.this, "Isi semua Field", Toast.LENGTH_SHORT).show();
+                } else {
+                    //Penanganan inputan dari user
+                    if(passwordUser.equalsIgnoreCase(passTersimpan)){
 
-                    //Ketiak berhasil
-                    Toast.makeText(MainActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, AktifitasUser.class);
+                        //Ketiak berhasil
+                        Toast.makeText(MainActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, AktifitasUser.class);
 
-                    //Kirim data ke activity bersangkutan menggunakan put extra yang nantinya akan di get dengan key yang di berikan
-                    intent.putExtra("USERNAME", userName);
+                        //Kirim data ke activity bersangkutan menggunakan put extra yang nantinya akan di get dengan key yang di berikan
+                        intent.putExtra("USERNAME", userName);
 
-                    startActivity(intent);
-                    finish();
-                    db.close();
+                        startActivity(intent);
+                        finish();
+                        db.close();
 
-                }  else if(satu.getText().toString().equalsIgnoreCase("admin") && dua.getText().toString().equalsIgnoreCase("admin")){
+                    }  else if(inputUsername.getText().toString().equalsIgnoreCase("admin") && inputPass.getText().toString().equalsIgnoreCase("admin")){
 
-                    Toast.makeText(MainActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, AktifitasAdmin.class);
-                    startActivity(intent);
-                    finish();
-                }
-                else {
-
-                    Toast.makeText(MainActivity.this, "Kamu Ngapain", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, AktifitasAdmin.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else {
+                        Toast.makeText(MainActivity.this, "Username Belum Terdaftar", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -84,10 +86,15 @@ public class MainActivity extends Activity {
         });
     }
 
+    /***
+     *
+     * Bagian penginisilaisasian view yang akan di gunakan
+     *
+     **/
     public void inisialisiView(){
-        button = (Button) findViewById(R.id.btn_satu);
-        satu = (EditText) findViewById(R.id.edt_satu);
-        dua = (EditText) findViewById(R.id.edt_dua);
+        button = (Button) findViewById(R.id.btn_masukAplikasi);
+        inputUsername = (EditText) findViewById(R.id.edt_inputUsername);
+        inputPass = (EditText) findViewById(R.id.edt_inputPassword);
         pendaftaran = (TextView) findViewById(R.id.pendaftaran);
     }
     }

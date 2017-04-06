@@ -31,7 +31,6 @@ public class tab3_admin extends Fragment {
          txt_jumlahBarang = (TextView) view.findViewById(R.id.txt_jumlahBarang);
          txt_jumlahTransaksi = (TextView) view.findViewById(R.id.txt_jumlahTransaksi);
          txt_jumlahKomplain = (TextView) view.findViewById(R.id.txt_jumlahKomplain);
-
     }
 
     @Nullable

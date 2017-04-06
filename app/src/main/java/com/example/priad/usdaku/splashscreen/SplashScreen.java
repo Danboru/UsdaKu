@@ -54,7 +54,5 @@ public class SplashScreen extends Activity {
 
         //Database Helper (Hanya untuk tester)
         OpenHelper db = new OpenHelper(SplashScreen.this);
-
-
     }
 }

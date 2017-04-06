@@ -48,7 +48,6 @@ public class AdapterRiwayat extends ArrayAdapter {
 
         ViewHolder holder = (ViewHolder) view.getTag();
 
-
         Riwayat riwayat = (Riwayat) list.get(position);
         String harga = String.valueOf(riwayat.getHarga_barang_riwayat());
 

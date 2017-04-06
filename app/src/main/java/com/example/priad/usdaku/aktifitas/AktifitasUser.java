@@ -36,7 +36,6 @@ public class AktifitasUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bagian_user);
 
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

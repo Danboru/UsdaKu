@@ -23,7 +23,6 @@ import java.util.ArrayList;
 
 public class tab2_admin extends Fragment {
 
-
     private ArrayList list = new ArrayList();
 
     public tab2_admin() {

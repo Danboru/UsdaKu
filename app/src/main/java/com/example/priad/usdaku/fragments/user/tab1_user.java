@@ -57,7 +57,6 @@ public class tab1_user extends Fragment {
         ListView listView = (ListView) view.findViewById(R.id.lv_barangjual);
         listView.setAdapter(adapter);
 
-
         final SwipeRefreshLayout swLayout = (SwipeRefreshLayout) view.findViewById(R.id.swlayout);
 
         // Mengeset properti warna yang berputar pada SwipeRefreshLayout
@@ -136,12 +135,10 @@ public class tab1_user extends Fragment {
                     pembatas.setVisibility(View.GONE);
                     totalpembayaran.setVisibility(View.GONE);
                 }
-
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
 
             @Override

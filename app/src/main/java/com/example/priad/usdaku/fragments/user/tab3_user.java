@@ -27,7 +27,6 @@ public class tab3_user extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Nullable
@@ -54,7 +53,6 @@ public class tab3_user extends Fragment {
 //        ListAdapter adapter = new AdapterRiwayat(getActivity(), listKu);
 //        ListView listView = (ListView) view.findViewById(R.id.lv_riwayatPembelian);
 //        listView.setAdapter(adapter);
-
 
         return view;
     }

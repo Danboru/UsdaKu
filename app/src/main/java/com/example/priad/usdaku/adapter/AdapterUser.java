@@ -54,7 +54,6 @@ public class AdapterUser extends ArrayAdapter {
         }
 
         AdapterUser.ViewHolder holder = (ViewHolder) view.getTag();
-
         User user = (User) list.get(position);
         String namaLengkap = String.valueOf(user.getNamadepan_user() + " " + user.getNamabelakang_user());
 

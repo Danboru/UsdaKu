@@ -112,6 +112,7 @@ public class AktifitasAdmin extends AppCompatActivity {
                 startActivity(intent);
 
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
