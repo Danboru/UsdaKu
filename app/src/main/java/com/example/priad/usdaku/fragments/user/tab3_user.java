@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class tab3_user extends Fragment {
 
-    private TextView namaUser,nimUser;
+    private TextView namaUser,nimUser, statusUser, pointUser;
 
     public tab3_user() {
     }
@@ -36,15 +36,23 @@ public class tab3_user extends Fragment {
 
         namaUser = (TextView) view.findViewById(R.id.txt_namaUserProfile);
         nimUser = (TextView) view.findViewById(R.id.txt_nimUserProfile);
+        statusUser = (TextView) view.findViewById(R.id.txt_statusUser);
+        pointUser = (TextView) view.findViewById(R.id.txt_pointuser);
 
         OpenHelper db = new OpenHelper(getContext());
 
         String username = getActivity().getIntent().getStringExtra("USERNAME");
         String userName = db.getUserName(username);
         String nim = db.getNim(username);
+        String status = db.getStatus(username);
+        int poin = db.getPoint(username);
 
+        //Mutator View
         namaUser.setText(userName);
         nimUser.setText(nim);
+        statusUser.setText(status);
+        pointUser.setText(String.valueOf(poin));
+
 
         //Cara sederhana menampilkan data
 //        ArrayList listKu = new ArrayList();

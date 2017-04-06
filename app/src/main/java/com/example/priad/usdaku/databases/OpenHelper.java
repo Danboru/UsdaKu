@@ -179,6 +179,39 @@ public class OpenHelper extends SQLiteOpenHelper {
         return user;
     }
 
+    //Get Status (BUG)
+    public String getStatus(String userName)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from  " + TABLE_USER + " where "+ KEY_USER_NAMADEPAN + " = ? ", new String[]{userName});
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            return "NOT EXIST";
+        }
+        cursor.moveToFirst();
+        String status = cursor.getString(cursor.getColumnIndex(KEY_STATUS_USER));
+        cursor.close();
+        return status;
+    }
+
+    //Get Poin (BUG)
+    public int getPoint(String userName)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from  " + TABLE_USER + " where "+KEY_USER_NAMADEPAN + " = ? ", new String[]{userName});
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            return 404;
+        }
+        cursor.moveToFirst();
+        String point = cursor.getString(cursor.getColumnIndex(KEY_POIN_USER));
+        int pointKirim = Integer.parseInt(point);
+        cursor.close();
+        return pointKirim;
+    }
+
     // Adding new barang (FIX)
     public void addBarang(Barang barang) {
         SQLiteDatabase db = this.getWritableDatabase();

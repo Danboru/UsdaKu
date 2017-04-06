@@ -63,7 +63,9 @@
                 android:textSize="30sp"
                 />
 
-            <TextView android:text="Status Mahasiswa"
+            <TextView
+                android:id="@+id/txt_statusUser"
+                android:text="Status Mahasiswa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -87,7 +89,9 @@
         android:foreground="?android:attr/selectableItemBackground"
         >
 
-        <TextView android:text="Point"
+        <TextView
+            android:id="@+id/txt_pointuser"
+            android:text="Point"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

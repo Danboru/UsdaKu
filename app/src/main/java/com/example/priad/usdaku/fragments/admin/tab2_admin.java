@@ -156,6 +156,7 @@ public class tab2_admin extends Fragment {
                 db.updateUser(new User(user.getId_user(), namaDepanNya, namaBelakangNya, emailUserNya,
                         nimUserNya, passUserNya, pointUserNya, statusUserNya, null ));
                 db.close();
+                dialog.dismiss();
 
             }
         });
