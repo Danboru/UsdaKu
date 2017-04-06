@@ -15,15 +15,21 @@ import java.util.ArrayList;
 
 public class AdapterTransaksi extends ArrayAdapter {
 
+    //Variable yagn di gunakan untuk menampung dta dari database
     private ArrayList list;
     private Activity act;
 
+    //Konstruktor dari program
     public AdapterTransaksi(Activity context, ArrayList list) {
         super(context, R.layout.row_transaksi_barang, list);
         this.list = list;
         this.act = context;
     }
 
+    /**
+     * Ini adalah inner class yang di gunakan untuk penyesuaian view yang akan di gunakan
+     * adapter membutuhkannya untuk mengetahui dimana data akan di leteakkan
+     * */
     //Sesuaikan dengan view yang ada di layout yang di gunakan
     static class ViewHolder {
         protected ImageView icon_pesanan;
@@ -33,6 +39,7 @@ public class AdapterTransaksi extends ArrayAdapter {
         protected TextView tv_totalHarga;
     }
 
+    //Kelas yang di overide dari parent
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
         if (view == null) {
@@ -61,12 +68,14 @@ public class AdapterTransaksi extends ArrayAdapter {
 
         String total = String.valueOf(totalPembayaran);
 
+        //Set view dengan data holder
         holder.icon_pesanan.setImageResource(R.drawable.usdaku);
         holder.tv_title_pesanan.setText(transaksi.getNamabarang_transaksi());
         holder.tv_harga_pesanan.setText(harga);
         holder.tv_jumlah_pesanan.setText(jumlah);
         holder.tv_totalHarga.setText(total);
 
+        //Return view yang sudah di set dengan data holder
         return view;
     }
 }

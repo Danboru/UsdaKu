@@ -25,6 +25,7 @@ public class tab3_admin extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    //Fungsi inisialisasi view
     public void inisialView(View view){
 
          txt_jumlahUser = (TextView) view.findViewById(R.id.txt_jumlahUser);
@@ -54,6 +55,7 @@ public class tab3_admin extends Fragment {
         txt_jumlahTransaksi.setText(String.valueOf(jumlahTransaksi));
         txt_jumlahKomplain.setText(String.valueOf(jumlahKomplain));
 
+        //Return view yang sudah di set dengan data
         return view;
     }
 }

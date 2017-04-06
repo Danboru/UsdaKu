@@ -35,6 +35,7 @@ import java.util.ArrayList;
 
 public class tab2_admin extends Fragment {
 
+    //Varible yang di gunkan untuk menampung data yang berasal dari datbase
     private ArrayList list = new ArrayList();
 
     public tab2_admin() {
@@ -85,9 +86,8 @@ public class tab2_admin extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                //Memanggil fungsi show popup
                 showUpdateUserDialog(position);
-
             }
         });
         return view;
@@ -113,9 +113,10 @@ public class tab2_admin extends Fragment {
         int width = metrics.widthPixels;
         dialog.getWindow().setLayout((6 * width) / 7, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        //Inisialisasi View
+        //Variable View
         final EditText namaDepan, namaBelakang, nimUser, pointUser, emailUser, statusUser, passUser;
 
+        //Inisialisasi view
         namaDepan = (EditText) dialog.findViewById(R.id.txt_namauser_depan);
         namaBelakang = (EditText) dialog.findViewById(R.id.txt_namauser_belakang);
         nimUser = (EditText) dialog.findViewById(R.id.txt_nimUser);
@@ -137,6 +138,7 @@ public class tab2_admin extends Fragment {
         statusUser.setText("Mahasiswa");
         passUser.setText(user.getPassword_user());
 
+        //SetListener untuk button update
         updateUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -161,6 +163,7 @@ public class tab2_admin extends Fragment {
             }
         });
 
+        //SetListener untuk button delete
         deleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -192,7 +195,6 @@ public class tab2_admin extends Fragment {
                 alertDialog.show();
                 //Menutup popup
                 dialog.dismiss();
-
             }
         });
 

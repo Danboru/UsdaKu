@@ -20,7 +20,10 @@ import java.util.List;
 public class SplashScreen extends Activity {
 
     private static final String TAG = "SplashScreen";
-    
+
+    /**
+     * Kelas onCreate, Kelas yang di jalankan setelah konstruktor
+     * */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

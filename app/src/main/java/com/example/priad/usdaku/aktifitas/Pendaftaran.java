@@ -23,6 +23,7 @@ public class Pendaftaran extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pendaftaran);
 
+        //Inisial view
         daftarUserBaru = (Button) findViewById(R.id.kirimPendaftaran);
         namaDepan = (EditText) findViewById(R.id.edt_namadepan);
         namaBelakag = (EditText) findViewById(R.id.edt_namabelakang);
@@ -64,6 +65,7 @@ public class Pendaftaran extends AppCompatActivity {
         }
     }
 
+    //Fungsi untuk reset data di dalam setiap field
     public void resetView(){
 
         //Description view

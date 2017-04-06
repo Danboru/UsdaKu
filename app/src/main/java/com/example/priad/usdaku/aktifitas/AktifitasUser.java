@@ -27,6 +27,7 @@ import java.util.List;
 
 public class AktifitasUser extends AppCompatActivity {
 
+    //Varible yang di gunakan untuk style tab
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -68,6 +69,7 @@ public class AktifitasUser extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+    //Inner class yang di gunakan untuk menyesuaikan tab yang akan di tampilkan
     static class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
@@ -97,12 +99,15 @@ public class AktifitasUser extends AppCompatActivity {
         }
     }
 
+    //Optoin menu yang ada di pojok kanan atas
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.options_menu, menu);//Menu Resource, Menu
         return true;
     }
+
+    //Item yang ada di option menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

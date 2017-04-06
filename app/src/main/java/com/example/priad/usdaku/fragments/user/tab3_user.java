@@ -19,11 +19,15 @@ import java.util.ArrayList;
 
 public class tab3_user extends Fragment {
 
+    //View yang di perlukan di fragment ini
     private TextView namaUser,nimUser, statusUser, pointUser;
 
     public tab3_user() {
     }
 
+    /**
+     * Kelas onCreate, Kelas yang di jalankan setelah konstruktor
+     * */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +45,7 @@ public class tab3_user extends Fragment {
 
         OpenHelper db = new OpenHelper(getContext());
 
+        //Mengisikkan data
         String username = getActivity().getIntent().getStringExtra("USERNAME");
         String userName = db.getUserName(username);
         String nim = db.getNim(username);

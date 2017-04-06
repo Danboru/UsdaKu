@@ -3,7 +3,7 @@ package com.example.priad.usdaku.provider;
 /**
  * Created by priad on 06/04/2017.
  */
-
+//FIX
 public class Laporan {
 
     private int id_laporan;

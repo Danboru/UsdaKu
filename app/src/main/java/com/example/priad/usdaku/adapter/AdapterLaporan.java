@@ -32,6 +32,10 @@ public class AdapterLaporan extends ArrayAdapter {
         this.context = context;
     }
 
+    /**
+     * Ini adalah inner class yang di gunakan untuk penyesuaian view yang akan di gunakan
+     * adapter membutuhkannya untuk mengetahui dimana data akan di leteakkan
+     * */
     //Class yang menampung ciew di dalam row layout
     static class ViewHolder{
         TextView nama_pelapor;
@@ -66,6 +70,7 @@ public class AdapterLaporan extends ArrayAdapter {
             holder.pesan_terlampir.setText(laporan.getPesan_terlampir());
             holder.tanggal_pelaporan.setText(laporan.getTanggal_pelaporan());
 
+        //Mengembalikan view yang sudah di set dengan data holder
         return  view;
     }
 }

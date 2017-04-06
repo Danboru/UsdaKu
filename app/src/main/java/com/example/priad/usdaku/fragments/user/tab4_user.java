@@ -39,6 +39,7 @@ public class tab4_user extends Fragment {
     EditText namaBarang, keterantanBarang, hargaBarang;
     Button jualBarang;
 
+    //Kostruktor
     public tab4_user() {
         //Kostruktor kosong di perlukan
     }

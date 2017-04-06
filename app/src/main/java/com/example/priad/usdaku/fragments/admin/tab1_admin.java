@@ -138,6 +138,7 @@ public class tab1_admin extends Fragment {
                 String keterangan = info_keteranganBarang.getText().toString();
                 Integer harga = Integer.parseInt(info_hargaBarang.getText().toString());
 
+                //Menangani ketika barang gagal di update, agar program tidak langsung keluar (Forceclose)
                 try {
                     //Menjalankan fungsi update
                     OpenHelper db = new OpenHelper(getContext());

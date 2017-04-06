@@ -19,10 +19,14 @@ import com.example.priad.usdaku.databases.OpenHelper;
 
 public class MainActivity extends Activity {
 
+    //View yang di butuhkan di activity ini
     Button button;
     EditText inputUsername, inputPass;
     TextView pendaftaran;
 
+    /**
+     * Kelas onCreate, Kelas yang di jalankan setelah konstruktor
+     * */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +77,7 @@ public class MainActivity extends Activity {
             }
         });
 
+        //Set listener untuk tombol pendaftaran
         pendaftaran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

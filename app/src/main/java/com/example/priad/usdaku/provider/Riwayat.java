@@ -3,7 +3,7 @@ package com.example.priad.usdaku.provider;
 /**
  * Created by priad on 2/5/2017.
  */
-
+//FIX
 public class Riwayat {
 
     private String nama_barang_riwayat;

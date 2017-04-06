@@ -38,11 +38,13 @@ import java.util.ArrayList;
 
 public class tab2_user extends Fragment {
 
+    //Varibale yang di gunakan untuk menampung data yang ada di dalam database
     private ArrayList list = new ArrayList();
-    private int jumlahPembelian;
+    private int jumlahPembelian; //Jumlah pembelian barang
 
     //Konstruktor
     public tab2_user() {
+        //Konstruktor kosong di perlukan
     }
 
     @Nullable

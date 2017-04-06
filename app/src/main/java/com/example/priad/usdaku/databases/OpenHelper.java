@@ -112,7 +112,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // Adding new user (BUG)
+    // Adding new user (FIX)
     public void addUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -131,7 +131,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
-    //Get Pass (BUG)
+    //Get Pass (FIX)
     public String getSinlgeEntry(String userName)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -147,7 +147,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         return password ;
     }
 
-    //Get Username (BUG)
+    //Get Username (FIX)
     public String getUserName(String userName)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -163,7 +163,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         return user;
     }
 
-    //Get Nim (BUG)
+    //Get Nim (FIX)
     public String getNim(String userName)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -179,7 +179,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         return user;
     }
 
-    //Get Status (BUG)
+    //Get Status (FIX)
     public String getStatus(String userName)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -195,7 +195,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         return status;
     }
 
-    //Get Poin (BUG)
+    //Get Poin (FIX)
     public int getPoint(String userName)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -258,7 +258,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
-    // Getting single user (BUG)
+    // Getting single user (FIX)
     User getUser(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -279,7 +279,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         return user;
     }
 
-    // Getting Single Barang (BUG)
+    // Getting Single Barang (FIX)
     Barang getBarang(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -300,7 +300,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         return barang;
     }
 
-    // Getting All user (BUG)
+    // Getting All user (FIX)
     public ArrayList<User> getAllUser() {
         ArrayList<User> usersList = new ArrayList<User>();
         // Select All Query
@@ -420,7 +420,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         return laporanList;
     }
 
-    // Updating Single User (BUG)
+    // Updating Single User (FIX)
     public int updateUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -438,7 +438,7 @@ public class OpenHelper extends SQLiteOpenHelper {
                 new String[] { String.valueOf(user.getId_user()) });
     }
 
-    // Updating Single Barang (BUG)
+    // Updating Single Barang (FIX)
     public int updateBarang(Barang barang) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -455,7 +455,7 @@ public class OpenHelper extends SQLiteOpenHelper {
                 new String[] { String.valueOf(barang.getId_barang()) });
     }
 
-    // Updating Single Transaksi (BUG)
+    // Updating Single Transaksi (FIX)
     public int updateTransaksi(Transaksi transaksi) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -477,7 +477,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    // Deleting single user (BUG)
+    // Deleting single user (FIX)
     public void deleteUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_USER, KEY_USER_ID + " = ?",
@@ -485,7 +485,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    // Deleting single transaksi (BUG)
+    // Deleting single transaksi (FIX)
     public void deleteTransaksi(Transaksi transaksi) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_TRANSAKSI, KEY_TRANSAKSI_ID + " = ?",
@@ -493,7 +493,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    // Deleting single laporan (BUG)
+    // Deleting single laporan (FIX)
     public void deleteLaporan(Laporan laporan) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_LAPORAN, KEY_ID_LAPORAN + " = ?",
@@ -501,7 +501,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    // Getting users Count (BUG)
+    // Getting users Count (FIX)
     public int getUserCount() {
         String countQuery = "SELECT * FROM " + TABLE_USER;
         SQLiteDatabase db = this.getReadableDatabase();

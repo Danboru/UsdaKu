@@ -21,12 +21,18 @@ public class AdapterRiwayat extends ArrayAdapter {
     private ArrayList list;
     private Activity act;
 
+    //Konstruktor
     public AdapterRiwayat(Activity context, ArrayList objects) {
         super(context, R.layout.row_riwayat_pembelian_local, objects);
         this.list = objects;
         this.act = context;
     }
 
+    /**
+     * Ini adalah inner class yang di gunakan untuk penyesuaian view yang akan di gunakan
+     * adapter membutuhkannya untuk mengetahui dimana data akan di leteakkan
+     * */
+    //Inner kelas
     static class ViewHolder {
         protected ImageView gambar_barang;
         protected TextView nama_barang_riwayat;
@@ -48,6 +54,7 @@ public class AdapterRiwayat extends ArrayAdapter {
 
         ViewHolder holder = (ViewHolder) view.getTag();
 
+        //Object Riwayat
         Riwayat riwayat = (Riwayat) list.get(position);
         String harga = String.valueOf(riwayat.getHarga_barang_riwayat());
 
@@ -55,6 +62,7 @@ public class AdapterRiwayat extends ArrayAdapter {
         holder.nama_barang_riwayat.setText(riwayat.getNama_barang_riwayat());
         holder.harga_barang_riwayat.setText("Rp." + harga);
 
+        //Mengembalikan view yang sudah di set dengan data holder
         return view;
     }
 

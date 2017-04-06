@@ -18,15 +18,21 @@ import java.util.ArrayList;
  */
 public class AdapterUser extends ArrayAdapter {
 
+    //Variable yagn di gunakan untuk menampung dta dari database
     private ArrayList list;
     private Activity act;
 
+    //Konstruktor dari program
     public AdapterUser(Activity context, ArrayList object) {
         super(context, R.layout.row_daftar_user,object);
         this.list = object;
         this.act = context;
     }
 
+    /**
+     * Ini adalah inner class yang di gunakan untuk penyesuaian view yang akan di gunakan
+     * adapter membutuhkannya untuk mengetahui dimana data akan di leteakkan
+     * */
     //Sesuaikan dengan data yang akan di tampilkan
     static class ViewHolder {
         protected ImageView foto_profile;
@@ -36,6 +42,7 @@ public class AdapterUser extends ArrayAdapter {
         protected TextView poin_user;
     }
 
+    //Kelas yang di overide dari parent
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
         if (view == null) {
@@ -57,12 +64,14 @@ public class AdapterUser extends ArrayAdapter {
         User user = (User) list.get(position);
         String namaLengkap = String.valueOf(user.getNamadepan_user() + " " + user.getNamabelakang_user());
 
+        //Perhatikan bener-bener tipe data yan gada di dalam data provider
         holder.foto_profile.setImageResource(R.mipmap.ic_launcher);
         holder.nama_user.setText(namaLengkap);
         holder.email_user.setText(String.valueOf(user.getEmail_user()));
         holder.nim_user.setText(String.valueOf(user.getNim()));
         holder.poin_user.setText(String.valueOf(user.getPoin()));
 
+        //Return view yang sudah di set dengan data holder
         return view;
     }
 

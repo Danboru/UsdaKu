@@ -26,6 +26,9 @@ public class tab4_admin extends Fragment {
     public tab4_admin() {
     }
 
+    /**
+     * Kelas onCreate, Kelas yang di jalankan setelah konstruktor
+     * */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +50,7 @@ public class tab4_admin extends Fragment {
 //        ListView listView = (ListView) view.findViewById(R.id.lv_riwayatPembelian);
 //        listView.setAdapter(adapter);
 
+        //menyimpan data ke dalam list
         list = db.getAllLaporan();
 
         AdapterLaporan adapter = new AdapterLaporan(getActivity(), list);

@@ -37,6 +37,9 @@ public class AktifitasAdmin extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
+    /**
+     * Kelas onCreate, Kelas yang di jalankan setelah konstruktor
+     * */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

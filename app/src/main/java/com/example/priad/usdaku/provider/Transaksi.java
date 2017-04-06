@@ -3,7 +3,7 @@ package com.example.priad.usdaku.provider;
 /**
  * Created by priad on 03/04/2017.
  */
-
+//FIX
 public class Transaksi {
 
     private int id_transaksi;
