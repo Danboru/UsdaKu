@@ -31,27 +31,43 @@ public class MainActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
+        final OpenHelper db =new OpenHelper(this);
         inisialisiView();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(satu.getText().toString().equalsIgnoreCase("user") && dua.getText().toString().equalsIgnoreCase("user")){
-                        Toast.makeText(MainActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, AktifitasUser.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                else if(satu.getText().toString().equalsIgnoreCase("admin") && dua.getText().toString().equalsIgnoreCase("admin")){
 
-                        Toast.makeText(MainActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, AktifitasAdmin.class);
-                        startActivity(intent);
-                        finish();
-                    }
+                //Inisial variable
+                String userName = satu.getText().toString();
+                String passwordUser = dua.getText().toString();
+                String passTersimpan = db.getSinlgeEntry(userName);
+
+                //Penanganan inputan dari user
+                if(passwordUser.equals(passTersimpan)){
+
+                    //Ketiak berhasil
+                    Toast.makeText(MainActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, AktifitasUser.class);
+
+                    //Kirim data ke activity bersangkutan menggunakan put extra yang nantinya akan di get dengan key yang di berikan
+                    intent.putExtra("USERNAME", userName);
+
+                    startActivity(intent);
+                    finish();
+                    db.close();
+
+                }  else if(satu.getText().toString().equalsIgnoreCase("admin") && dua.getText().toString().equalsIgnoreCase("admin")){
+
+                    Toast.makeText(MainActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, AktifitasAdmin.class);
+                    startActivity(intent);
+                    finish();
+                }
                 else {
-                        Toast.makeText(MainActivity.this, "Kamu Ngapain", Toast.LENGTH_SHORT).show();
-                    }
+
+                    Toast.makeText(MainActivity.this, "Kamu Ngapain", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

@@ -112,6 +112,55 @@ public class OpenHelper extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
+    //Get Pass (BUG)
+    public String getSinlgeEntry(String userName)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor=db.query(TABLE_USER, null, KEY_USER_NAMADEPAN + " = ? ", new String[]{userName}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            return "NOT EXIST";
+        }
+        cursor.moveToFirst();
+        String password= cursor.getString(cursor.getColumnIndex(KEY_USER_PASSWORD));
+        cursor.close();
+        return password ;
+
+    }
+
+    //Get Username (BUG)
+    public String getUserName(String userName)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from  " + TABLE_USER + " where "+KEY_USER_NAMADEPAN + " =? ", new String[]{userName});
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            return "NOT EXIST";
+        }
+        cursor.moveToFirst();
+        String user= cursor.getString(cursor.getColumnIndex(KEY_USER_NAMADEPAN));
+        cursor.close();
+        return user;
+    }
+
+    //Get Nim (BUG)
+    public String getNim(String userName)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from  " + TABLE_USER + " where "+KEY_USER_NAMADEPAN + " =? ", new String[]{userName});
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            return "NOT EXIST";
+        }
+        cursor.moveToFirst();
+        String user= cursor.getString(cursor.getColumnIndex(KEY_USER_NIM));
+        cursor.close();
+        return user;
+    }
+
     // Adding new barang (FIX)
     public void addBarang(Barang barang) {
         SQLiteDatabase db = this.getWritableDatabase();
