@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.example.priad.usdaku.MainActivity;
 import com.example.priad.usdaku.R;
 import com.example.priad.usdaku.databases.OpenHelper;
+import com.example.priad.usdaku.provider.Laporan;
 import com.example.priad.usdaku.provider.Transaksi;
 
 import java.util.ArrayList;
@@ -54,5 +55,7 @@ public class SplashScreen extends Activity {
 
         //Database Helper (Hanya untuk tester)
         OpenHelper db = new OpenHelper(SplashScreen.this);
+        db.addLaporan(new Laporan("Nama Pelapor", "Ini pasan yang terlampir", "tanggal pelaporan"));
+
     }
 }

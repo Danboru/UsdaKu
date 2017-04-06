@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.priad.usdaku.provider.Barang;
+import com.example.priad.usdaku.provider.Laporan;
 import com.example.priad.usdaku.provider.Transaksi;
 import com.example.priad.usdaku.provider.User;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class OpenHelper extends SQLiteOpenHelper {
     private static final String TABLE_USER = "user";
     private static final String TABLE_BARANG = "barang";
     private static final String TABLE_TRANSAKSI = "transaksi";
+    private static final String TABLE_LAPORAN = "laporan";
 
     //Kolom Table user
     private static final String KEY_USER_ID = "id_user";
@@ -49,6 +51,13 @@ public class OpenHelper extends SQLiteOpenHelper {
     private static final String KEY_TRANSAKSI_NAMABARANG = "namabarang_transaksi";
     private static final String KEY_TRANSAKSI_HARGABARANG = "hargabarang_transaksi";
     private static final String KEY_TRANSAKSI_JUMLAHBARANG = "jumlahbarang_transaksi";
+
+    //Kolom Table Laporan
+    private static final String KEY_ID_LAPORAN = "id_pelapor";
+    private static final String KEY_USER_PELAPOR = "user_pelapor";
+    private static final String KEY_PESAN_TERLAMPIR = "pesan_terlampir";
+    private static final String KEY_TANGGAL_PELAPORAN = "tanggal_pelaporan";
+
 
     public OpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -77,9 +86,14 @@ public class OpenHelper extends SQLiteOpenHelper {
                 + KEY_TRANSAKSI_HARGABARANG + " INTEGER, "
                 + KEY_TRANSAKSI_JUMLAHBARANG + " INTEGER" + ")";
 
+        //Table Laporan (FIX)
+        String CREATE_TABLE_LAPORAN = "CREATE TABLE " + TABLE_LAPORAN + "(" + KEY_ID_LAPORAN + " INTEGER PRIMARY KEY," +
+                KEY_USER_PELAPOR + " TEXT, " + KEY_PESAN_TERLAMPIR + " TEXT, " + KEY_TANGGAL_PELAPORAN + " TEXT" + ")";
+
         db.execSQL(CREATE_USER_TABLE);
         db.execSQL(CREATE_BARANG_TABLE);
         db.execSQL(CREATE_TRANSAKSI_TABLE);
+        db.execSQL(CREATE_TABLE_LAPORAN);
     }
 
     // Upgrading database (FIX)
@@ -89,6 +103,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BARANG);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRANSAKSI);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_LAPORAN);
 
         // Create tables again
         onCreate(db);
@@ -187,6 +202,21 @@ public class OpenHelper extends SQLiteOpenHelper {
 
         // Inserting Row
         db.insert(TABLE_TRANSAKSI, null, values);
+        db.close(); // Closing database connection
+    }
+
+    // Adding new LAPORAN (FIX)
+    public void addLaporan(Laporan laporan) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_ID_LAPORAN, laporan.getId_laporan());
+        values.put(KEY_USER_PELAPOR, laporan.getNama_pelapor());
+        values.put(KEY_PESAN_TERLAMPIR, laporan.getPesan_terlampir());
+        values.put(KEY_TANGGAL_PELAPORAN, laporan.getTanggal_pelaporan());
+
+        // Inserting Row
+        db.insert(TABLE_LAPORAN, null, values);
         db.close(); // Closing database connection
     }
 
@@ -321,6 +351,35 @@ public class OpenHelper extends SQLiteOpenHelper {
         return transaksiList;
     }
 
+    // Getting All laporan (FIX)
+    public ArrayList<Laporan> getAllLaporan() {
+
+        ArrayList laporanList = new ArrayList();
+
+        // Select All Query
+        String selectQuery = "SELECT * FROM " + TABLE_LAPORAN;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // Looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Laporan laporan = new Laporan();
+                laporan.setId_laporan(cursor.getInt(cursor.getColumnIndex(KEY_ID_LAPORAN)));
+                laporan.setNama_pelapor(cursor.getString(cursor.getColumnIndex(KEY_USER_PELAPOR)));
+                laporan.setPesan_terlampir(cursor.getString(cursor.getColumnIndex(KEY_PESAN_TERLAMPIR)));
+                laporan.setTanggal_pelaporan(cursor.getString(cursor.getColumnIndex(KEY_TANGGAL_PELAPORAN)));
+
+                // Adding laporan to list
+                laporanList.add(laporan);
+
+            } while (cursor.moveToNext());
+        }
+        // return laporan list
+        return laporanList;
+    }
+
     // Updating Single User (BUG)
     public int updateUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -394,6 +453,14 @@ public class OpenHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    // Deleting single laporan (BUG)
+    public void deleteLaporan(Laporan laporan) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_LAPORAN, KEY_ID_LAPORAN + " = ?",
+                    new String[] { String.valueOf(laporan.getId_laporan()) });
+        db.close();
+    }
+
     // Getting users Count (BUG)
     public int getUserCount() {
         String countQuery = "SELECT * FROM " + TABLE_USER;
@@ -417,6 +484,16 @@ public class OpenHelper extends SQLiteOpenHelper {
     // Getting transaksi Count (FIX)
     public int getTransaksiCount() {
         String countQuery = "SELECT * FROM " + TABLE_TRANSAKSI;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int cnt = cursor.getCount();
+        cursor.close();
+        return cnt;
+    }
+
+    // Getting Laporan Count (FIX)
+    public int getLaporanCount() {
+        String countQuery = "SELECT * FROM " + TABLE_LAPORAN;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
         int cnt = cursor.getCount();
