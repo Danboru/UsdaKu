@@ -35,6 +35,8 @@ public class OpenHelper extends SQLiteOpenHelper {
     private static final String KEY_USER_EMAIL = "email_user";
     private static final String KEY_USER_NIM = "nim_user";
     private static final String KEY_USER_PASSWORD = "password_user";
+    private static final String KEY_POIN_USER = "poin_user";
+    private static final String KEY_STATUS_USER = "status_user";
     private static final String KEY_USER_IMAGE = "image_user";
 
     //Kolom Table Barang
@@ -69,9 +71,10 @@ public class OpenHelper extends SQLiteOpenHelper {
 
         //Table User (FIX)
         String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_USER + "("
-                + KEY_USER_ID + " INTEGER PRIMARY KEY," + KEY_USER_NAMADEPAN + " TEXT,"
-                + KEY_USER_NAMABELAKANG + " TEXT," + KEY_USER_EMAIL + " TEXT, "
-                + KEY_USER_NIM + " INTEGER, "+ KEY_USER_PASSWORD + " TEXT,"  + KEY_USER_IMAGE + " TEXT" + ")";
+                + KEY_USER_ID + " INTEGER PRIMARY KEY, " + KEY_USER_NAMADEPAN + " TEXT, "
+                + KEY_USER_NAMABELAKANG + " TEXT, " + KEY_USER_EMAIL + " TEXT, "
+                + KEY_USER_NIM + " INTEGER, " + KEY_USER_PASSWORD + " TEXT, " + KEY_POIN_USER + " INTEGER, "
+                + KEY_STATUS_USER + " TEXT, " + KEY_USER_IMAGE + " TEXT" + ")";
 
         //Table Barang (FIX)
         String CREATE_BARANG_TABLE = "CREATE TABLE " + TABLE_BARANG + "("
@@ -119,6 +122,8 @@ public class OpenHelper extends SQLiteOpenHelper {
         values.put(KEY_USER_EMAIL, user.getEmail_user());
         values.put(KEY_USER_NIM, user.getNim());
         values.put(KEY_USER_PASSWORD, user.getPassword_user());
+        values.put(KEY_POIN_USER, user.getPoin());
+        values.put(KEY_STATUS_USER, user.getStatus_user());
         values.put(KEY_USER_IMAGE, user.getPassword_user());
 
         // Inserting Row
@@ -227,15 +232,15 @@ public class OpenHelper extends SQLiteOpenHelper {
         //ID - NAMADEPAN - NAMABELAKANG - EMAIL - NIM - PASSWORD - IMAGE
         Cursor cursor = db.query(TABLE_USER, new String[] { KEY_USER_ID,
                         KEY_USER_NAMADEPAN, KEY_USER_NAMABELAKANG,
-                        KEY_USER_EMAIL,KEY_USER_NIM, KEY_USER_PASSWORD,
-                        KEY_USER_IMAGE }, KEY_USER_ID + " = ?",
+                        KEY_USER_EMAIL,KEY_USER_NIM, KEY_USER_PASSWORD, KEY_POIN_USER,
+                        KEY_STATUS_USER, KEY_USER_IMAGE }, KEY_USER_ID + " = ?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
         User user = new User(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2),
-                cursor.getString(3), Integer.parseInt(cursor.getString(4)), Integer.parseInt(cursor.getString(5)),
-                cursor.getString(6), cursor.getString(7));
+                cursor.getString(3), Integer.parseInt(cursor.getString(4)), cursor.getString(5), Integer.parseInt(cursor.getString(6)),
+                cursor.getString(7), cursor.getString(8));
 
         //Return user
         return user;
@@ -281,7 +286,9 @@ public class OpenHelper extends SQLiteOpenHelper {
                 user.setEmail_user(cursor.getString(3));
                 user.setNim(Integer.parseInt(cursor.getString(4)));
                 user.setPassword_user(cursor.getString(5));
-                user.setImage_user(cursor.getString(6));
+                user.setPoin(Integer.parseInt(cursor.getString(6)));
+                user.setStatus_user(cursor.getString(7));
+                user.setImage_user(cursor.getString(8));
 
                 // Adding user to list
                 usersList.add(user);
@@ -385,11 +392,11 @@ public class OpenHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        //ID - NAMADEPAN - NAMABELAKANG - EMAIL - NIM - PASSWORD - IMAGE
         values.put(KEY_USER_NAMADEPAN, user.getNamadepan_user());
         values.put(KEY_USER_NAMABELAKANG, user.getNamabelakang_user());
         values.put(KEY_USER_EMAIL, user.getEmail_user());
         values.put(KEY_USER_NIM, user.getNim());
+        values.put(KEY_POIN_USER, user.getPoin());
         values.put(KEY_USER_PASSWORD, user.getPassword_user());
         values.put(KEY_USER_IMAGE, user.getImage_user());
 

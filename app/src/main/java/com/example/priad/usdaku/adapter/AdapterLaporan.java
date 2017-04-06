@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 public class AdapterLaporan extends ArrayAdapter {
 
+    //Variable penting
     private ArrayList listLaporan;
     private Activity context;
 
@@ -31,6 +32,7 @@ public class AdapterLaporan extends ArrayAdapter {
         this.context = context;
     }
 
+    //Class yang menampung ciew di dalam row layout
     static class ViewHolder{
         TextView nama_pelapor;
         TextView pesan_terlampir;
@@ -55,8 +57,11 @@ public class AdapterLaporan extends ArrayAdapter {
         }
 
             ViewHolder holder = (ViewHolder) view.getTag();
+
+        //Pastikan object laporan berisikan posisi yang di ambil dari get(position)
             Laporan laporan = (Laporan) listLaporan.get(position);
 
+        //Sesuaikan dengan tipda data yang ada di provider
             holder.nama_pelapor.setText(laporan.getNama_pelapor());
             holder.pesan_terlampir.setText(laporan.getPesan_terlampir());
             holder.tanggal_pelaporan.setText(laporan.getTanggal_pelaporan());

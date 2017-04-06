@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+
+        <EditText
+            android:id="@+id/txt_namauser_depan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:hint="Nama Depan"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/txt_namauser_belakang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:hint="Nama Belakang"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/txt_nimUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nim User"
+        android:textSize="20sp"
+        android:layout_marginBottom="5dp"
+        />
+
+    <EditText
+        android:id="@+id/txt_pointuser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Point User"
+        android:textSize="20sp"
+        android:layout_marginBottom="5dp"
+        />
+
+    <EditText
+        android:id="@+id/txt_emailuser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email User"
+        android:textSize="20sp"
+        android:layout_marginBottom="5dp"
+        />
+
+    <EditText
+        android:id="@+id/txt_statususer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Status User"
+        android:textSize="20sp"
+        android:layout_marginBottom="5dp"
+        />
+
+    <EditText
+        android:id="@+id/txt_passuser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password User"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        >
+
+        <Button
+            android:id="@+id/btn_updateuser"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            />
+
+        <Button
+            android:id="@+id/btn_deleteuser"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:layout_toRightOf="@+id/updateBarangButtonInfo"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>

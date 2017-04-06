@@ -8,7 +8,13 @@
         android:title="Edit Pesanan"
         />
     <item
-        android:id="@+id/tentang_pesanan"
-        android:title="Tentang Pesanan"
+        android:id="@+id/di_terima"
+        android:title="Sudah DI Terima"
         />
+
+    <item
+        android:id="@+id/laporkan_barang"
+        android:title="Laporkan Barang"
+        />
+
 </menu>

@@ -11,32 +11,43 @@ public class User {
     private String namabelakang_user;
     private String email_user;
     private int nim;
-    private int poin;
     private String password_user;
+    private int poin;
+    private String status_user;
     private String image_user;
 
     public User() {
     }
 
-    public User(int id_user, String namadepan_user, String namabelakang_user, String email_user, int nim, int poin ,String password_user, String image_user) {
+    public User(int id_user, String namadepan_user, String namabelakang_user, String email_user, int nim, String password_user, int poin, String status_user, String image_user) {
         this.id_user = id_user;
         this.namadepan_user = namadepan_user;
         this.namabelakang_user = namabelakang_user;
         this.email_user = email_user;
         this.nim = nim;
-        this.poin = poin;
         this.password_user = password_user;
+        this.poin = poin;
+        this.status_user = status_user;
         this.image_user = image_user;
     }
 
-    public User(String namadepan_user, String namabelakang_user, String email_user, int nim, int poin, String password_user, String image_user) {
+    public User(String namadepan_user, String namabelakang_user, String email_user, int nim, String password_user, int poin, String status_user, String image_user) {
         this.namadepan_user = namadepan_user;
         this.namabelakang_user = namabelakang_user;
         this.email_user = email_user;
         this.nim = nim;
-        this.poin = poin;
         this.password_user = password_user;
+        this.poin = poin;
+        this.status_user = status_user;
         this.image_user = image_user;
+    }
+
+    public String getStatus_user() {
+        return status_user;
+    }
+
+    public void setStatus_user(String status_user) {
+        this.status_user = status_user;
     }
 
     public int getId_user() {

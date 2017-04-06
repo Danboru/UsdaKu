@@ -91,8 +91,10 @@ public class tab2_user extends Fragment {
         super.onCreateContextMenu(menu, v, menuInfo);
 
         //Menambahkan option ke kontext menu
-        menu.add(Menu.NONE, R.id.update_barang, Menu.NONE, "Update");
-        menu.add(Menu.NONE, R.id.delete_barang, Menu.NONE, "Delete");
+        menu.add(Menu.NONE, R.id.update_barang, Menu.NONE, "Update Pesanan");
+        menu.add(Menu.NONE, R.id.delete_barang, Menu.NONE, "Delete Pesanan");
+        menu.add(Menu.NONE, R.id.di_terima, Menu.NONE, "Pesanan Sudah Diterima");
+        menu.add(Menu.NONE, R.id.laporkan_barang, Menu.NONE, "Laporkan Kesalahan");
     }
 
     @Override
@@ -114,6 +116,18 @@ public class tab2_user extends Fragment {
             case R.id.delete_barang: //BUG
 
                 Toast.makeText(getContext(), "Sudah Di Hapus", Toast.LENGTH_SHORT).show();
+                db.deleteTransaksi(new Transaksi(index, null, 0,0));
+                return true;
+
+            case R.id.di_terima: //BUG
+
+                Toast.makeText(getContext(), "Sudah Di Terima", Toast.LENGTH_SHORT).show();
+                db.deleteTransaksi(new Transaksi(index, null, 0,0));
+                return true;
+
+            case R.id.laporkan_barang: //BUG
+
+                Toast.makeText(getContext(), "Sudah Di Laporkan", Toast.LENGTH_SHORT).show();
                 db.deleteTransaksi(new Transaksi(index, null, 0,0));
                 return true;
         }
@@ -176,6 +190,7 @@ public class tab2_user extends Fragment {
 
                     OpenHelper db = new OpenHelper(getContext());
                     db.updateTransaksi(new Transaksi(posisi, jumlahPembelian));
+                    db.close();
                 }
             });
 

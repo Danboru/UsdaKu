@@ -46,12 +46,13 @@ public class tab3_admin extends Fragment {
         jumlahUser = db.getUserCount();
         jumlahBarang = db.getBarangCount();
         jumlahTransaksi = db.getTransaksiCount();
+        jumlahKomplain = db.getLaporanCount();
 
         //Setext ke view yang bersangkutan
         txt_jumlahUser.setText(String.valueOf(jumlahUser));
         txt_jumlahBarang.setText(String.valueOf(jumlahBarang));
         txt_jumlahTransaksi.setText(String.valueOf(jumlahTransaksi));
-        txt_jumlahKomplain.setText("8");
+        txt_jumlahKomplain.setText(String.valueOf(jumlahKomplain));
 
         return view;
     }

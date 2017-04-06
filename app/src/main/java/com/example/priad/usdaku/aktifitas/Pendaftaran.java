@@ -15,49 +15,53 @@ import com.example.priad.usdaku.provider.User;
 
 public class Pendaftaran extends AppCompatActivity {
 
-    Button daftarUser;
+    Button daftarUserBaru;
     EditText namaDepan, namaBelakag, emailUser, nimUser, passUser;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pendaftaran);
-        
-        daftarUser = (Button) findViewById(R.id.kirimPendaftaran);
+
+        daftarUserBaru = (Button) findViewById(R.id.kirimPendaftaran);
         namaDepan = (EditText) findViewById(R.id.edt_namadepan);
         namaBelakag = (EditText) findViewById(R.id.edt_namabelakang);
         emailUser = (EditText) findViewById(R.id.edt_email);
         nimUser = (EditText) findViewById(R.id.edt_nim);
         passUser = (EditText) findViewById(R.id.edt_password);
 
-        daftarUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        try {
+            daftarUserBaru.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                //Data inputan user
-                String namaDepannya = namaDepan.getText().toString();
-                String namaBelakangnya = namaBelakag.getText().toString();
-                String emailNya = emailUser.getText().toString();
-                Integer nimNya = Integer.parseInt(nimUser.getText().toString());
-                String passNya = passUser.getText().toString();
+                    //Data inputan user
+                    String namaDepannya = namaDepan.getText().toString();
+                    String namaBelakangnya = namaBelakag.getText().toString();
+                    String emailNya = emailUser.getText().toString();
+                    Integer nimNya = Integer.parseInt(nimUser.getText().toString());
+                    String passNya = passUser.getText().toString();
 
-                if(TextUtils.isEmpty(namaDepannya) || TextUtils.isEmpty(namaBelakangnya) || TextUtils.isEmpty(emailNya)
-                        || TextUtils.isEmpty(String.valueOf(nimNya)) || TextUtils.isEmpty(passNya)){
+                    if(TextUtils.isEmpty(namaDepannya) || TextUtils.isEmpty(namaBelakangnya) || TextUtils.isEmpty(emailNya)
+                            || TextUtils.isEmpty(String.valueOf(nimNya)) || TextUtils.isEmpty(passNya)){
 
-                    //Show messages when some field is empty
-                    Toast.makeText(Pendaftaran.this, "Isi Semua Field", Toast.LENGTH_SHORT).show();
-                }else {
+                        //Show messages when some field is empty
+                        Toast.makeText(Pendaftaran.this, "Isi Semua Field", Toast.LENGTH_SHORT).show();
+                    }else {
 
-                    //Database Class
-                    OpenHelper db = new OpenHelper(Pendaftaran.this);
-                    //Notifikasi untuk pengisian data berhasil
-                    Toast.makeText(Pendaftaran.this, "Registered", Toast.LENGTH_SHORT).show();
-                    db.addUser(new User( namaDepannya, namaBelakangnya, emailNya, nimNya, 0, passNya, null));
-                    //Reset Data field All view
-                    resetView();
+                        //Database Class
+                        OpenHelper db = new OpenHelper(Pendaftaran.this);
+                        //Notifikasi untuk pengisian data berhasil
+                        Toast.makeText(Pendaftaran.this, "Registered", Toast.LENGTH_SHORT).show();
+                        db.addUser(new User( namaDepannya, namaBelakangnya, emailNya, nimNya, passNya, 0, "Mahasiswa" , null));
+                        //Reset Data field All view
+                        resetView();
+                    }
                 }
-            }
-        });
+            });
+        }catch (Exception e){
+            Toast.makeText(this, "Kesalahan Di bagian Simpan Data Pendaftaran", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void resetView(){

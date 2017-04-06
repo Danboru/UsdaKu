@@ -38,6 +38,7 @@ public class tab4_admin extends Fragment {
         View view = inflater.inflate(R.layout.tab4_admin, container, false);
         OpenHelper db = new OpenHelper(getContext());
 
+
         //Cara sederhana menampilkan data
 //        ArrayList listKu = new ArrayList();
 //        listKu.add(new Riwayat("Usda Makanan Ringan",  1000 ));
