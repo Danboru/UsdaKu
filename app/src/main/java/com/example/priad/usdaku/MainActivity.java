@@ -20,7 +20,7 @@ import com.example.priad.usdaku.databases.OpenHelper;
 public class MainActivity extends Activity {
 
     //View yang di butuhkan di activity ini
-    Button button;
+    Button tombolLogin;
     EditText inputUsername, inputPass;
     TextView pendaftaran;
 
@@ -30,24 +30,28 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Set screen agar tidak memiliki toobar dan title
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //Set aplikasi ke dalam keadaan fullscreen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
         final OpenHelper db =new OpenHelper(this);
         inisialisiView();
 
-        button.setOnClickListener(new View.OnClickListener() {
+        //Set Listener untuk tombol login
+        tombolLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 //Inisial variable
                 String userName = inputUsername.getText().toString();
                 String passwordUser = inputPass.getText().toString();
-                String passTersimpan = db.getSinlgeEntry(userName);
+                String passTersimpan = db.getSingleEntry(userName);
 
                 if (TextUtils.isEmpty(inputUsername.getText()) || TextUtils.isEmpty(inputPass.getText())){
-                    Toast.makeText(MainActivity.this, "Isi semua Field", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Isi Semua Field", Toast.LENGTH_SHORT).show();
                 } else {
                     //Penanganan inputan dari user
                     if(passwordUser.equalsIgnoreCase(passTersimpan)){
@@ -97,7 +101,7 @@ public class MainActivity extends Activity {
      *
      **/
     public void inisialisiView(){
-        button = (Button) findViewById(R.id.btn_masukAplikasi);
+        tombolLogin = (Button) findViewById(R.id.btn_masukAplikasi);
         inputUsername = (EditText) findViewById(R.id.edt_inputUsername);
         inputPass = (EditText) findViewById(R.id.edt_inputPassword);
         pendaftaran = (TextView) findViewById(R.id.pendaftaran);

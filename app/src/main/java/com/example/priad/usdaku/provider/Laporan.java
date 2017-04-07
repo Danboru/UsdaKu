@@ -11,11 +11,7 @@ public class Laporan {
     private String pesan_terlampir;
     private String tanggal_pelaporan;
 
-    public Laporan(int id_laporan, String nama_pelapor, String pesan_terlampir, String tanggal_pelaporan) {
-        this.id_laporan = id_laporan;
-        this.nama_pelapor = nama_pelapor;
-        this.pesan_terlampir = pesan_terlampir;
-        this.tanggal_pelaporan = tanggal_pelaporan;
+    public Laporan() {
     }
 
     public Laporan(String nama_pelapor, String pesan_terlampir, String tanggal_pelaporan) {
@@ -24,7 +20,11 @@ public class Laporan {
         this.tanggal_pelaporan = tanggal_pelaporan;
     }
 
-    public Laporan() {
+    public Laporan(int id_laporan, String nama_pelapor, String pesan_terlampir, String tanggal_pelaporan) {
+        this.id_laporan = id_laporan;
+        this.nama_pelapor = nama_pelapor;
+        this.pesan_terlampir = pesan_terlampir;
+        this.tanggal_pelaporan = tanggal_pelaporan;
     }
 
     public int getId_laporan() {

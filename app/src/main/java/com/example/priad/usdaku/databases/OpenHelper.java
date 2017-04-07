@@ -91,7 +91,7 @@ public class OpenHelper extends SQLiteOpenHelper {
 
         //Table Laporan (FIX)
         String CREATE_TABLE_LAPORAN = "CREATE TABLE " + TABLE_LAPORAN + "(" + KEY_ID_LAPORAN + " INTEGER PRIMARY KEY," +
-                KEY_USER_PELAPOR + " TEXT, " + KEY_PESAN_TERLAMPIR + " TEXT, " + KEY_TANGGAL_PELAPORAN + " TEXT" + ")";
+                KEY_USER_PELAPOR + " TEXT, " + KEY_PESAN_TERLAMPIR + " TEXT, " + KEY_TANGGAL_PELAPORAN + " TEXT " + ")";
 
         db.execSQL(CREATE_USER_TABLE);
         db.execSQL(CREATE_BARANG_TABLE);
@@ -112,7 +112,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // Adding new user (FIX)
+    //Adding New User (FIX)
     public void addUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -132,7 +132,7 @@ public class OpenHelper extends SQLiteOpenHelper {
     }
 
     //Get Pass (FIX)
-    public String getSinlgeEntry(String userName)
+    public String getSingleEntry(String userName)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor=db.query(TABLE_USER, null, KEY_USER_NAMADEPAN + " = ? ", new String[]{userName}, null, null, null);

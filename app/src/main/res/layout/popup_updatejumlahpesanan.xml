@@ -11,7 +11,7 @@
     tools:layout_editor_absoluteX="8dp">
 
     <TextView
-        android:id="@+id/namaBarangPopup_pesanan"
+        android:id="@+id/txt_namapesanan_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
@@ -21,7 +21,7 @@
         />
 
     <TextView
-        android:id="@+id/txt_jumlahPembelian_pesanan"
+        android:id="@+id/txt_jumlahpesanan_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="0"
@@ -32,7 +32,7 @@
         />
 
     <SeekBar
-        android:id="@+id/seekbar_jumlahpembelian_pesanan"
+        android:id="@+id/seekbar_jumlahpembeleian_update"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,14 +47,14 @@
         >
 
         <Button
-            android:id="@+id/button_cancel_pesanan"
+            android:id="@+id/btn_cancel_update"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="BATAL"/>
 
         <Button
-            android:id="@+id/button_save_pesanan"
+            android:id="@+id/btn_save_update"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

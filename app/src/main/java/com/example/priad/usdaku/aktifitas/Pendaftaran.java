@@ -13,11 +13,19 @@ import com.example.priad.usdaku.databases.OpenHelper;
 import com.example.priad.usdaku.provider.Barang;
 import com.example.priad.usdaku.provider.User;
 
+/**
+ *
+ * Class yang menghandle aktifitas pendaftaran di aplikasi ini
+ * menerima inputan dan memprosesnya, dan hasil proses akan di simpan ke dalam database
+ * dengan bantuan openHelper SQLite
+ *
+ * */
 public class Pendaftaran extends AppCompatActivity {
 
     Button daftarUserBaru;
     EditText namaDepan, namaBelakag, emailUser, nimUser, passUser;
-    
+
+    //Fungsi onCreate, fungsi yang di jalankan setelah konstruktor
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +51,7 @@ public class Pendaftaran extends AppCompatActivity {
                     Integer nimNya = Integer.parseInt(nimUser.getText().toString());
                     String passNya = passUser.getText().toString();
 
+                    //Validasi input kosong
                     if(TextUtils.isEmpty(namaDepannya) || TextUtils.isEmpty(namaBelakangnya) || TextUtils.isEmpty(emailNya)
                             || TextUtils.isEmpty(String.valueOf(nimNya)) || TextUtils.isEmpty(passNya)){
 
@@ -60,7 +69,7 @@ public class Pendaftaran extends AppCompatActivity {
                     }
                 }
             });
-        }catch (Exception e){
+        } catch (Exception e){
             Toast.makeText(this, "Kesalahan Di bagian Simpan Data Pendaftaran", Toast.LENGTH_SHORT).show();
         }
     }

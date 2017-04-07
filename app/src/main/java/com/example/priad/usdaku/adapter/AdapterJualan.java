@@ -11,8 +11,15 @@ import com.example.priad.usdaku.R;
 import java.util.ArrayList;
 
 /**
- * Created by priad on 2/6/2017.
- */
+ *
+ * Adapter di gunakan untuk mengadaptasikan data yang berbeda - beda
+ * agar bisa kompatible dengan beberapa view
+ * untuk kasus ini dapter di gunakan untuk mengadaptasikan data agar bisa di tampilkan di textview
+ * yang bersangkutan
+ *
+ * @author DanangPriabada
+ *
+ * */
 public class AdapterJualan extends RecyclerView.Adapter<AdapterJualan.ViewHolder> {
 
     private ArrayList<String> rvData;

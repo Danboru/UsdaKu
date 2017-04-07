@@ -13,6 +13,16 @@ import com.example.priad.usdaku.provider.Transaksi;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * Adapter di gunakan untuk mengadaptasikan data yang berbeda - beda
+ * agar bisa kompatible dengan beberapa view
+ * untuk kasus ini dapter di gunakan untuk mengadaptasikan data agar bisa di tampilkan di textview
+ * yang bersangkutan
+ *
+ * @author DanangPriabada
+ *
+ * */
 public class AdapterTransaksi extends ArrayAdapter {
 
     //Variable yagn di gunakan untuk menampung dta dari database

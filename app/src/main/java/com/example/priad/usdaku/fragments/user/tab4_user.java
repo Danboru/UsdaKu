@@ -28,7 +28,6 @@ import java.util.ArrayList;
 
 public class tab4_user extends Fragment {
 
-    private RecyclerView.LayoutManager layoutManager;
     private ArrayList<String> dataSet;
     ListView listView;
 

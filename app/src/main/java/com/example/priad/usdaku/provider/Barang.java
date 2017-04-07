@@ -17,14 +17,11 @@ public class Barang {
     public Barang() {
     }
 
-    public Barang(int id_barang, String nama_barang, int harga_barang, String keterangan_barang, int jumlah_barang, String status_barang, String url_gambarbarang) {
+    public Barang(int id_barang, String nama_barang, int harga_barang, String keterangan_barang) {
         this.id_barang = id_barang;
         this.nama_barang = nama_barang;
         this.harga_barang = harga_barang;
         this.keterangan_barang = keterangan_barang;
-        this.jumlah_barang = jumlah_barang;
-        this.status_barang = status_barang;
-        this.url_gambarbarang = url_gambarbarang;
     }
 
     public Barang(String nama_barang, int harga_barang, String keterangan_barang, int jumlah_barang, String status_barang, String url_gambarbarang) {
@@ -36,11 +33,14 @@ public class Barang {
         this.url_gambarbarang = url_gambarbarang;
     }
 
-    public Barang(int id_barang, String nama_barang, int harga_barang, String keterangan_barang) {
+    public Barang(int id_barang, String nama_barang, int harga_barang, String keterangan_barang, int jumlah_barang, String status_barang, String url_gambarbarang) {
         this.id_barang = id_barang;
         this.nama_barang = nama_barang;
         this.harga_barang = harga_barang;
         this.keterangan_barang = keterangan_barang;
+        this.jumlah_barang = jumlah_barang;
+        this.status_barang = status_barang;
+        this.url_gambarbarang = url_gambarbarang;
     }
 
     public int getId_barang() {

@@ -19,8 +19,7 @@ public class User {
     public User() {
     }
 
-    public User(int id_user, String namadepan_user, String namabelakang_user, String email_user, int nim, String password_user, int poin, String status_user, String image_user) {
-        this.id_user = id_user;
+    public User(String namadepan_user, String namabelakang_user, String email_user, int nim, String password_user, int poin, String status_user, String image_user) {
         this.namadepan_user = namadepan_user;
         this.namabelakang_user = namabelakang_user;
         this.email_user = email_user;
@@ -31,7 +30,8 @@ public class User {
         this.image_user = image_user;
     }
 
-    public User(String namadepan_user, String namabelakang_user, String email_user, int nim, String password_user, int poin, String status_user, String image_user) {
+    public User(int id_user, String namadepan_user, String namabelakang_user, String email_user, int nim, String password_user, int poin, String status_user, String image_user) {
+        this.id_user = id_user;
         this.namadepan_user = namadepan_user;
         this.namabelakang_user = namabelakang_user;
         this.email_user = email_user;

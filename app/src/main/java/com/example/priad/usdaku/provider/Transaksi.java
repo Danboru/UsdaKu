@@ -14,10 +14,8 @@ public class Transaksi {
     public Transaksi() {
     }
 
-    public Transaksi(int id_transaksi, String namabarang_transaksi, int hargabarang_transaksi, int jumlahbarang_transaksi) {
+    public Transaksi(int id_transaksi, int jumlahbarang_transaksi) {
         this.id_transaksi = id_transaksi;
-        this.namabarang_transaksi = namabarang_transaksi;
-        this.hargabarang_transaksi = hargabarang_transaksi;
         this.jumlahbarang_transaksi = jumlahbarang_transaksi;
     }
 
@@ -27,8 +25,10 @@ public class Transaksi {
         this.jumlahbarang_transaksi = jumlahbarang_transaksi;
     }
 
-    public Transaksi(int id_transaksi, int jumlahbarang_transaksi) {
+    public Transaksi(int id_transaksi, String namabarang_transaksi, int hargabarang_transaksi, int jumlahbarang_transaksi) {
         this.id_transaksi = id_transaksi;
+        this.namabarang_transaksi = namabarang_transaksi;
+        this.hargabarang_transaksi = hargabarang_transaksi;
         this.jumlahbarang_transaksi = jumlahbarang_transaksi;
     }
 

@@ -25,6 +25,16 @@ import com.example.priad.usdaku.fragments.user.tab3_user;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ *
+ * Kelas yang mengatur aktifitas user, kelas ini menjadi file yang memberikan privilage apa saja yang bisa di lakukan oleh
+ * user di dalam proses bisnis di aplikasi ini
+ * pengeturan koneksi antar satu fragment dengan fragment lainnya
+ *
+ * @author DanangPriabada
+ *
+ * */
 public class AktifitasUser extends AppCompatActivity {
 
     //Varible yang di gunakan untuk style tab
@@ -49,6 +59,7 @@ public class AktifitasUser extends AppCompatActivity {
 //        });
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //Title aplikasi di set secara manual
         ((TextView) findViewById(R.id.main_toolbar_title)).setText("Usdaku");
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);

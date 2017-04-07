@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/hapus_pesanan"
+        android:id="@+id/delete_transaksi"
         android:title="Hapus Peanan"/>
     <item
-        android:id="@+id/edit_pesanan"
+        android:id="@+id/update_transaksi"
         android:title="Edit Pesanan"
         />
     <item
@@ -13,7 +13,7 @@
         />
 
     <item
-        android:id="@+id/laporkan_barang"
+        android:id="@+id/laporkan_transaksi"
         android:title="Laporkan Barang"
         />
 

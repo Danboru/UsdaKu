@@ -1,8 +1,15 @@
 package com.example.priad.usdaku.adapter;
 
 /**
- * Created by priad on 2/5/2017.
- */
+ *
+ * Adapter di gunakan untuk mengadaptasikan data yang berbeda - beda
+ * agar bisa kompatible dengan beberapa view
+ * untuk kasus ini dapter di gunakan untuk mengadaptasikan data agar bisa di tampilkan di textview
+ * yang bersangkutan
+ *
+ * @author DanangPriabada
+ *
+ * */
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;

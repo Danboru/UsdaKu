@@ -31,6 +31,15 @@ import com.example.priad.usdaku.fragments.user.tab4_user;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * Kelas yang mengatur aktifitas admin, kelas ini menjadi file yang memberikan privilage apa saja yang bisa di lakukan oleh
+ * admin di dalam proses bisnis di aplikasi ini
+ * pengeturan koneksi antar satu fragment dengan fragment lainnya
+ *
+ * @author DanangPriabada
+ *
+ * */
 public class AktifitasAdmin extends AppCompatActivity {
 
     private Toolbar toolbar;

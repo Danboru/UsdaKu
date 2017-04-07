@@ -20,6 +20,8 @@ import java.util.ArrayList;
  * untuk kasus ini dapter di gunakan untuk mengadaptasikan data agar bisa di tampilkan di textview
  * yang bersangkutan
  *
+ * @author DanangPriabada
+ *
  * */
 public class AdapterBarang extends ArrayAdapter {
 
