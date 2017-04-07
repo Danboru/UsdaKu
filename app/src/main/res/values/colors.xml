@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ea5050</color>
+
+    <color name="colorPrimary">#8646a6</color>
     <color name="colorPrimaryDark">#c81c1c</color>
+
+
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="windowBackground">#FFFFFF</color>
     <color name="navigationBarColor">#000000</color>
@@ -10,9 +13,14 @@
 
     <color name="colorBg">#ea5050</color>
     <color name="colorWhite">#FFF</color>
-    <color name="colorGrey">#D1D1D1</color>
+    <color name="colorGrey">#ede9e9</color>
 
     <color name="atas">#0be23a</color>
     <color name="bawah">#e70606</color>
+
+    <color name="warna_shadhow">#C74545</color>
+
+    <color name="insta_satu">#d00e58</color>
+    <color name="insta_dua">#8646a6</color>
 
 </resources>
