@@ -1,5 +1,6 @@
 package com.example.priad.usdaku;
 
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,8 @@ public class MainActivity extends Activity {
     Button tombolLogin;
     EditText inputUsername, inputPass;
     TextView pendaftaran;
+
+    LinearLayout awal, akhir;
 
     /**
      * Kelas onCreate, Kelas yang di jalankan setelah konstruktor
@@ -93,6 +97,30 @@ public class MainActivity extends Activity {
                 }
             }
         });
+
+        //Anmimasi background
+
+        awal = (LinearLayout) findViewById(R.id.awal);
+        akhir  = (LinearLayout) findViewById(R.id.akhir);
+
+        ValueAnimator animasi = ValueAnimator.ofFloat(0f, 1f);
+
+        animasi.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+
+                akhir.setAlpha((Float) animation.getAnimatedValue());
+
+            }
+        });
+
+        //Semakin besar maka semakin lama pergantian warnanya
+        animasi.setDuration(10000);
+        animasi.setRepeatMode(ValueAnimator.REVERSE);
+        animasi.setRepeatCount(-1);
+        animasi.start();
+
+
     }
 
     /***
