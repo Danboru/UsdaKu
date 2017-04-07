@@ -19,6 +19,11 @@ public class User {
     public User() {
     }
 
+    public User(int id_user, int poin) {
+        this.id_user = id_user;
+        this.poin = poin;
+    }
+
     public User(String namadepan_user, String namabelakang_user, String email_user, int nim, String password_user, int poin, String status_user, String image_user) {
         this.namadepan_user = namadepan_user;
         this.namabelakang_user = namabelakang_user;

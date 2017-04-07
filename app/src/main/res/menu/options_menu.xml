@@ -5,4 +5,8 @@
         android:title="Keluar"
         />
 
+    <item android:id="@+id/tentangaplikasi"
+        android:title="Tentang Aplikasi"
+        />
+
 </menu>

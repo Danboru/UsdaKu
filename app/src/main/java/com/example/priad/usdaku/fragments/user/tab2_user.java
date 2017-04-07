@@ -26,13 +26,14 @@ import com.example.priad.usdaku.R;
 import com.example.priad.usdaku.adapter.AdapterTransaksi;
 import com.example.priad.usdaku.databases.OpenHelper;
 import com.example.priad.usdaku.provider.Transaksi;
+import com.example.priad.usdaku.provider.User;
 
 import java.util.ArrayList;
 
 public class tab2_user extends Fragment {
 
     //Varibale yang di gunakan untuk menampung data yang ada di dalam database
-    private ArrayList list = new ArrayList();
+    private ArrayList list, listUser = new ArrayList();
     private int jumlahPembelianUpdate; //Jumlah pembelian transaksi
 
     //Konstruktor
@@ -50,6 +51,9 @@ public class tab2_user extends Fragment {
 
         //Memasukkan data kedalam list
         list = db.getAllTransaksi();
+
+        //masih bug di sini
+        listUser = db.getAllUser();
         ListAdapter adapter = new AdapterTransaksi(getActivity(), list);
 
         //Menggunakan findViewBYId di Fragment
@@ -100,30 +104,43 @@ public class tab2_user extends Fragment {
         //Mengambil posisi data list yang di gunakan oleh contextmenu
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         int index = info.position;
+        final Transaksi transaksi = (Transaksi) list.get(index);
+
+        //masih bug di sini
+        final User user = (User) listUser.get(index);
+
+        int dapatPoint = transaksi.getHargabarang_transaksi() * 10/100;
+        int pointSaatIni = user.getPoin();
+        int pointUpdate = pointSaatIni + dapatPoint;
 
         switch (item.getItemId()) {
             case R.id.update_transaksi:
-
                 //Memnggil fungsi popup
                 shoUpdateJumlahPesanan(index);
-
                 return true;
-            case R.id.delete_transaksi: //FIX (Tapi masih ada sedikit BUG)
 
+            case R.id.delete_transaksi: //FIX (Tapi masih ada sedikit BUG)
                 Toast.makeText(getContext(), "Sudah Di Hapus", Toast.LENGTH_SHORT).show();
                 db.deleteTransaksi(new Transaksi(index, null, 0,0));
                 return true;
 
             case R.id.di_terima: //BUG
-
                 Toast.makeText(getContext(), "Sudah Di Terima", Toast.LENGTH_SHORT).show();
-                db.deleteTransaksi(new Transaksi(index, null, 0,0));
+
+                //masih bug di sini
+//                try {
+//                    db.deleteTransaksi(new Transaksi(index, null, 0,0));
+//                    db.updateUser(new User(user.getId_user(), pointUpdate ));
+//                }catch (Exception e){
+//
+//                    Toast.makeText(getContext(), "Kesalahan saat input point", Toast.LENGTH_SHORT).show();
+//                }
+                
+                db.close();
                 return true;
 
             case R.id.laporkan_transaksi: //BUG
-
-                Toast.makeText(getContext(), "Sudah Di Laporkan", Toast.LENGTH_SHORT).show();
-                db.deleteTransaksi(new Transaksi(index, null, 0,0));
+                shoPelaporanBarang(index);
                 return true;
         }
         return super.onContextItemSelected(item);
@@ -136,10 +153,7 @@ public class tab2_user extends Fragment {
             //Mengeset judul dialog
             dialog.setTitle("Update Pembelian");
 
-
-            final Transaksi transaksi = (Transaksi) list.get(posisi);
-
-            //Mengeset layout
+            //Menset layout
             dialog.setContentView(R.layout.popup_updatejumlahpesanan);
 
             //Membuat agar dialog tidak hilang saat di click di area luar dialog
@@ -156,6 +170,8 @@ public class tab2_user extends Fragment {
             SeekBar seekBar = (SeekBar) dialog.findViewById(R.id.seekbar_jumlahpembeleian_update);
             final TextView jumlahBeliUpdate = (TextView) dialog.findViewById(R.id.txt_jumlahpesanan_update);
             TextView namabarangPembelian = (TextView) dialog.findViewById(R.id.txt_namapesanan_update);
+
+            final Transaksi transaksi = (Transaksi) list.get(posisi);
 
             //Set nama barang yang ada di popup
             namabarangPembelian.setText(transaksi.getNamabarang_transaksi());
@@ -201,4 +217,32 @@ public class tab2_user extends Fragment {
             //Menampilkan custom dialog
             dialog.show();
         }
+
+    //Memunculkan dialog saat melaporkan transaksi
+    private void shoPelaporanBarang(final int posisi) {
+
+        final Dialog dialog = new Dialog(getContext());
+        //Mengeset judul dialog
+        dialog.setTitle("Pelaporan Barang");
+
+
+        final Transaksi transaksi = (Transaksi) list.get(posisi);
+
+        //Mengeset layout
+        dialog.setContentView(R.layout.popup_pelaporan_barang);
+
+        //Membuat agar dialog tidak hilang saat di click di area luar dialog
+        dialog.setCanceledOnTouchOutside(false);
+
+        //Membuat dialog agar berukuran responsive
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int width = metrics.widthPixels;
+        dialog.getWindow().setLayout((6 * width) / 7, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        //Inisialisasi View
+        //Button cancelButton = (Button) dialog.findViewById(R.id.btn_cancel_update);
+
+        //Menampilkan custom dialog
+        dialog.show();
+    }
 }

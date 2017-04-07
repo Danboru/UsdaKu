@@ -1,6 +1,7 @@
 package com.example.priad.usdaku.aktifitas;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -10,11 +11,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.priad.usdaku.MainActivity;
@@ -119,14 +122,33 @@ public class AktifitasAdmin extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.logout:
-
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
-
                 return true;
-
+            case R.id.tentangaplikasi :
+                //Memanggil popup
+                showTentangAplikasi();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void showTentangAplikasi(){
+        final Dialog dialog = new Dialog(AktifitasAdmin.this);
+        //Mengeset judul dialog
+        dialog.setTitle("Tentang Aplikasi");
+        //Mengeset layout
+        dialog.setContentView(R.layout.popup_tentang_aplikasi);
+        //Membuat agar dialog tidak hilang saat di click di area luar dialog
+        dialog.setCanceledOnTouchOutside(false);
+        //Membuat dialog agar berukuran responsive
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int width = metrics.widthPixels;
+        dialog.getWindow().setLayout((6 * width) / 7, LinearLayout.LayoutParams.WRAP_CONTENT);
+        //Inisialisasi View
+        //Button cancelButton = (Button) dialog.findViewById(R.id.button_cancel);
+        //Menampilkan custom dialog
+        dialog.show();
     }
 }

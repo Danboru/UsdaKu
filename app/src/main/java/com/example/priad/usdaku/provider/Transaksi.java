@@ -14,6 +14,8 @@ public class Transaksi {
     public Transaksi() {
     }
 
+
+
     public Transaksi(int id_transaksi, int jumlahbarang_transaksi) {
         this.id_transaksi = id_transaksi;
         this.jumlahbarang_transaksi = jumlahbarang_transaksi;

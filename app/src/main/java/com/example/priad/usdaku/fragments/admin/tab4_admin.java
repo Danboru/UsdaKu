@@ -16,8 +16,10 @@ import com.example.priad.usdaku.R;
 import com.example.priad.usdaku.adapter.AdapterLaporan;
 import com.example.priad.usdaku.databases.OpenHelper;
 import com.example.priad.usdaku.provider.Laporan;
+import com.example.priad.usdaku.utils.GetTimeNow;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class tab4_admin extends Fragment {
 
@@ -49,6 +51,23 @@ public class tab4_admin extends Fragment {
 //        ListAdapter adapter = new AdapterRiwayat(getActivity(), listKu);
 //        ListView listView = (ListView) view.findViewById(R.id.lv_riwayatPembelian);
 //        listView.setAdapter(adapter);
+
+        String tanggal, hari, bulan, tahun, hariIni, curentDate;
+        GetTimeNow dataTime = new GetTimeNow();
+
+        tanggal = dataTime.getTanggal();
+        hari = dataTime.getHari();
+        bulan = dataTime.getBulan();
+        tahun = dataTime.getTahun();
+
+        curentDate = dataTime.getCurrentDate();
+
+        //Data hari ini
+        hariIni =  hari + " - " + tanggal + " - " + bulan + " - " + tahun;
+
+        db.addLaporan(new Laporan("Danang", "Admin Tolong Benahi Bug Yang di aplikasi ini", hariIni));
+        db.addLaporan(new Laporan("Iqbal", "Admin Tolong Benahi Bug Yang di aplikasi ini", hariIni));
+        db.addLaporan(new Laporan("Eka", "Admin Tolong Benahi Bug Yang di aplikasi ini", hariIni));
 
         //menyimpan data ke dalam list
         list = db.getAllLaporan();

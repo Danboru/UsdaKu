@@ -55,7 +55,6 @@
         <activity
             android:name=".aktifitas.Pendaftaran"
             android:screenOrientation="portrait" />
-        <activity android:name=".aktifitas.TentangAplikasi"></activity>
     </application>
 
 </manifest>

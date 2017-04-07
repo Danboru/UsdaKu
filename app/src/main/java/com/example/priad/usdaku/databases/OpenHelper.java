@@ -248,7 +248,6 @@ public class OpenHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_ID_LAPORAN, laporan.getId_laporan());
         values.put(KEY_USER_PELAPOR, laporan.getNama_pelapor());
         values.put(KEY_PESAN_TERLAMPIR, laporan.getPesan_terlampir());
         values.put(KEY_TANGGAL_PELAPORAN, laporan.getTanggal_pelaporan());
