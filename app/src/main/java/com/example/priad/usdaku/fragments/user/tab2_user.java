@@ -104,6 +104,9 @@ public class tab2_user extends Fragment {
         //Mengambil posisi data list yang di gunakan oleh contextmenu
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         int index = info.position;
+
+        //Cast id yang ada di model, id transaksi
+        int id = ((Transaksi)list.get(index)).getId_transaksi();
         final Transaksi transaksi = (Transaksi) list.get(index);
 
         //masih bug di sini
@@ -121,7 +124,7 @@ public class tab2_user extends Fragment {
 
             case R.id.delete_transaksi: //FIX (Tapi masih ada sedikit BUG)
                 Toast.makeText(getContext(), "Sudah Di Hapus", Toast.LENGTH_SHORT).show();
-                db.deleteTransaksi(new Transaksi(index, null, 0,0));
+                db.deleteTransaksi(new Transaksi(id, null, 0,0));
                 return true;
 
             case R.id.di_terima: //BUG
