@@ -72,7 +72,7 @@ public class AdapterUser extends ArrayAdapter {
         String namaLengkap = String.valueOf(user.getNamadepan_user() + " " + user.getNamabelakang_user());
 
         //Perhatikan bener-bener tipe data yan gada di dalam data provider
-        holder.foto_profile.setImageResource(R.mipmap.ic_launcher);
+        holder.foto_profile.setImageResource(R.drawable.user);
         holder.nama_user.setText(namaLengkap);
         holder.email_user.setText(String.valueOf(user.getEmail_user()));
         holder.nim_user.setText(String.valueOf(user.getNim()));

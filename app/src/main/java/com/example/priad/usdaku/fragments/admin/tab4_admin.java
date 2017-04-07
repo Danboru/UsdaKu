@@ -65,9 +65,9 @@ public class tab4_admin extends Fragment {
         //Data hari ini
         hariIni =  hari + " - " + tanggal + " - " + bulan + " - " + tahun;
 
-        db.addLaporan(new Laporan("Danang", "Admin Tolong Benahi Bug Yang di aplikasi ini", hariIni));
-        db.addLaporan(new Laporan("Iqbal", "Admin Tolong Benahi Bug Yang di aplikasi ini", hariIni));
-        db.addLaporan(new Laporan("Eka", "Admin Tolong Benahi Bug Yang di aplikasi ini", hariIni));
+        db.addLaporan(new Laporan("Danang", "Admin Tolong Benahi Bug di aplikasi ini", hariIni));
+        db.addLaporan(new Laporan("Iqbal", "Admin Tolong Benahi Bug di aplikasi ini", hariIni));
+        db.addLaporan(new Laporan("Eka", "Admin Tolong Benahi Bug di aplikasi ini", hariIni));
 
         //menyimpan data ke dalam list
         list = db.getAllLaporan();
